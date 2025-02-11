@@ -1,1 +1,14 @@
+# HTTP requests
 requests
+
+# Twilio API for sending SMS
+twilio
+
+# Task scheduling
+schedule
+
+# Timezone conversion
+pytz
+
+# Secure environment variable management
+python-dotenv
