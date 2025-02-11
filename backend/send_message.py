@@ -9,7 +9,7 @@ load_dotenv()
 TWILIO_ACCOUNT_SID = os.getenv("TWILIO_ACCOUNT_SID")
 TWILIO_AUTH_TOKEN = os.getenv("TWILIO_AUTH_TOKEN")
 TWILIO_MESSAGING_SERVICE_SID = os.getenv("TWILIO_MESSAGING_SERVICE_SID")
-RECIPIENT_PHONE_NUMBER = os.getenv("RECIPIENT_PHONE_NUMBER")
+RECIPIENT_PHONE_NUMBERS = os.getenv("RECIPIENT_PHONE_NUMBER").split(",")
 
 def send_sms():
     """Fetches the Warriors schedule and sends it as an SMS using Twilio."""
@@ -24,13 +24,13 @@ def send_sms():
             print("No upcoming games in the next 7 days.")
             return
 
-        message = client.messages.create(
-            messaging_service_sid=TWILIO_MESSAGING_SERVICE_SID,
-            body=message_body,
-            to=RECIPIENT_PHONE_NUMBER
-        )
-
-        print(f"Message sent successfully! SID: {message.sid}")
+        for number in RECIPIENT_PHONE_NUMBERS:
+            message = client.messages.create(
+                messaging_service_sid=TWILIO_MESSAGING_SERVICE_SID,
+                body=message_body,
+                to=number.strip()  # Remove any extra spaces
+            )
+            print(f"Message sent to {number}. SID: {message.sid}")
 
     except Exception as e:
         print(f"Error sending message: {e}")
