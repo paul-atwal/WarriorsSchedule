@@ -1,0 +1,550 @@
+:root {
+  --warriors-blue: #1D428A;
+  --warriors-gold: #FFC72C;
+  --bg-dark: #0f172a;
+  --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1D428A 100%);
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+  --font-heading: 'Oswald', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-dark);
+  background-image: var(--bg-gradient);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.app-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding-top: 20px;
+  animation: fadeInDown 0.8s ease-out;
+}
+
+/* Game Details Page */
+.game-details-page {
+  animation: fadeInDown 0.5s ease-out;
+  width: 100%;
+}
+
+.app-header h1 {
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+/* Glassmorphism Card Base */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Last Game Card */
+.last-game-card {
+  padding: 20px;
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-left: 4px solid var(--warriors-gold);
+  animation: fadeInUp 0.6s ease-out 0.2s backwards;
+}
+
+.last-game-card h3 {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  width: 100%;
+  text-align: left;
+}
+
+.last-game-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.matchup-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.mini-logo {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+}
+
+.last-game-content .matchup {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.2;
+}
+
+.last-game-content .matchup .date {
+  font-family: var(--font-body);
+  font-weight: 400;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+.highlight-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+  color: white;
+  text-decoration: none;
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.highlight-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(220, 38, 38, 0.6);
+  filter: brightness(1.1);
+}
+
+/* Next Game Hero */
+.next-game-hero {
+  background: linear-gradient(135deg, rgba(29, 66, 138, 0.8), rgba(22, 51, 107, 0.9));
+  padding: 40px 30px;
+  border-radius: 24px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  margin-bottom: 30px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  animation: fadeInUp 0.6s ease-out 0.4s backwards;
+}
+
+.next-game-hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 199, 44, 0.15) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.next-game-hero h2 {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--warriors-gold);
+  margin-bottom: 25px;
+  opacity: 0.9;
+}
+
+.game-info .teams {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.team-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.team-logo.large {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 16px rgba(0,0,0,0.6));
+  transition: transform 0.3s ease;
+}
+
+.team-logo.large:hover {
+  transform: scale(1.05);
+}
+
+.game-info .teams .opponent {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.game-info .time-location {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  border-radius: 16px;
+  backdrop-filter: blur(8px);
+  display: inline-block;
+  min-width: 240px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.game-info .date {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--warriors-gold);
+  margin-bottom: 6px;
+}
+
+.game-info .time {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: white;
+}
+
+.game-info .location {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-top: 8px;
+  font-style: italic;
+}
+
+/* Schedule List */
+.schedule-list {
+  padding: 25px;
+  animation: fadeInUp 0.6s ease-out 0.6s backwards;
+}
+
+.schedule-list h3 {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--glass-border);
+  padding-bottom: 15px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.schedule-list ul {
+  list-style: none;
+}
+
+.schedule-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 10px;
+  border-bottom: 1px solid var(--glass-border);
+  transition: all 0.2s ease;
+  border-radius: 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.schedule-item:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  transform: translateX(5px);
+}
+
+.schedule-item:last-child {
+  border-bottom: none;
+}
+
+.schedule-item .date-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.schedule-item .date-col .day {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.schedule-item .date-col .time {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.schedule-item .opponent-col {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.list-logo {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
+}
+
+.h2h-item .result {
+  font-weight: 700;
+}
+
+.h2h-item .result.win { color: #4ade80; }
+.h2h-item .result.loss { color: #ef4444; }
+
+footer {
+  margin-top: auto;
+  text-align: center;
+  padding-top: 40px;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  opacity: 0.6;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Schedule List Improvements */
+.schedule-list ul {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Game Details Page Specifics */
+.back-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.back-link:hover {
+  color: var(--warriors-gold);
+}
+
+.header-card {
+  padding: 30px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.matchup-header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.matchup-header .team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100px;
+}
+
+.matchup-header .team span {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.header-logo {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+}
+
+.vs-badge {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--warriors-gold);
+  background: rgba(0,0,0,0.3);
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.game-meta {
+  border-top: 1px solid var(--glass-border);
+  padding-top: 20px;
+}
+
+.game-meta .date {
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  margin-bottom: 5px;
+}
+
+.game-meta .record {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.stats-card {
+  padding: 25px;
+  margin-bottom: 25px;
+}
+
+.stats-card h3, .h2h-card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  color: var(--warriors-gold);
+  border-bottom: 1px solid var(--glass-border);
+  padding-bottom: 10px;
+}
+
+.scorers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 15px;
+}
+
+.player-card {
+  background: rgba(255,255,255,0.03);
+  border-radius: 12px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.player-card:hover {
+  transform: translateY(-3px);
+  background: rgba(255,255,255,0.06);
+}
+
+.player-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+  border: 2px solid var(--glass-border);
+}
+
+.player-info .name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 2px;
+  color: var(--text-primary);
+}
+
+.player-info .ppg {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.h2h-card {
+  padding: 25px;
+}
+
+.h2h-list {
+  list-style: none;
+}
+
+.h2h-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--glass-border);
+  font-size: 0.95rem;
+}
+
+.h2h-item:last-child {
+  border-bottom: none;
+}
+
+.h2h-item .date {
+  color: var(--text-secondary);
+}
+
+.h2h-item .score {
+  font-weight: 600;
+  color: var(--text-primary);
+}

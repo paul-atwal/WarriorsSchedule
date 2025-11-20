@@ -1,0 +1,85 @@
+export const schedule = [
+  {
+    id: 1,
+    date: "2025-11-01T19:30:00",
+    opponent: "Sacramento Kings",
+    isHome: true,
+    result: "W",
+    youtubeLink: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", // Placeholder
+  },
+  {
+    id: 2,
+    date: "2025-11-04T19:00:00",
+    opponent: "Washington Wizards",
+    isHome: false,
+    result: "W",
+    youtubeLink: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+  },
+  {
+    id: 3,
+    date: "2025-11-08T17:30:00",
+    opponent: "Cleveland Cavaliers",
+    isHome: false,
+    result: "L",
+    youtubeLink: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+  },
+  {
+    id: 4,
+    date: "2025-11-12T19:00:00",
+    opponent: "Boston Celtics",
+    isHome: true,
+    result: "L",
+    youtubeLink: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+  },
+  {
+    id: 5,
+    date: "2025-11-15T19:00:00",
+    opponent: "Memphis Grizzlies",
+    isHome: true,
+    result: "W",
+    youtubeLink: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+  },
+  {
+    id: 6,
+    date: "2025-11-18T19:30:00",
+    opponent: "LA Clippers",
+    isHome: true,
+    result: "L",
+    youtubeLink: "https://www.youtube.com/watch?v=MOCK_VIDEO_ID", // This will be the "Last Game"
+  },
+  {
+    id: 7,
+    date: "2025-11-21T19:30:00",
+    opponent: "Los Angeles Lakers",
+    isHome: false,
+    result: null, // Future game
+  },
+  {
+    id: 8,
+    date: "2025-11-23T17:30:00",
+    opponent: "San Antonio Spurs",
+    isHome: true,
+    result: null,
+  },
+  {
+    id: 9,
+    date: "2025-11-25T16:30:00",
+    opponent: "Brooklyn Nets",
+    isHome: false,
+    result: null,
+  },
+  {
+    id: 10,
+    date: "2025-11-28T19:00:00",
+    opponent: "Miami Heat",
+    isHome: true,
+    result: null,
+  },
+  {
+    id: 11,
+    date: "2025-11-30T18:00:00",
+    opponent: "Denver Nuggets",
+    isHome: false,
+    result: null,
+  },
+];
