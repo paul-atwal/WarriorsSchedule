@@ -11,39 +11,41 @@ function Home() {
 
   useEffect(() => {
     console.log("Home: useEffect triggered");
-    const fetchData = async () => {
+    
+    const fetchLastGame = async () => {
       try {
-        console.log("Home: Fetching data...");
-        setLoading(true);
-        
-        // Fetch Last Game
-        const lastGameRes = await fetch('/api/last-game');
-        console.log("Home: Last game status", lastGameRes.status);
-        if (lastGameRes.ok) {
-          const lastGameData = await lastGameRes.json();
-          setLastGame(lastGameData);
+        const res = await fetch('/api/last-game');
+        if (res.ok) {
+          const data = await res.json();
+          setLastGame(data);
         }
+      } catch (error) {
+        console.error("Error fetching last game:", error);
+      }
+    };
 
-        // Fetch Schedule
-        const scheduleRes = await fetch('/api/schedule');
-        console.log("Home: Schedule status", scheduleRes.status);
-        if (scheduleRes.ok) {
-          const games = await scheduleRes.json();
-          console.log("Home: Schedule data", games);
+    const fetchSchedule = async () => {
+      try {
+        const res = await fetch('/api/schedule');
+        if (res.ok) {
+          const games = await res.json();
           if (games.length > 0) {
             setNextGame(games[0]);
             setUpcomingGames(games.slice(1));
           }
         }
       } catch (error) {
-        console.error("Error fetching data:", error);
-      } finally {
-        setLoading(false);
-        console.log("Home: Loading set to false");
+        console.error("Error fetching schedule:", error);
       }
     };
 
-    fetchData();
+    const loadAll = async () => {
+      setLoading(true);
+      await Promise.all([fetchLastGame(), fetchSchedule()]);
+      setLoading(false);
+    };
+
+    loadAll();
   }, []);
 
   if (loading) {

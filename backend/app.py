@@ -101,14 +101,17 @@ def get_schedule():
 
     try:
         # Get scoreboard for a range of dates
-        # Fetch next 14 days to be safe and populate enough games
+        # Fetch next 7 days (reduced from 14) using parallel threads to prevent timeout
         today = datetime.now()
         games = []
+        dates = [(today + timedelta(days=i)).strftime('%m/%d/%Y') for i in range(7)]
         
-        for i in range(14):
-            date_str = (today + timedelta(days=i)).strftime('%m/%d/%Y')
+        from concurrent.futures import ThreadPoolExecutor, as_completed
+
+        def fetch_games_for_date(date_str):
+            found_games = []
             try:
-                board = scoreboardv2.ScoreboardV2(game_date=date_str, timeout=10) # Add timeout
+                board = scoreboardv2.ScoreboardV2(game_date=date_str, timeout=5)
                 header = board.game_header.get_data_frame()
                 
                 if not header.empty:
@@ -124,7 +127,7 @@ def get_schedule():
                         opp_info = teams.find_team_name_by_id(opponent_id)
                         opponent_name = opp_info['full_name'] if opp_info else "Unknown"
                         
-                        games.append({
+                        found_games.append({
                             "id": game['GAME_ID'],
                             "date": game['GAME_DATE_EST'],
                             "time": convert_to_pst(game['GAME_STATUS_TEXT']),
@@ -134,8 +137,16 @@ def get_schedule():
                         })
             except Exception as e:
                 print(f"Error fetching schedule for {date_str}: {e}")
-                continue
+            return found_games
+
+        with ThreadPoolExecutor(max_workers=4) as executor:
+            future_to_date = {executor.submit(fetch_games_for_date, d): d for d in dates}
+            for future in as_completed(future_to_date):
+                games.extend(future.result())
         
+        # Sort games by date
+        games.sort(key=lambda x: datetime.strptime(x['date'], '%Y-%m-%dT%H:%M:%S') if 'T' in x['date'] else datetime.strptime(x['date'], '%Y-%m-%d') if '-' in x['date'] else datetime.now()) # Fallback sort
+
         if games:
             cache["schedule"] = {"data": games, "timestamp": now}
         
