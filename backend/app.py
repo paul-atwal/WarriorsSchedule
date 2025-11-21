@@ -19,6 +19,27 @@ cache = {
 }
 CACHE_DURATION = timedelta(minutes=30)
 
+import json
+import os
+
+# Load static data
+DATA_DIR = os.path.join(os.path.dirname(__file__), 'data')
+
+def load_schedule():
+    try:
+        with open(os.path.join(DATA_DIR, 'schedule.json'), 'r') as f:
+            return json.load(f)
+    except Exception as e:
+        print(f"Error loading schedule: {e}")
+        return []
+
+def load_team_details():
+    try:
+        with open(os.path.join(DATA_DIR, 'team_details.json'), 'r') as f:
+            return json.load(f)
+    except:
+        return {}
+
 @app.route('/api/last-game')
 def get_last_game():
     global cache
@@ -30,42 +51,34 @@ def get_last_game():
         return jsonify(cache["last_game"]["data"])
 
     try:
-        # Get Warriors game log via LeagueGameFinder (has PLUS_MINUS)
-        finder = leaguegamefinder.LeagueGameFinder(team_id_nullable=WARRIORS_ID, season_nullable='2025-26')
-        df = finder.get_data_frames()[0]
+        schedule = load_schedule()
+        today = datetime.now().date()
         
-        if df.empty:
-             # Fallback to 2024-25
-            finder = leaguegamefinder.LeagueGameFinder(team_id_nullable=WARRIORS_ID, season_nullable='2024-25')
-            df = finder.get_data_frames()[0]
-            
-        last_game = df.iloc[0]
+        # Find last played game
+        last_game = None
+        for game in reversed(schedule):
+            game_date = datetime.strptime(game['date'], '%Y-%m-%d').date()
+            if game_date < today:
+                last_game = game
+                break
         
-        # Handle PLUS_MINUS safely
-        plus_minus = last_game.get('PLUS_MINUS', 0)
-        if pd.isna(plus_minus): plus_minus = 0
-        
-        # Parse opponent name from MATCHUP
-        matchup = last_game['MATCHUP']
-        opponent_abbrev = matchup.split(' ')[-1] # Get last part (POR)
-        opponent_info = teams.find_team_by_abbreviation(opponent_abbrev)
-        opponent_full_name = opponent_info['full_name'] if opponent_info else opponent_abbrev
+        if not last_game:
+            return jsonify(FALLBACK_LAST_GAME)
 
         # Generate YouTube highlights link
-        # Query: "Golden State Warriors vs {Opponent} {Date} highlights"
-        query = f"Golden State Warriors vs {opponent_full_name} {last_game['GAME_DATE']} highlights"
+        query = f"Golden State Warriors vs {last_game['opponent']} {last_game['date']} highlights"
         import urllib.parse
         encoded_query = urllib.parse.quote(query)
         youtube_link = f"https://www.youtube.com/results?search_query={encoded_query}"
 
         data = {
-            "id": int(last_game['GAME_ID']),
-            "date": last_game['GAME_DATE'],
-            "matchup": matchup,
-            "opponent": opponent_full_name, # Add full name for logo
-            "wl": last_game['WL'],
-            "pts": int(last_game['PTS']),
-            "plus_minus": int(plus_minus),
+            "id": last_game['id'],
+            "date": last_game['date'],
+            "matchup": f"GSW vs {last_game['opponent']}" if last_game['isHome'] else f"GSW @ {last_game['opponent']}",
+            "opponent": last_game['opponent'],
+            "wl": last_game['wl'],
+            "pts": last_game['pts'],
+            "plus_minus": last_game['plus_minus'],
             "youtubeLink": youtube_link
         }
         
@@ -75,39 +88,6 @@ def get_last_game():
     except Exception as e:
         print(f"Error fetching last game: {e}. Returning fallback.")
         return jsonify(FALLBACK_LAST_GAME)
-
-def convert_to_pst(time_str):
-    try:
-        # Expected format: "7:30 pm ET"
-        if time_str and "ET" in time_str:
-            time_str = time_str.replace(" ET", "")
-            dt = datetime.strptime(time_str, "%I:%M %p")
-            # Subtract 3 hours
-            dt_pst = dt - timedelta(hours=3)
-            return f"{dt_pst.strftime('%I:%M %p')} PST"
-        return time_str
-    except:
-        return time_str
-
-# Fallback Data (used if API fails)
-FALLBACK_SCHEDULE = [
-    {"id": "f1", "date": "2025-11-20", "time": "5:00 PM PST", "opponent": "Miami Heat", "isHome": True, "location": "Chase Center"},
-    {"id": "f2", "date": "2025-11-21", "time": "7:00 PM PST", "opponent": "Portland Trail Blazers", "isHome": True, "location": "Chase Center"},
-    {"id": "f3", "date": "2025-11-24", "time": "7:00 PM PST", "opponent": "Utah Jazz", "isHome": True, "location": "Chase Center"},
-    {"id": "f4", "date": "2025-11-26", "time": "7:00 PM PST", "opponent": "Houston Rockets", "isHome": True, "location": "Chase Center"},
-    {"id": "f5", "date": "2025-11-29", "time": "5:30 PM PST", "opponent": "New Orleans Pelicans", "isHome": True, "location": "Chase Center"},
-]
-
-FALLBACK_LAST_GAME = {
-    "id": 999999,
-    "date": "2025-11-19",
-    "matchup": "GSW @ MIA",
-    "opponent": "Miami Heat",
-    "wl": "L",
-    "pts": 96,
-    "plus_minus": -14,
-    "youtubeLink": "https://www.youtube.com/results?search_query=Golden+State+Warriors+vs+Miami+Heat+2025-11-19+highlights"
-}
 
 @app.route('/api/schedule')
 def get_schedule():
@@ -120,58 +100,22 @@ def get_schedule():
         return jsonify(cache["schedule"]["data"])
 
     try:
-        # Get scoreboard for a range of dates
-        # Fetch next 7 days (reduced from 14) using parallel threads to prevent timeout
-        today = datetime.now()
-        games = []
-        dates = [(today + timedelta(days=i)).strftime('%m/%d/%Y') for i in range(7)]
+        schedule = load_schedule()
+        today = datetime.now().date()
         
-        from concurrent.futures import ThreadPoolExecutor, as_completed
-
-        def fetch_games_for_date(date_str):
-            found_games = []
-            try:
-                board = scoreboardv2.ScoreboardV2(game_date=date_str, timeout=5)
-                header = board.game_header.get_data_frame()
-                
-                if not header.empty:
-                    warriors_games = header[
-                        (header['HOME_TEAM_ID'] == WARRIORS_ID) | 
-                        (header['VISITOR_TEAM_ID'] == WARRIORS_ID)
-                    ]
-                    
-                    for _, game in warriors_games.iterrows():
-                        is_home = game['HOME_TEAM_ID'] == WARRIORS_ID
-                        opponent_id = game['VISITOR_TEAM_ID'] if is_home else game['HOME_TEAM_ID']
-                        
-                        opp_info = teams.find_team_name_by_id(opponent_id)
-                        opponent_name = opp_info['full_name'] if opp_info else "Unknown"
-                        
-                        found_games.append({
-                            "id": game['GAME_ID'],
-                            "date": game['GAME_DATE_EST'],
-                            "time": convert_to_pst(game['GAME_STATUS_TEXT']),
-                            "opponent": opponent_name,
-                            "isHome": is_home,
-                            "location": "Chase Center" if is_home else "Away"
-                        })
-            except Exception as e:
-                print(f"Error fetching schedule for {date_str}: {e}")
-            return found_games
-
-        with ThreadPoolExecutor(max_workers=4) as executor:
-            future_to_date = {executor.submit(fetch_games_for_date, d): d for d in dates}
-            for future in as_completed(future_to_date):
-                games.extend(future.result())
+        future_games = []
+        for game in schedule:
+            game_date = datetime.strptime(game['date'], '%Y-%m-%d').date()
+            if game_date >= today:
+                future_games.append(game)
         
-        # Sort games by date
-        games.sort(key=lambda x: datetime.strptime(x['date'], '%Y-%m-%dT%H:%M:%S') if 'T' in x['date'] else datetime.strptime(x['date'], '%Y-%m-%d') if '-' in x['date'] else datetime.now()) # Fallback sort
+        # Limit to next 10
+        future_games = future_games[:10]
 
-        if games:
-            cache["schedule"] = {"data": games, "timestamp": now}
-            return jsonify(games)
+        if future_games:
+            cache["schedule"] = {"data": future_games, "timestamp": now}
+            return jsonify(future_games)
         else:
-            print("No games found in API, returning fallback.")
             return jsonify(FALLBACK_SCHEDULE)
             
     except Exception as e:
@@ -184,7 +128,7 @@ def get_game_details(game_id):
     
     global cache
     now = datetime.now()
-    game_id = str(game_id).zfill(10)
+    game_id = str(game_id) # JSON IDs are ints, but we might receive string
     
     # Check cache
     if game_id in cache["game_details"]:
@@ -194,128 +138,49 @@ def get_game_details(game_id):
             return jsonify(entry["data"])
 
     try:
-        print(f"Padded Game ID: {game_id}")
+        schedule = load_schedule()
+        team_details = load_team_details()
+        
+        # Find game in schedule
+        target_game = None
+        for g in schedule:
+            if str(g['id']) == game_id:
+                target_game = g
+                break
+        
+        if not target_game:
+            return jsonify({"error": "Game not found"}), 404
 
-        # 1. Try BoxScoreSummaryV2 first
-        from nba_api.stats.endpoints import boxscoresummaryv2
-        try:
-            summary = boxscoresummaryv2.BoxScoreSummaryV2(game_id=game_id, timeout=10).game_summary.get_data_frame()
-        except Exception as e:
-            print(f"BoxScoreSummaryV2 error: {e}")
-            summary = pd.DataFrame()
+        opp_id = str(target_game['opponent_id'])
+        details = team_details.get(opp_id, {"record": "N/A", "scorers": []})
         
-        opponent_id = None
-        opponent_name = "Unknown"
-        
-        if not summary.empty:
-            print("BoxScoreSummaryV2 found data.")
-            game_data = summary.iloc[0]
-            home_id = game_data['HOME_TEAM_ID']
-            visitor_id = game_data['VISITOR_TEAM_ID']
-            opponent_id = visitor_id if home_id == WARRIORS_ID else home_id
-        else:
-            # Fallback: Search upcoming schedule
-            print(f"BoxScoreSummaryV2 failed/empty for {game_id}, searching schedule...")
-            today = datetime.now()
-            for i in range(30): # Look ahead 30 days
-                date_str = (today + timedelta(days=i)).strftime('%m/%d/%Y')
-                try:
-                    board = scoreboardv2.ScoreboardV2(game_date=date_str, timeout=5)
-                    header = board.game_header.get_data_frame()
-                    if not header.empty:
-                        match = header[header['GAME_ID'] == game_id]
-                        if not match.empty:
-                            print(f"Found game in schedule on {date_str}")
-                            game_data = match.iloc[0]
-                            is_home = game_data['HOME_TEAM_ID'] == WARRIORS_ID
-                            opponent_id = game_data['VISITOR_TEAM_ID'] if is_home else game_data['HOME_TEAM_ID']
-                            break
-                except Exception as e:
-                    print(f"Error searching schedule date {date_str}: {e}")
-        
-        if not opponent_id:
-             print("Opponent ID could not be determined.")
-             return jsonify({"error": "Game not found"}), 404
-
-        opponent_info = teams.find_team_name_by_id(opponent_id)
-        opponent_name = opponent_info['full_name']
-        print(f"Opponent: {opponent_name} (ID: {opponent_id})")
-        
-        # 2. Get Opponent Record (from TeamInfoCommon or Standings)
-        from nba_api.stats.endpoints import teaminfocommon
-        try:
-            team_info = teaminfocommon.TeamInfoCommon(team_id=opponent_id, timeout=10).team_info_common.get_data_frame()
-            record = f"{team_info.iloc[0]['W']}-{team_info.iloc[0]['L']}"
-        except Exception as e:
-            print(f"Error fetching record: {e}")
-            record = "N/A"
-        
-        # 3. Get Top Scorers (from PlayerStats)
-        from nba_api.stats.endpoints import leaguedashplayerstats
-        try:
-            player_stats = leaguedashplayerstats.LeagueDashPlayerStats(
-                team_id_nullable=opponent_id, 
-                season='2025-26',
-                timeout=10
-            ).league_dash_player_stats.get_data_frame()
-            
-            if player_stats.empty:
-                 player_stats = leaguedashplayerstats.LeagueDashPlayerStats(
-                    team_id_nullable=opponent_id, 
-                    season='2024-25',
-                    timeout=10
-                ).league_dash_player_stats.get_data_frame()
-
-            top_scorers = player_stats.sort_values('PTS', ascending=False).head(3)
-            scorers_list = []
-            for _, player in top_scorers.iterrows():
-                scorers_list.append({
-                    "name": player['PLAYER_NAME'],
-                    "ppg": round(player['PTS'] / player['GP'], 1),
-                    "img": f"https://cdn.nba.com/headshots/nba/latest/1040x760/{player['PLAYER_ID']}.png"
+        # Calculate Head-to-Head from schedule
+        h2h_list = []
+        for g in schedule:
+            if str(g['opponent_id']) == opp_id and g['wl']: # Played game against same opponent
+                 h2h_list.append({
+                    "date": g['date'],
+                    "score": g['score'],
+                    "result": g['wl']
                 })
-        except Exception as e:
-            print(f"Error fetching scorers: {e}")
-            scorers_list = []
-            
-        # 4. Season Matchups (LeagueGameFinder filtered by opponent)
-        try:
-            finder = leaguegamefinder.LeagueGameFinder(team_id_nullable=WARRIORS_ID, season_nullable='2025-26', timeout=10)
-            gamelog = finder.get_data_frames()[0]
-            opp_abbrev = opponent_info['abbreviation']
-            h2h_games = gamelog[gamelog['MATCHUP'].str.contains(opp_abbrev)]
-            h2h_list = []
-            for _, h_game in h2h_games.iterrows():
-                # Safe PLUS_MINUS access
-                pm = h_game.get('PLUS_MINUS', 0)
-                if pd.isna(pm): pm = 0
-                
-                h2h_list.append({
-                    "date": h_game['GAME_DATE'],
-                    "score": f"{h_game['WL']} {h_game['PTS']}-{int(h_game['PTS']) - int(pm)}",
-                    "result": h_game['WL']
-                })
-        except Exception as e:
-            print(f"Error fetching matchups: {e}")
-            h2h_list = []
 
         response_data = {
-            "opponent": opponent_name,
-            "record": record,
-            "scorers": scorers_list,
+            "opponent": target_game['opponent'],
+            "record": details['record'],
+            "scorers": details['scorers'],
             "h2h": h2h_list
         }
         
         # Update cache
         cache["game_details"][game_id] = {"data": response_data, "timestamp": now}
         
-        print("Successfully constructed response.")
         return jsonify(response_data)
     except Exception as e:
         print(f"Error fetching game details: {e}")
-        import traceback
-        traceback.print_exc()
         return jsonify({"error": str(e)}), 500
+
+if __name__ == '__main__':
+    app.run(debug=True, port=5000)
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
