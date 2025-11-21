@@ -8,7 +8,8 @@ const ScheduleList = ({ games }) => {
       <h3>Upcoming Schedule</h3>
       <ul>
         {games.map((game) => {
-          const gameDate = new Date(game.date);
+          const [year, month, day] = game.date.split('-').map(Number);
+          const gameDate = new Date(year, month - 1, day);
           const dateString = gameDate.toLocaleDateString('en-US', {
             month: 'short',
             day: 'numeric',

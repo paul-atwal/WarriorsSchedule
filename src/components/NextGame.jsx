@@ -5,7 +5,8 @@ import { getTeamLogo } from '../utils/logos';
 const NextGame = ({ game }) => {
   if (!game) return null;
 
-  const gameDate = new Date(game.date);
+  const [year, month, day] = game.date.split('-').map(Number);
+  const gameDate = new Date(year, month - 1, day);
   const dateString = gameDate.toLocaleDateString('en-US', {
     weekday: 'long',
     month: 'long',
