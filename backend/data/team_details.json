@@ -1,4 +1,24 @@
 {
+  "1610612739": {
+    "record": "10-6",
+    "scorers": [
+      {
+        "name": "Donovan Mitchell",
+        "ppg": 30.2,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1628378.png"
+      },
+      {
+        "name": "Evan Mobley",
+        "ppg": 18.8,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1630596.png"
+      },
+      {
+        "name": "De'Andre Hunter",
+        "ppg": 18.0,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1629631.png"
+      }
+    ]
+  },
   "1610612740": {
     "record": "2-13",
     "scorers": [
@@ -19,6 +39,26 @@
       }
     ]
   },
+  "1610612741": {
+    "record": "8-6",
+    "scorers": [
+      {
+        "name": "Josh Giddey",
+        "ppg": 20.8,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1630581.png"
+      },
+      {
+        "name": "Nikola Vu\u010devi\u0107",
+        "ppg": 16.6,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/202696.png"
+      },
+      {
+        "name": "Matas Buzelis",
+        "ppg": 14.7,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1641824.png"
+      }
+    ]
+  },
   "1610612743": {
     "record": "11-3",
     "scorers": [
@@ -36,6 +76,26 @@
         "name": "Aaron Gordon",
         "ppg": 20.2,
         "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/203932.png"
+      }
+    ]
+  },
+  "1610612745": {
+    "record": "10-3",
+    "scorers": [
+      {
+        "name": "Kevin Durant",
+        "ppg": 25.5,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/201142.png"
+      },
+      {
+        "name": "Alperen Sengun",
+        "ppg": 23.4,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1630578.png"
+      },
+      {
+        "name": "Amen Thompson",
+        "ppg": 16.8,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1641708.png"
       }
     ]
   },
@@ -159,6 +219,26 @@
       }
     ]
   },
+  "1610612755": {
+    "record": "8-6",
+    "scorers": [
+      {
+        "name": "Tyrese Maxey",
+        "ppg": 31.9,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1630178.png"
+      },
+      {
+        "name": "Quentin Grimes",
+        "ppg": 17.1,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1629656.png"
+      },
+      {
+        "name": "VJ Edgecombe",
+        "ppg": 15.9,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1642845.png"
+      }
+    ]
+  },
   "1610612756": {
     "record": "9-6",
     "scorers": [
@@ -256,6 +336,26 @@
         "name": "Chet Holmgren",
         "ppg": 20.0,
         "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1631096.png"
+      }
+    ]
+  },
+  "1610612762": {
+    "record": "5-9",
+    "scorers": [
+      {
+        "name": "Lauri Markkanen",
+        "ppg": 30.6,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1628374.png"
+      },
+      {
+        "name": "Keyonte George",
+        "ppg": 23.0,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1641718.png"
+      },
+      {
+        "name": "Svi Mykhailiuk",
+        "ppg": 9.7,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1629004.png"
       }
     ]
   },

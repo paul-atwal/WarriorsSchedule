@@ -2,7 +2,7 @@ import json
 import pandas as pd
 from nba_api.stats.endpoints import leaguegamefinder, leaguedashplayerstats, teaminfocommon
 from nba_api.stats.static import teams
-from datetime import datetime
+from datetime import datetime, timedelta
 import time
 import os
 
@@ -56,10 +56,83 @@ def get_schedule():
         
         # Sort by date
         games.sort(key=lambda x: x['date'])
+        
+        # Check if we have future games
+        last_game_date = datetime.strptime(games[-1]['date'], '%Y-%m-%d').date() if games else datetime.now().date()
+        today = datetime.now().date()
+        
+        if last_game_date < today + timedelta(days=30):
+            print("Fetching future schedule via ScoreboardV2...")
+            from nba_api.stats.endpoints import scoreboardv2
+            from concurrent.futures import ThreadPoolExecutor, as_completed
+            
+            # Fetch next 60 days
+            future_dates = [(today + timedelta(days=i)).strftime('%m/%d/%Y') for i in range(60)]
+            
+            def fetch_future_games(date_str):
+                found = []
+                try:
+                    board = scoreboardv2.ScoreboardV2(game_date=date_str, timeout=5)
+                    header = board.game_header.get_data_frame()
+                    if not header.empty:
+                        warriors_games = header[
+                            (header['HOME_TEAM_ID'] == WARRIORS_ID) | 
+                            (header['VISITOR_TEAM_ID'] == WARRIORS_ID)
+                        ]
+                        for _, game in warriors_games.iterrows():
+                            is_home = game['HOME_TEAM_ID'] == WARRIORS_ID
+                            opponent_id = game['VISITOR_TEAM_ID'] if is_home else game['HOME_TEAM_ID']
+                            opp_info = teams.find_team_name_by_id(opponent_id)
+                            opponent_name = opp_info['full_name'] if opp_info else "Unknown"
+                            
+                            # Avoid duplicates if LeagueGameFinder already found it
+                            game_id = int(game['GAME_ID'])
+                            
+                            found.append({
+                                "id": game_id,
+                                "date": datetime.strptime(date_str, '%m/%d/%Y').strftime('%Y-%m-%d'),
+                                "time": convert_to_pst(game['GAME_STATUS_TEXT']),
+                                "opponent": opponent_name,
+                                "opponent_id": int(opponent_id),
+                                "isHome": is_home,
+                                "location": "Chase Center" if is_home else "Away",
+                                "score": None,
+                                "wl": None,
+                                "pts": 0,
+                                "plus_minus": 0
+                            })
+                except:
+                    pass
+                return found
+
+            with ThreadPoolExecutor(max_workers=5) as executor:
+                future_to_date = {executor.submit(fetch_future_games, d): d for d in future_dates}
+                for future in as_completed(future_to_date):
+                    new_games = future.result()
+                    for ng in new_games:
+                        # Check for duplicates by ID
+                        if not any(g['id'] == ng['id'] for g in games):
+                            games.append(ng)
+            
+            # Re-sort
+            games.sort(key=lambda x: x['date'])
+
         return games
     except Exception as e:
         print(f"Error fetching schedule: {e}")
         return []
+
+def convert_to_pst(time_str):
+    from datetime import timedelta
+    try:
+        if time_str and "ET" in time_str:
+            time_str = time_str.replace(" ET", "")
+            dt = datetime.strptime(time_str, "%I:%M %p")
+            dt_pst = dt - timedelta(hours=3)
+            return f"{dt_pst.strftime('%I:%M %p')} PST"
+        return time_str
+    except:
+        return time_str
 
 def get_team_details(schedule):
     print("Fetching Team Details (Records & Scorers)...")
