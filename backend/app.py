@@ -105,7 +105,9 @@ def get_schedule():
         
         future_games = []
         for game in schedule:
+            # game['date'] is YYYY-MM-DD
             game_date = datetime.strptime(game['date'], '%Y-%m-%d').date()
+            # If game is today or in future, include it
             if game_date >= today:
                 future_games.append(game)
         

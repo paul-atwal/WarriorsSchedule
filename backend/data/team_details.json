@@ -1,58 +1,282 @@
 {
-  "1610612747": {
-    "record": "N/A",
-    "scorers": []
-  },
-  "1610612757": {
-    "record": "N/A",
-    "scorers": []
-  },
-  "1610612746": {
-    "record": "N/A",
-    "scorers": []
+  "1610612740": {
+    "record": "2-13",
+    "scorers": [
+      {
+        "name": "Trey Murphy III",
+        "ppg": 19.9,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1630530.png"
+      },
+      {
+        "name": "Jeremiah Fears",
+        "ppg": 15.3,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1642847.png"
+      },
+      {
+        "name": "Derik Queen",
+        "ppg": 11.7,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1642852.png"
+      }
+    ]
   },
   "1610612743": {
-    "record": "N/A",
-    "scorers": []
+    "record": "11-3",
+    "scorers": [
+      {
+        "name": "Nikola Joki\u0107",
+        "ppg": 29.1,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/203999.png"
+      },
+      {
+        "name": "Jamal Murray",
+        "ppg": 22.5,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1627750.png"
+      },
+      {
+        "name": "Aaron Gordon",
+        "ppg": 20.2,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/203932.png"
+      }
+    ]
   },
-  "1610612763": {
-    "record": "N/A",
-    "scorers": []
+  "1610612746": {
+    "record": "4-10",
+    "scorers": [
+      {
+        "name": "James Harden",
+        "ppg": 26.2,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/201935.png"
+      },
+      {
+        "name": "Ivica Zubac",
+        "ppg": 16.0,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1627826.png"
+      },
+      {
+        "name": "John Collins",
+        "ppg": 11.9,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1628381.png"
+      }
+    ]
   },
-  "1610612749": {
-    "record": "N/A",
-    "scorers": []
-  },
-  "1610612754": {
-    "record": "N/A",
-    "scorers": []
-  },
-  "1610612756": {
-    "record": "N/A",
-    "scorers": []
-  },
-  "1610612758": {
-    "record": "N/A",
-    "scorers": []
-  },
-  "1610612760": {
-    "record": "N/A",
-    "scorers": []
-  },
-  "1610612759": {
-    "record": "N/A",
-    "scorers": []
-  },
-  "1610612740": {
-    "record": "N/A",
-    "scorers": []
-  },
-  "1610612753": {
-    "record": "N/A",
-    "scorers": []
+  "1610612747": {
+    "record": "11-4",
+    "scorers": [
+      {
+        "name": "Luka Don\u010di\u0107",
+        "ppg": 34.6,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1629029.png"
+      },
+      {
+        "name": "Austin Reaves",
+        "ppg": 28.1,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1630559.png"
+      },
+      {
+        "name": "Deandre Ayton",
+        "ppg": 16.5,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1629028.png"
+      }
+    ]
   },
   "1610612748": {
-    "record": "N/A",
-    "scorers": []
+    "record": "9-6",
+    "scorers": [
+      {
+        "name": "Norman Powell",
+        "ppg": 25.4,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1626181.png"
+      },
+      {
+        "name": "Jaime Jaquez Jr.",
+        "ppg": 16.8,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1631170.png"
+      },
+      {
+        "name": "Andrew Wiggins",
+        "ppg": 16.7,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/203952.png"
+      }
+    ]
+  },
+  "1610612749": {
+    "record": "8-7",
+    "scorers": [
+      {
+        "name": "Giannis Antetokounmpo",
+        "ppg": 31.2,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/203507.png"
+      },
+      {
+        "name": "Ryan Rollins",
+        "ppg": 17.4,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1631157.png"
+      },
+      {
+        "name": "Kyle Kuzma",
+        "ppg": 13.3,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1628398.png"
+      }
+    ]
+  },
+  "1610612753": {
+    "record": "8-7",
+    "scorers": [
+      {
+        "name": "Franz Wagner",
+        "ppg": 22.8,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1630532.png"
+      },
+      {
+        "name": "Paolo Banchero",
+        "ppg": 21.7,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1631094.png"
+      },
+      {
+        "name": "Desmond Bane",
+        "ppg": 16.9,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1630217.png"
+      }
+    ]
+  },
+  "1610612754": {
+    "record": "2-13",
+    "scorers": [
+      {
+        "name": "Pascal Siakam",
+        "ppg": 24.7,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1627783.png"
+      },
+      {
+        "name": "Aaron Nesmith",
+        "ppg": 15.5,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1630174.png"
+      },
+      {
+        "name": "Jarace Walker",
+        "ppg": 9.9,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1641716.png"
+      }
+    ]
+  },
+  "1610612756": {
+    "record": "9-6",
+    "scorers": [
+      {
+        "name": "Devin Booker",
+        "ppg": 27.8,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1626164.png"
+      },
+      {
+        "name": "Grayson Allen",
+        "ppg": 18.5,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1628960.png"
+      },
+      {
+        "name": "Dillon Brooks",
+        "ppg": 20.9,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1628415.png"
+      }
+    ]
+  },
+  "1610612757": {
+    "record": "6-9",
+    "scorers": [
+      {
+        "name": "Deni Avdija",
+        "ppg": 25.9,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1630166.png"
+      },
+      {
+        "name": "Shaedon Sharpe",
+        "ppg": 22.6,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1631101.png"
+      },
+      {
+        "name": "Jerami Grant",
+        "ppg": 19.4,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/203924.png"
+      }
+    ]
+  },
+  "1610612758": {
+    "record": "3-12",
+    "scorers": [
+      {
+        "name": "Zach LaVine",
+        "ppg": 21.5,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/203897.png"
+      },
+      {
+        "name": "DeMar DeRozan",
+        "ppg": 18.7,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/201942.png"
+      },
+      {
+        "name": "Russell Westbrook",
+        "ppg": 13.9,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/201566.png"
+      }
+    ]
+  },
+  "1610612759": {
+    "record": "10-4",
+    "scorers": [
+      {
+        "name": "Victor Wembanyama",
+        "ppg": 26.2,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1641705.png"
+      },
+      {
+        "name": "Stephon Castle",
+        "ppg": 17.3,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1642264.png"
+      },
+      {
+        "name": "Devin Vassell",
+        "ppg": 13.6,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1630170.png"
+      }
+    ]
+  },
+  "1610612760": {
+    "record": "15-1",
+    "scorers": [
+      {
+        "name": "Shai Gilgeous-Alexander",
+        "ppg": 32.0,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1628983.png"
+      },
+      {
+        "name": "Ajay Mitchell",
+        "ppg": 16.1,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1642349.png"
+      },
+      {
+        "name": "Chet Holmgren",
+        "ppg": 20.0,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1631096.png"
+      }
+    ]
+  },
+  "1610612763": {
+    "record": "4-11",
+    "scorers": [
+      {
+        "name": "Jaren Jackson Jr.",
+        "ppg": 17.9,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1628991.png"
+      },
+      {
+        "name": "Cedric Coward",
+        "ppg": 14.3,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1642907.png"
+      },
+      {
+        "name": "Ja Morant",
+        "ppg": 17.9,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1629630.png"
+      }
+    ]
   }
 }

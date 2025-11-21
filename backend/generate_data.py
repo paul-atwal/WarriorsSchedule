@@ -74,7 +74,7 @@ def get_team_details(schedule):
             # 1. Get Record
             # We can get this from TeamInfoCommon
             time.sleep(0.600) # Rate limit
-            info = teaminfocommon.TeamInfoCommon(team_id=opp_id, season=SEASON)
+            info = teaminfocommon.TeamInfoCommon(team_id=opp_id, season_nullable=SEASON)
             info_df = info.team_info_common.get_data_frame()
             record = "0-0"
             if not info_df.empty:
@@ -119,24 +119,23 @@ def main():
     print(f"Saved {len(schedule)} games to schedule.json")
     
     # 2. Generate Team Details
-    # details = get_team_details(schedule)
-    # with open(f'{DATA_DIR}/team_details.json', 'w') as f:
-    #     json.dump(details, f, indent=2)
-    # print(f"Saved details for {len(details)} teams.")
-    
-    # NOTE: For speed in this demo, I'm skipping the heavy team_details fetch loop
-    # and just creating a placeholder structure. You can uncomment above to run full fetch.
-    placeholder_details = {}
-    for g in schedule:
-        opp_id = g['opponent_id']
-        if opp_id not in placeholder_details:
-            placeholder_details[opp_id] = {
-                "record": "N/A",
-                "scorers": []
-            }
+    details = get_team_details(schedule)
     with open(f'{DATA_DIR}/team_details.json', 'w') as f:
-        json.dump(placeholder_details, f, indent=2)
-    print("Saved placeholder team details.")
+        json.dump(details, f, indent=2)
+    print(f"Saved details for {len(details)} teams.")
+    
+    # NOTE: Real data fetching enabled.
+    # placeholder_details = {}
+    # for g in schedule:
+    #     opp_id = g['opponent_id']
+    #     if opp_id not in placeholder_details:
+    #         placeholder_details[opp_id] = {
+    #             "record": "N/A",
+    #             "scorers": []
+    #         }
+    # with open(f'{DATA_DIR}/team_details.json', 'w') as f:
+    #     json.dump(placeholder_details, f, indent=2)
+    # print("Saved placeholder team details.")
 
 if __name__ == "__main__":
     main()
