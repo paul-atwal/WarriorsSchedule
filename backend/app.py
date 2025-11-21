@@ -165,6 +165,9 @@ def get_game_details(game_id):
                     "score": g['score'],
                     "result": g['wl']
                 })
+        
+        # Reverse to show most recent first
+        h2h_list.reverse()
 
         response_data = {
             "opponent": target_game['opponent'],
