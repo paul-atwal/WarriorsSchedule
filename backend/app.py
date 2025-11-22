@@ -137,20 +137,24 @@ def get_last_game():
 @app.route('/api/schedule')
 def get_schedule():
     global cache
-    now = datetime.now()
+    
+    # Use PST timezone consistently throughout
+    from datetime import timezone
+    pst = timezone(timedelta(hours=-8))
+    now = datetime.now(pst)
     
     # Check cache
-    if cache["schedule"]["data"] and cache["schedule"]["timestamp"] and (now - cache["schedule"]["timestamp"] < CACHE_DURATION):
-        print("Serving schedule from cache")
-        return jsonify(cache["schedule"]["data"])
+    if cache["schedule"]["data"] and cache["schedule"]["timestamp"]:
+        try:
+            if (now - cache["schedule"]["timestamp"] < CACHE_DURATION):
+                print("Serving schedule from cache")
+                return jsonify(cache["schedule"]["data"])
+        except:
+            # Cache comparison failed, regenerate
+            pass
 
     try:
         schedule = load_schedule()
-        
-        # Use PST timezone for accurate filtering
-        from datetime import timezone
-        pst = timezone(timedelta(hours=-8))
-        now = datetime.now(pst)
         today = now.date()
         
         future_games = []
