@@ -427,5 +427,18 @@
     "wl": null,
     "pts": 0,
     "plus_minus": 0
+  },
+  {
+    "id": 22500011,
+    "date": "2025-12-25",
+    "time": "02:00 PM PST",
+    "opponent": "Dallas Mavericks",
+    "opponent_id": 1610612742,
+    "isHome": true,
+    "location": "Chase Center",
+    "score": null,
+    "wl": null,
+    "pts": 0,
+    "plus_minus": 0
   }
 ]

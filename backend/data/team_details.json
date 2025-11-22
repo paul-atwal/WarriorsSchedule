@@ -1,24 +1,4 @@
 {
-  "1610612739": {
-    "record": "10-6",
-    "scorers": [
-      {
-        "name": "Donovan Mitchell",
-        "ppg": 30.2,
-        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1628378.png"
-      },
-      {
-        "name": "Evan Mobley",
-        "ppg": 18.8,
-        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1630596.png"
-      },
-      {
-        "name": "De'Andre Hunter",
-        "ppg": 18.0,
-        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1629631.png"
-      }
-    ]
-  },
   "1610612740": {
     "record": "2-13",
     "scorers": [
@@ -56,6 +36,26 @@
         "name": "Matas Buzelis",
         "ppg": 14.7,
         "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1641824.png"
+      }
+    ]
+  },
+  "1610612742": {
+    "record": "4-12",
+    "scorers": [
+      {
+        "name": "Cooper Flagg",
+        "ppg": 15.5,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1642843.png"
+      },
+      {
+        "name": "P.J. Washington",
+        "ppg": 14.4,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1629023.png"
+      },
+      {
+        "name": "D'Angelo Russell",
+        "ppg": 12.6,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1626156.png"
       }
     ]
   },
@@ -100,21 +100,21 @@
     ]
   },
   "1610612746": {
-    "record": "4-10",
+    "record": "4-11",
     "scorers": [
       {
         "name": "James Harden",
-        "ppg": 26.2,
+        "ppg": 26.5,
         "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/201935.png"
       },
       {
         "name": "Ivica Zubac",
-        "ppg": 16.0,
+        "ppg": 15.9,
         "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1627826.png"
       },
       {
         "name": "John Collins",
-        "ppg": 11.9,
+        "ppg": 11.7,
         "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1628381.png"
       }
     ]
@@ -160,7 +160,7 @@
     ]
   },
   "1610612749": {
-    "record": "8-7",
+    "record": "8-8",
     "scorers": [
       {
         "name": "Giannis Antetokounmpo",
@@ -169,33 +169,33 @@
       },
       {
         "name": "Ryan Rollins",
-        "ppg": 17.4,
+        "ppg": 18.3,
         "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1631157.png"
       },
       {
         "name": "Kyle Kuzma",
-        "ppg": 13.3,
+        "ppg": 13.5,
         "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1628398.png"
       }
     ]
   },
   "1610612753": {
-    "record": "8-7",
+    "record": "9-7",
     "scorers": [
       {
         "name": "Franz Wagner",
-        "ppg": 22.8,
+        "ppg": 22.6,
         "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1630532.png"
+      },
+      {
+        "name": "Desmond Bane",
+        "ppg": 16.8,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1630217.png"
       },
       {
         "name": "Paolo Banchero",
         "ppg": 21.7,
         "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1631094.png"
-      },
-      {
-        "name": "Desmond Bane",
-        "ppg": 16.9,
-        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1630217.png"
       }
     ]
   },
@@ -220,21 +220,21 @@
     ]
   },
   "1610612755": {
-    "record": "8-6",
+    "record": "9-6",
     "scorers": [
       {
         "name": "Tyrese Maxey",
-        "ppg": 31.9,
+        "ppg": 33.4,
         "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1630178.png"
       },
       {
         "name": "Quentin Grimes",
-        "ppg": 17.1,
+        "ppg": 16.9,
         "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1629656.png"
       },
       {
         "name": "VJ Edgecombe",
-        "ppg": 15.9,
+        "ppg": 15.6,
         "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1642845.png"
       }
     ]
@@ -280,27 +280,27 @@
     ]
   },
   "1610612758": {
-    "record": "3-12",
+    "record": "3-13",
     "scorers": [
       {
         "name": "Zach LaVine",
-        "ppg": 21.5,
+        "ppg": 21.9,
         "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/203897.png"
       },
       {
         "name": "DeMar DeRozan",
-        "ppg": 18.7,
+        "ppg": 17.9,
         "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/201942.png"
       },
       {
         "name": "Russell Westbrook",
-        "ppg": 13.9,
+        "ppg": 13.7,
         "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/201566.png"
       }
     ]
   },
   "1610612759": {
-    "record": "10-4",
+    "record": "11-4",
     "scorers": [
       {
         "name": "Victor Wembanyama",
@@ -314,7 +314,7 @@
       },
       {
         "name": "Devin Vassell",
-        "ppg": 13.6,
+        "ppg": 13.7,
         "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1630170.png"
       }
     ]
@@ -360,7 +360,7 @@
     ]
   },
   "1610612763": {
-    "record": "4-11",
+    "record": "5-11",
     "scorers": [
       {
         "name": "Jaren Jackson Jr.",
@@ -369,13 +369,13 @@
       },
       {
         "name": "Cedric Coward",
-        "ppg": 14.3,
+        "ppg": 14.6,
         "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1642907.png"
       },
       {
-        "name": "Ja Morant",
-        "ppg": 17.9,
-        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1629630.png"
+        "name": "Santi Aldama",
+        "ppg": 13.5,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1630583.png"
       }
     ]
   }
