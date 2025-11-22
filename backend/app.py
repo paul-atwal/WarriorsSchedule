@@ -17,7 +17,7 @@ cache = {
     "last_game": {"data": None, "timestamp": None},
     "game_details": {} # Key: game_id, Value: {data, timestamp}
 }
-CACHE_DURATION = timedelta(minutes=30)
+CACHE_DURATION = timedelta(minutes=0)  # Temporarily disabled to force refresh
 
 import json
 import os
