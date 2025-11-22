@@ -40,23 +40,44 @@ def load_team_details():
     except:
         return {}
 
+# Fallback Data (used if API fails or no data found)
+FALLBACK_SCHEDULE = [
+    {"id": "f1", "date": "2025-11-24", "time": "7:00 PM PST", "opponent": "Utah Jazz", "isHome": True, "location": "Chase Center"},
+    {"id": "f2", "date": "2025-11-26", "time": "7:00 PM PST", "opponent": "Houston Rockets", "isHome": True, "location": "Chase Center"},
+]
+
+FALLBACK_LAST_GAME = {
+    "id": 999999,
+    "date": "2025-11-19",
+    "matchup": "GSW @ MIA",
+    "opponent": "Miami Heat",
+    "wl": "L",
+    "pts": 96,
+    "plus_minus": -14,
+    "youtubeLink": "https://www.youtube.com/results?search_query=Golden+State+Warriors+vs+Miami+Heat+2025-11-19+highlights"
+}
+
 @app.route('/api/last-game')
 def get_last_game():
     global cache
-    now = datetime.now()
+    
+    # Use PST timezone consistently throughout
+    from datetime import timezone
+    pst = timezone(timedelta(hours=-8))
+    now = datetime.now(pst)
     
     # Check cache
-    if cache["last_game"]["data"] and cache["last_game"]["timestamp"] and (now - cache["last_game"]["timestamp"] < CACHE_DURATION):
-        print("Serving last-game from cache")
-        return jsonify(cache["last_game"]["data"])
+    if cache["last_game"]["data"] and cache["last_game"]["timestamp"]:
+        try:
+            if (now - cache["last_game"]["timestamp"] < CACHE_DURATION):
+                print("Serving last-game from cache")
+                return jsonify(cache["last_game"]["data"])
+        except:
+            # Cache comparison failed, regenerate
+            pass
 
     try:
         schedule = load_schedule()
-        
-        # Use PST timezone for accurate date/time comparison
-        from datetime import timezone
-        pst = timezone(timedelta(hours=-8))
-        now = datetime.now(pst)
         today = now.date()
         
         # Find last played game
