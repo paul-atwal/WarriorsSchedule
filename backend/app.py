@@ -125,7 +125,12 @@ def get_schedule():
 
     try:
         schedule = load_schedule()
-        today = datetime.now().date()
+        
+        # Use PST timezone for accurate filtering
+        from datetime import timezone
+        pst = timezone(timedelta(hours=-8))
+        now = datetime.now(pst)
+        today = now.date()
         
         future_games = []
         for game in schedule:
