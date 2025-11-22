@@ -28,6 +28,29 @@ jobs:
         run: |
           python backend/generate_data.py
 
+      - name: Validate Generated Data
+        run: |
+          # Check if schedule.json exists and has content
+          if [ ! -f backend/data/schedule.json ]; then
+            echo "ERROR: schedule.json not found"
+            exit 1
+          fi
+          
+          # Check if schedule.json has at least 100 lines (minimum valid data)
+          LINE_COUNT=$(wc -l < backend/data/schedule.json)
+          if [ "$LINE_COUNT" -lt 100 ]; then
+            echo "ERROR: schedule.json has only $LINE_COUNT lines (expected at least 100)"
+            exit 1
+          fi
+          
+          # Check if team_details.json exists and has content
+          if [ ! -f backend/data/team_details.json ]; then
+            echo "ERROR: team_details.json not found"
+            exit 1
+          fi
+          
+          echo "Validation passed: schedule has $LINE_COUNT lines"
+
       - name: Commit and Push changes
         run: |
           git config --global user.name 'GitHub Action'
