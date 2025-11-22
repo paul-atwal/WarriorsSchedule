@@ -52,7 +52,11 @@ def get_last_game():
 
     try:
         schedule = load_schedule()
-        now = datetime.now()
+        
+        # Use PST timezone for accurate date/time comparison
+        from datetime import timezone
+        pst = timezone(timedelta(hours=-8))
+        now = datetime.now(pst)
         today = now.date()
         
         # Find last played game
@@ -71,8 +75,8 @@ def get_last_game():
                     # Parse time like "07:00 PM PST"
                     time_str = game['time'].replace(' PST', '').replace(' PDT', '').strip()
                     game_time = datetime.strptime(time_str, '%I:%M %p')
-                    # Combine date and time
-                    game_datetime = datetime.combine(game_date, game_time.time())
+                    # Combine date and time in PST
+                    game_datetime = datetime.combine(game_date, game_time.time(), tzinfo=pst)
                     # Check if at least 3 hours have passed
                     hours_since_start = (now - game_datetime).total_seconds() / 3600
                     if hours_since_start >= 3:
