@@ -80,32 +80,38 @@ def get_last_game():
         schedule = load_schedule()
         today = now.date()
         
-        # Find last played game
+        # Find last played game (prefer games with a recorded result)
         last_game = None
         for game in reversed(schedule):
-            game_date = datetime.strptime(game['date'], '%Y-%m-%d').date()
-            
-            # Game is definitely in the past
-            if game_date < today:
+            if game.get('wl'):
                 last_game = game
                 break
-            
-            # Game is today - check if it's been at least 3 hours since start time
-            if game_date == today and game.get('time'):
-                try:
-                    # Parse time like "07:00 PM PST"
-                    time_str = game['time'].replace(' PST', '').replace(' PDT', '').strip()
-                    game_time = datetime.strptime(time_str, '%I:%M %p')
-                    # Combine date and time in PST
-                    game_datetime = datetime.combine(game_date, game_time.time(), tzinfo=pst)
-                    # Check if at least 3 hours have passed
-                    hours_since_start = (now - game_datetime).total_seconds() / 3600
-                    if hours_since_start >= 3:
-                        last_game = game
-                        break
-                except:
-                    # If time parsing fails, skip this game (treat as future)
-                    pass
+
+        if not last_game:
+            for game in reversed(schedule):
+                game_date = datetime.strptime(game['date'], '%Y-%m-%d').date()
+
+                # Game is definitely in the past
+                if game_date < today:
+                    last_game = game
+                    break
+
+                # Game is today - check if it's been at least 3 hours since start time
+                if game_date == today and game.get('time'):
+                    try:
+                        # Parse time like "07:00 PM PST"
+                        time_str = game['time'].replace(' PST', '').replace(' PDT', '').strip()
+                        game_time = datetime.strptime(time_str, '%I:%M %p')
+                        # Combine date and time in PST
+                        game_datetime = datetime.combine(game_date, game_time.time(), tzinfo=pst)
+                        # Check if at least 3 hours have passed
+                        hours_since_start = (now - game_datetime).total_seconds() / 3600
+                        if hours_since_start >= 3:
+                            last_game = game
+                            break
+                    except:
+                        # If time parsing fails, skip this game (treat as future)
+                        pass
         
         if not last_game:
             return jsonify(FALLBACK_LAST_GAME)
@@ -161,6 +167,9 @@ def get_schedule():
         for game in schedule:
             # game['date'] is YYYY-MM-DD
             game_date = datetime.strptime(game['date'], '%Y-%m-%d').date()
+            # Skip already completed games
+            if game.get('wl'):
+                continue
             # If game is today or in future, include it
             if game_date >= today:
                 future_games.append(game)
