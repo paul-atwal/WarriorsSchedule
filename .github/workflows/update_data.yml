@@ -60,6 +60,6 @@ jobs:
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "Daily data update [skip ci]"
+            git commit -m "Daily data update"
             git push
           fi
