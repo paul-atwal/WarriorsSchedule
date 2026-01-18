@@ -553,10 +553,10 @@
     "opponent_id": 1610612766,
     "isHome": true,
     "location": "Chase Center",
-    "score": null,
-    "wl": null,
-    "pts": 0,
-    "plus_minus": 0
+    "score": "W 136-116",
+    "wl": "W",
+    "pts": 136,
+    "plus_minus": 20
   },
   {
     "id": "0022500612",
@@ -665,7 +665,7 @@
   {
     "id": "0022500739",
     "date": "2026-02-05",
-    "time": "6:00 PM PST",
+    "time": "7:00 PM PST",
     "opponent": "Phoenix Suns",
     "opponent_id": 1610612756,
     "isHome": false,
