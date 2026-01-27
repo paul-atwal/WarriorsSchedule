@@ -618,10 +618,10 @@
     "opponent_id": 1610612750,
     "isHome": false,
     "location": "Target Center",
-    "score": null,
-    "wl": null,
-    "pts": 0,
-    "plus_minus": 0
+    "score": "L 83-108",
+    "wl": "L",
+    "pts": 83,
+    "plus_minus": -25
   },
   {
     "id": "0022500678",
