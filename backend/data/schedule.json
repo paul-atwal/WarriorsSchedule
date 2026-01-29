@@ -631,10 +631,10 @@
     "opponent_id": 1610612762,
     "isHome": false,
     "location": "Delta Center",
-    "score": null,
-    "wl": null,
-    "pts": 0,
-    "plus_minus": 0
+    "score": "W 140-124",
+    "wl": "W",
+    "pts": 140,
+    "plus_minus": 16
   },
   {
     "id": "0022500696",
