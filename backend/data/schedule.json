@@ -800,10 +800,10 @@
     "opponent_id": 1610612745,
     "isHome": false,
     "location": "Toyota Center",
-    "score": null,
-    "wl": null,
-    "pts": 0,
-    "plus_minus": 0
+    "score": "W 115-113",
+    "wl": "W",
+    "pts": 115,
+    "plus_minus": 2
   },
   {
     "id": "0022500920",
