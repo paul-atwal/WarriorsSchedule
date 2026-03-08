@@ -813,10 +813,10 @@
     "opponent_id": 1610612760,
     "isHome": false,
     "location": "Paycom Center",
-    "score": null,
-    "wl": null,
-    "pts": 0,
-    "plus_minus": 0
+    "score": "L 97-104",
+    "wl": "L",
+    "pts": 97,
+    "plus_minus": -7
   },
   {
     "id": "0022500934",
