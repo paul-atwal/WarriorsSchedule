@@ -865,10 +865,10 @@
     "opponent_id": 1610612752,
     "isHome": false,
     "location": "Madison Square Garden",
-    "score": null,
-    "wl": null,
-    "pts": 0,
-    "plus_minus": 0
+    "score": "L 107-110",
+    "wl": "L",
+    "pts": 107,
+    "plus_minus": -3
   },
   {
     "id": "0022500984",
