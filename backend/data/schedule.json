@@ -878,10 +878,10 @@
     "opponent_id": 1610612764,
     "isHome": false,
     "location": "Capital One Arena",
-    "score": null,
-    "wl": null,
-    "pts": 0,
-    "plus_minus": 0
+    "score": "W 125-117",
+    "wl": "W",
+    "pts": 125,
+    "plus_minus": 8
   },
   {
     "id": "0022500999",
