@@ -917,10 +917,10 @@
     "opponent_id": 1610612737,
     "isHome": false,
     "location": "State Farm Arena",
-    "score": null,
-    "wl": null,
-    "pts": 0,
-    "plus_minus": 0
+    "score": "L 110-126",
+    "wl": "L",
+    "pts": 110,
+    "plus_minus": -16
   },
   {
     "id": "0022501044",
