@@ -969,10 +969,10 @@
     "opponent_id": 1610612743,
     "isHome": false,
     "location": "Ball Arena",
-    "score": null,
-    "wl": null,
-    "pts": 0,
-    "plus_minus": 0
+    "score": "L 93-116",
+    "wl": "L",
+    "pts": 93,
+    "plus_minus": -23
   },
   {
     "id": "0022501113",
