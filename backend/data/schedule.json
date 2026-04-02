@@ -982,10 +982,10 @@
     "opponent_id": 1610612759,
     "isHome": true,
     "location": "Chase Center",
-    "score": null,
-    "wl": null,
-    "pts": 0,
-    "plus_minus": 0
+    "score": "L 113-127",
+    "wl": "L",
+    "pts": 113,
+    "plus_minus": -14
   },
   {
     "id": "0022501117",
