@@ -1064,5 +1064,18 @@
     "wl": null,
     "pts": 0,
     "plus_minus": 0
+  },
+  {
+    "id": "0052500131",
+    "date": "2026-04-15",
+    "time": "7:00 PM PDT",
+    "opponent": "Unknown",
+    "opponent_id": 0,
+    "isHome": false,
+    "location": "Away",
+    "score": null,
+    "wl": null,
+    "pts": 0,
+    "plus_minus": 0
   }
 ]
