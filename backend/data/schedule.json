@@ -1047,10 +1047,10 @@
     "opponent_id": 1610612758,
     "isHome": false,
     "location": "Golden 1 Center",
-    "score": null,
-    "wl": null,
-    "pts": 0,
-    "plus_minus": 0
+    "score": "L 118-124",
+    "wl": "L",
+    "pts": 118,
+    "plus_minus": -6
   },
   {
     "id": "0022501199",
