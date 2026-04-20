@@ -1,1 +1,42 @@
-{}
+{
+  "1610612738": {
+    "record": "56-26",
+    "scorers": [
+      {
+        "name": "Jaylen Brown",
+        "ppg": 28.7,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1627759.png"
+      },
+      {
+        "name": "Payton Pritchard",
+        "ppg": 17.0,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1630202.png"
+      },
+      {
+        "name": "Derrick White",
+        "ppg": 16.5,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1628401.png"
+      }
+    ]
+  },
+  "1610612751": {
+    "record": "20-62",
+    "scorers": [
+      {
+        "name": "Michael Porter Jr.",
+        "ppg": 24.2,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1629008.png"
+      },
+      {
+        "name": "Nic Claxton",
+        "ppg": 11.7,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1629651.png"
+      },
+      {
+        "name": "Noah Clowney",
+        "ppg": 12.3,
+        "img": "https://cdn.nba.com/headshots/nba/latest/1040x760/1641730.png"
+      }
+    ]
+  }
+}
