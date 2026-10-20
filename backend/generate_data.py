@@ -1,293 +1,415 @@
+"""Builds the static data files the app serves.
+
+Sources:
+- ESPN site API: schedule (preseason, regular season, playoffs), standings,
+  opponent scoring leaders, Warriors injuries and Warriors news.
+- Gracenote TV listings: the TELUS Optik TV lineup for Surrey, BC, to find which
+  channel carries each game. Listings run about two weeks ahead.
+
+Runs daily from GitHub Actions; writes backend/data/{schedule,team_details,news}.json.
+"""
 import json
 import os
 import time
 from datetime import datetime, timedelta, timezone
 
-import pandas as pd
 import requests
-from nba_api.stats.endpoints import leaguegamefinder, leaguedashplayerstats, teaminfocommon
-from nba_api.stats.static import teams
-
-# Configuration
-WARRIORS_ID = 1610612744
-DEFAULT_SEASON = '2025-26'
-DATA_DIR = 'backend/data'
-SCHEDULE_URL = 'https://cdn.nba.com/static/json/staticData/scheduleLeagueV2.json'
 
 try:
     from zoneinfo import ZoneInfo
     PACIFIC_TZ = ZoneInfo("America/Los_Angeles")
-    EASTERN_TZ = ZoneInfo("America/New_York")
 except Exception:
     PACIFIC_TZ = timezone(timedelta(hours=-8))
-    EASTERN_TZ = timezone(timedelta(hours=-5))
 
-def load_existing_schedule():
-    path = os.path.join(DATA_DIR, 'schedule.json')
+DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data')
+
+ESPN_SITE = 'https://site.api.espn.com/apis/site/v2/sports/basketball/nba'
+ESPN_STANDINGS = 'https://site.api.espn.com/apis/v2/sports/basketball/nba/standings'
+ESPN_CORE = 'https://sports.core.api.espn.com/v2/sports/basketball/leagues/nba'
+WARRIORS_ESPN_ID = '9'
+CURRY_ESPN_ID = '3975'
+
+# TELUS Optik TV - Digital, Vancouver/Whistler headend (Surrey, BC)
+GRACENOTE_GRID = 'https://tvlistings.gracenote.com/api/grid'
+TELUS_LINEUP = {
+    'lineupId': 'CAN-0009972-DEFAULT',
+    'headendId': '0009972',
+    'country': 'CAN',
+    'device': 'X',
+    'postalCode': 'V3T1V8',
+}
+BROWSER_HEADERS = {
+    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 '
+                  '(KHTML, like Gecko) Chrome/130.0 Safari/537.36',
+    'Referer': 'https://tvlistings.gracenote.com/grid-affiliates.html?aid=orbebb',
+    'Accept': 'application/json, text/plain, */*',
+}
+
+# Friendly names for the channels a Warriors game can land on. Anything else
+# falls back to Gracenote's affiliate name or call sign.
+CHANNEL_NAMES = {
+    'SN1': 'Sportsnet One',
+    'SNP': 'Sportsnet Pacific',
+    'SNW': 'Sportsnet West',
+    'SNO': 'Sportsnet Ontario',
+    'SNE': 'Sportsnet East',
+    'SN360': 'Sportsnet 360',
+    'SP4K': 'Sportsnet 4K',
+    'TSN': 'TSN',
+    'TSN1': 'TSN1',
+    'TSN2': 'TSN2',
+    'TSN3': 'TSN3',
+    'TSN4': 'TSN4',
+    'TSN5': 'TSN5',
+}
+# Channels to check when deciding whether a time slot is listed yet.
+REFERENCE_CHANNELS = ('SN1HD', 'SNPHD', 'TSNHD')
+
+
+def get_json(url, params=None, headers=None, retries=2):
+    for attempt in range(retries + 1):
+        try:
+            res = requests.get(url, params=params, headers=headers or BROWSER_HEADERS, timeout=30)
+            res.raise_for_status()
+            return res.json()
+        except Exception as e:
+            status = getattr(getattr(e, 'response', None), 'status_code', None)
+            if attempt == retries or (status and 400 <= status < 500):
+                raise
+            print(f"  retrying {url}: {e}")
+            time.sleep(1.5)
+
+
+def load_json(name, default):
     try:
-        if os.path.exists(path):
-            with open(path, 'r') as f:
-                return json.load(f)
-    except Exception as e:
-        print(f"Error loading existing schedule: {e}")
-    return []
-
-def format_team_name(team):
-    city = (team.get('teamCity') or '').strip()
-    name = (team.get('teamName') or '').strip()
-    if city and name:
-        return f"{city} {name}"
-    return name or team.get('teamTricode') or "Unknown"
-
-def parse_game_datetime(game):
-    utc_str = game.get('gameDateTimeUTC')
-    if utc_str:
-        try:
-            dt_utc = datetime.fromisoformat(utc_str.replace('Z', '+00:00'))
-            return dt_utc.astimezone(PACIFIC_TZ)
-        except Exception:
-            pass
-    date_est = game.get('gameDateEst')
-    time_est = game.get('gameTimeEst')
-    if date_est and time_est and any(ch.isdigit() for ch in time_est):
-        try:
-            dt_est = datetime.strptime(f"{date_est} {time_est}", "%m/%d/%Y %I:%M %p").replace(tzinfo=EASTERN_TZ)
-            return dt_est.astimezone(PACIFIC_TZ)
-        except Exception:
-            pass
-    return None
-
-def format_time_pacific(dt_local):
-    if not dt_local:
-        return "TBD"
-    time_str = dt_local.strftime("%I:%M %p %Z").lstrip("0")
-    if time_str.endswith("UTC-08:00"):
-        time_str = time_str.replace("UTC-08:00", "PST")
-    return time_str
-
-def parse_game_date(game, dt_local):
-    if dt_local:
-        return dt_local.date().isoformat()
-    date_est = game.get('gameDateEst')
-    if date_est:
-        try:
-            return datetime.strptime(date_est, "%m/%d/%Y").date().isoformat()
-        except Exception:
-            pass
-    date_utc = game.get('gameDateUTC')
-    if date_utc:
-        try:
-            return datetime.strptime(date_utc, "%Y-%m-%d").date().isoformat()
-        except Exception:
-            pass
-    return None
-
-def parse_result(home, away, is_home, game_status):
-    if game_status != 3:
-        return None, None, 0, 0
-    try:
-        home_score = int(home.get('score', 0))
-        away_score = int(away.get('score', 0))
+        with open(os.path.join(DATA_DIR, name)) as f:
+            return json.load(f)
     except Exception:
-        return None, None, 0, 0
-    pts = home_score if is_home else away_score
-    opp_pts = away_score if is_home else home_score
-    wl = "W" if pts > opp_pts else "L"
-    score = f"{wl} {pts}-{opp_pts}"
-    return wl, score, pts, pts - opp_pts
+        return default
 
-def get_schedule_from_cdn():
-    print("Fetching Schedule from CDN...")
-    headers = {
-        "User-Agent": "Mozilla/5.0 (compatible; WarriorsSchedule/1.0)",
-        "Accept": "application/json",
+
+def write_json(name, data):
+    with open(os.path.join(DATA_DIR, name), 'w') as f:
+        json.dump(data, f, indent=2)
+
+
+def parse_utc(s):
+    return datetime.fromisoformat(s.replace('Z', '+00:00'))
+
+
+def to_utc_str(dt):
+    return dt.astimezone(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
+
+
+def tidy_venue(name):
+    # ESPN lists Crypto.com Arena as "crypto.com Arena"
+    return name[:1].upper() + name[1:] if name else name
+
+
+# ---------------------------------------------------------------- schedule
+
+def parse_event(event, season_type):
+    comp = event['competitions'][0]
+    competitors = comp['competitors']
+    us = next((c for c in competitors if c['team']['id'] == WARRIORS_ESPN_ID), None)
+    them = next((c for c in competitors if c['team']['id'] != WARRIORS_ESPN_ID), None)
+    if not us or not them:
+        return None
+
+    tip = parse_utc(event['date'])
+    local = tip.astimezone(PACIFIC_TZ)
+    status = comp.get('status', {}).get('type', {})
+    team = them['team']
+    venue = comp.get('venue', {})
+    address = venue.get('address', {})
+
+    def score(c):
+        s = c.get('score')
+        if isinstance(s, dict):
+            s = s.get('displayValue')
+        try:
+            return int(s)
+        except (TypeError, ValueError):
+            return None
+
+    pts, opp_pts = score(us), score(them)
+    final = status.get('completed') and pts is not None and opp_pts is not None
+    wl = ('W' if pts > opp_pts else 'L') if final else None
+
+    return {
+        "id": event['id'],
+        "tipUtc": to_utc_str(tip),
+        "date": local.date().isoformat(),
+        "time": local.strftime('%I:%M %p').lstrip('0') if event.get('timeValid', True) else 'TBD',
+        "seasonType": season_type,
+        "opponent": team.get('displayName'),
+        "opponentShort": team.get('shortDisplayName'),
+        "opponentAbbr": team.get('abbreviation'),
+        "opponentId": team.get('id'),
+        "opponentLogo": f"https://a.espncdn.com/i/teamlogos/nba/500/{team.get('abbreviation', '').lower()}.png",
+        "isHome": us.get('homeAway') == 'home',
+        "neutral": bool(comp.get('neutralSite')),
+        "arena": tidy_venue(venue.get('fullName')),
+        "city": address.get('city'),
+        "status": status.get('state', 'pre'),  # pre | in | post
+        "wl": wl,
+        "pts": pts if final else None,
+        "oppPts": opp_pts if final else None,
+        "tv": None,
     }
-    response = requests.get(SCHEDULE_URL, headers=headers, timeout=20)
-    response.raise_for_status()
-    payload = response.json()
-    league = payload.get('leagueSchedule', {})
-    season_year = league.get('seasonYear') or DEFAULT_SEASON
 
-    games = []
-    for date_block in league.get('gameDates', []):
-        for game in date_block.get('games', []):
-            if game.get('gameLabel') == 'Preseason':
-                continue
-            home = game.get('homeTeam', {})
-            away = game.get('awayTeam', {})
-            try:
-                home_id = int(home.get('teamId', 0) or 0)
-                away_id = int(away.get('teamId', 0) or 0)
-            except Exception:
-                continue
-            if WARRIORS_ID not in (home_id, away_id):
-                continue
-
-            is_home = home_id == WARRIORS_ID
-            opponent = away if is_home else home
-            opponent_id = int(opponent.get('teamId', 0) or 0)
-            opponent_name = format_team_name(opponent)
-
-            dt_local = parse_game_datetime(game)
-            date_str = parse_game_date(game, dt_local)
-            if not date_str:
-                continue
-            time_str = format_time_pacific(dt_local)
-
-            wl, score, pts, plus_minus = parse_result(home, away, is_home, game.get('gameStatus'))
-            games.append({
-                "id": game.get('gameId'),
-                "date": date_str,
-                "time": time_str,
-                "opponent": opponent_name,
-                "opponent_id": opponent_id,
-                "isHome": is_home,
-                "location": game.get('arenaName') or ("Chase Center" if is_home else "Away"),
-                "score": score,
-                "wl": wl,
-                "pts": int(pts),
-                "plus_minus": int(plus_minus)
-            })
-
-    games.sort(key=lambda x: x['date'])
-    return games, season_year
-
-def get_schedule_from_nba_api(season):
-    print("Fetching Schedule via nba_api fallback...")
-    try:
-        finder = leaguegamefinder.LeagueGameFinder(team_id_nullable=WARRIORS_ID, season_nullable=season)
-        df = finder.get_data_frames()[0]
-
-        games = []
-        for _, game in df.iterrows():
-            game_date_str = game['GAME_DATE']
-            matchup = game['MATCHUP']
-            is_home = 'vs.' in matchup
-            opponent_abbrev = matchup.split(' ')[-1]
-
-            opp_info = teams.find_team_by_abbreviation(opponent_abbrev)
-            opponent_name = opp_info['full_name'] if opp_info else opponent_abbrev
-            opponent_id = opp_info['id'] if opp_info else 0
-
-            wl = game['WL']
-            pts = game['PTS']
-            plus_minus = game['PLUS_MINUS'] if pd.notna(game['PLUS_MINUS']) else 0
-
-            score = None
-            if wl:
-                opp_pts = int(pts - plus_minus)
-                score = f"{wl} {int(pts)}-{opp_pts}"
-
-            games.append({
-                "id": str(game['GAME_ID']),
-                "date": game_date_str,
-                "time": "TBD",
-                "opponent": opponent_name,
-                "opponent_id": int(opponent_id),
-                "isHome": is_home,
-                "location": "Chase Center" if is_home else "Away",
-                "score": score,
-                "wl": wl,
-                "pts": int(pts) if pd.notna(pts) else 0,
-                "plus_minus": int(plus_minus)
-            })
-
-        games.sort(key=lambda x: x['date'])
-        return games
-    except Exception as e:
-        print(f"Error fetching schedule via nba_api: {e}")
-        return []
 
 def get_schedule():
-    try:
-        return get_schedule_from_cdn()
-    except Exception as e:
-        print(f"CDN schedule fetch failed: {e}")
-        fallback_games = get_schedule_from_nba_api(DEFAULT_SEASON)
-        return fallback_games, DEFAULT_SEASON
-
-def get_team_details(schedule, season):
-    print("Fetching Team Details (Records & Scorers)...")
-    team_details = {}
-    
-    # Get unique opponents
-    opponent_ids = set(g['opponent_id'] for g in schedule if g['opponent_id'] != 0)
-    
-    for opp_id in opponent_ids:
+    print("Fetching schedule from ESPN...")
+    games = []
+    for season_type, label in ((1, 'pre'), (2, 'reg'), (3, 'post')):
         try:
-            print(f"Processing team {opp_id}...")
-            # 1. Get Record
-            # We can get this from TeamInfoCommon
-            time.sleep(0.600) # Rate limit
-            info = teaminfocommon.TeamInfoCommon(team_id=opp_id, season_nullable=season)
-            info_df = info.team_info_common.get_data_frame()
-            record = "0-0"
-            if not info_df.empty:
-                w = info_df.iloc[0]['W']
-                l = info_df.iloc[0]['L']
-                record = f"{w}-{l}"
-            
-            # 2. Get Top Scorers
-            time.sleep(0.600)
-            stats = leaguedashplayerstats.LeagueDashPlayerStats(team_id_nullable=opp_id, season=season)
-            stats_df = stats.league_dash_player_stats.get_data_frame()
-            
-            scorers = []
-            if not stats_df.empty:
-                top3 = stats_df.sort_values('PTS', ascending=False).head(3)
-                for _, p in top3.iterrows():
-                    scorers.append({
-                        "name": p['PLAYER_NAME'],
-                        "ppg": round(p['PTS'] / p['GP'], 1),
-                        "img": f"https://cdn.nba.com/headshots/nba/latest/1040x760/{p['PLAYER_ID']}.png"
-                    })
-            
-            team_details[opp_id] = {
-                "record": record,
-                "scorers": scorers
-            }
-            
+            data = get_json(f"{ESPN_SITE}/teams/gs/schedule", params={'seasontype': season_type})
         except Exception as e:
-            print(f"Error fetching details for {opp_id}: {e}")
+            print(f"  {label} schedule failed: {e}")
             continue
-            
-    return team_details
+        events = data.get('events', [])
+        print(f"  {label}: {len(events)} games")
+        for event in events:
+            game = parse_event(event, label)
+            if game:
+                games.append(game)
+    games.sort(key=lambda g: g['tipUtc'])
+    return games
+
+
+# ---------------------------------------------------------------- TV (Telus)
+
+def channel_info(channel):
+    call = channel.get('callSign', '')
+    base = call[:-2] if call.endswith('HD') else call
+    for suffix in ('HBO', 'BO', 'DT', 'CD', 'B'):
+        if base.endswith(suffix) and base[:-len(suffix)] in CHANNEL_NAMES:
+            base = base[:-len(suffix)]
+            break
+    name = CHANNEL_NAMES.get(base) or channel.get('affiliateName') or base
+    thumb = channel.get('thumbnail') or ''
+    if thumb.startswith('//'):
+        thumb = 'https:' + thumb
+    return {"name": name, "number": channel.get('channelNo'), "logo": thumb.split('?')[0] or None}
+
+
+def find_tv(game):
+    """Returns {'status': 'on'|'none'|'tba', ...} for one game."""
+    tip = parse_utc(game['tipUtc'])
+    params = dict(TELUS_LINEUP, timespan=3, isOverride='true', time=int((tip - timedelta(hours=1)).timestamp()),
+                  pref='16,128', userId='-', aid='orbebb', languagecode='en-us')
+    grid = get_json(GRACENOTE_GRID, params=params)
+    channels = grid.get('channels') or []
+    if not channels:
+        return {"status": "tba"}
+
+    # Is this slot actually listed yet? Near and past the horizon Gracenote
+    # returns nothing or generic "To Be Announced" placeholders.
+    window_end = tip + timedelta(hours=2, minutes=30)
+    seen = 0
+    for ch in channels:
+        if ch.get('callSign') not in REFERENCE_CHANNELS:
+            continue
+        for ev in ch.get('events', []):
+            if parse_utc(ev['startTime']) < window_end and parse_utc(ev['endTime']) > tip:
+                seen += 1
+                program = ev.get('program', {})
+                if str(program.get('isGeneric') or '0') != '0' or program.get('title') == 'To Be Announced':
+                    return {"status": "tba"}
+    if not seen:
+        return {"status": "tba"}
+
+    candidates = []
+    for ch in channels:
+        try:
+            number = int(ch.get('channelNo') or 0)
+        except ValueError:
+            continue
+        # TELUS duplicates every channel in the 9000s as SD; NBA TV isn't
+        # something we count as being on TV.
+        if number >= 9000 or 'NBATV' in (ch.get('callSign') or ''):
+            continue
+        for ev in ch.get('events', []):
+            p = ev.get('program', {})
+            if 'Basketball' not in (p.get('title') or ''):
+                continue
+            if 'Golden State Warriors' not in (p.get('episodeTitle') or ''):
+                continue
+            start = parse_utc(ev['startTime'])
+            offset = abs((start - tip).total_seconds())
+            if offset > 90 * 60:
+                continue
+            live = 'Live' in (ev.get('flag') or [])
+            candidates.append((not live, offset, number, ch))
+
+    if not candidates:
+        return {"status": "none"}
+    candidates.sort(key=lambda c: c[:3])
+    return dict(status="on", **channel_info(candidates[0][3]))
+
+
+def add_tv(schedule, previous):
+    print("Fetching TELUS TV listings...")
+    prev_tv = {g['id']: g.get('tv') for g in previous if isinstance(g, dict) and g.get('id')}
+    now = datetime.now(timezone.utc)
+    horizon = now + timedelta(days=16)
+    for game in schedule:
+        tip = parse_utc(game['tipUtc'])
+        if game['status'] == 'post' or tip > horizon or tip < now - timedelta(hours=4):
+            game['tv'] = prev_tv.get(game['id']) or ({"status": "tba"} if tip > now else None)
+            continue
+        try:
+            game['tv'] = find_tv(game)
+            print(f"  {game['date']} {game['opponentAbbr']}: {game['tv']}")
+            time.sleep(0.5)
+        except Exception as e:
+            print(f"  TV lookup failed for {game['date']} {game['opponentAbbr']}: {e}")
+            game['tv'] = prev_tv.get(game['id']) or {"status": "tba"}
+
+
+# ---------------------------------------------------------------- opponents
+
+def get_records(season_year):
+    records = {}
+    try:
+        data = get_json(ESPN_STANDINGS, params={'season': season_year, 'seasontype': 2})
+        for conf in data.get('children', []):
+            for entry in conf.get('standings', {}).get('entries', []):
+                overall = next((s for s in entry.get('stats', []) if s.get('name') == 'overall'), None)
+                if overall:
+                    records[entry['team']['id']] = overall.get('displayValue')
+    except Exception as e:
+        print(f"  standings failed: {e}")
+    return records
+
+
+def get_top_scorers(team_id, season_year):
+    try:
+        data = get_json(f"{ESPN_CORE}/seasons/{season_year}/types/2/teams/{team_id}/leaders")
+    except Exception:
+        return []  # no stats yet (before opening night)
+    ppg = next((c for c in data.get('categories', []) if c.get('name') == 'pointsPerGame'), None)
+    if not ppg:
+        return []
+    leaders = sorted(ppg.get('leaders', []), key=lambda l: l.get('value') or 0, reverse=True)[:3]
+    scorers = []
+    for leader in leaders:
+        try:
+            athlete = get_json(leader['athlete']['$ref'].replace('http://', 'https://'))
+        except Exception:
+            continue
+        scorers.append({
+            "name": athlete.get('displayName'),
+            "position": (athlete.get('position') or {}).get('displayName'),
+            "ppg": round(leader.get('value') or 0, 1),
+            "img": (athlete.get('headshot') or {}).get('href'),
+        })
+    return scorers
+
+
+def get_team_details(schedule, season_year):
+    print("Fetching opponent records and top scorers...")
+    records = get_records(season_year)
+    details = {"_warriors": {"record": records.get(WARRIORS_ESPN_ID, '0-0')}}
+    for team_id in sorted({g['opponentId'] for g in schedule if g.get('opponentId')}):
+        details[team_id] = {
+            "record": records.get(team_id, '0-0'),
+            "scorers": get_top_scorers(team_id, season_year),
+        }
+        time.sleep(0.2)
+    return details
+
+
+# ---------------------------------------------------------------- news
+
+def describe_injury(injury):
+    d = injury.get('details') or {}
+    part = (d.get('type') or 'Injury')
+    if d.get('side') and d.get('side') not in ('Not Specified',):
+        part = f"{d['side']} {part.lower()}"
+    if d.get('detail'):
+        part = f"{part} ({d['detail'].lower()})"
+    return part
+
+
+def get_news():
+    print("Fetching injuries and news...")
+    injuries = []
+    try:
+        data = get_json(f"{ESPN_SITE}/injuries")
+        team = next((t for t in data.get('injuries', []) if t.get('id') == WARRIORS_ESPN_ID), {})
+        for inj in team.get('injuries', []):
+            athlete = inj.get('athlete', {})
+            athlete_id = None
+            for link in athlete.get('links', []):
+                if '/id/' in link.get('href', ''):
+                    athlete_id = link['href'].split('/id/')[1].split('/')[0]
+                    break
+            injuries.append({
+                "athleteId": athlete_id,
+                "name": athlete.get('displayName'),
+                "position": (athlete.get('position') or {}).get('abbreviation'),
+                "img": (athlete.get('headshot') or {}).get('href'),
+                "status": inj.get('status'),
+                "injury": describe_injury(inj),
+                "returnDate": (inj.get('details') or {}).get('returnDate'),
+                "comment": inj.get('shortComment'),
+                "updated": inj.get('date'),
+            })
+    except Exception as e:
+        print(f"  injuries failed: {e}")
+        injuries = None
+
+    articles = []
+    try:
+        data = get_json(f"{ESPN_SITE}/news", params={'team': WARRIORS_ESPN_ID, 'limit': 50})
+        for a in data.get('articles', []):
+            if a.get('type') == 'Media':  # highlight clips can spoil results
+                continue
+            teams = [c for c in a.get('categories', []) if c.get('type') == 'team']
+            if not teams or any(str(c.get('teamId')) != WARRIORS_ESPN_ID for c in teams):
+                continue
+            url = (a.get('links', {}).get('web') or {}).get('href')
+            if not url:
+                continue
+            articles.append({
+                "headline": a.get('headline'),
+                "published": a.get('published'),
+                "url": url,
+            })
+    except Exception as e:
+        print(f"  news failed: {e}")
+        articles = None
+
+    return injuries, articles[:12] if articles is not None else None
+
 
 def main():
-    if not os.path.exists(DATA_DIR):
-        os.makedirs(DATA_DIR)
-        
-    # 1. Generate Schedule
-    schedule, season_year = get_schedule()
+    os.makedirs(DATA_DIR, exist_ok=True)
+    previous = load_json('schedule.json', [])
+
+    schedule = get_schedule()
     if not schedule:
-        print("Schedule fetch returned no games. Falling back to existing data if available.")
-        existing = load_existing_schedule()
-        if existing:
-            schedule = existing
-        else:
-            raise RuntimeError("No schedule data available to write.")
-    with open(f'{DATA_DIR}/schedule.json', 'w') as f:
-        json.dump(schedule, f, indent=2)
+        raise RuntimeError("ESPN returned no games; keeping existing data.")
+    add_tv(schedule, previous)
+    write_json('schedule.json', schedule)
     print(f"Saved {len(schedule)} games to schedule.json")
-    
-    # 2. Generate Team Details
-    details = get_team_details(schedule, season_year)
-    with open(f'{DATA_DIR}/team_details.json', 'w') as f:
-        json.dump(details, f, indent=2)
-    print(f"Saved details for {len(details)} teams.")
-    
-    # NOTE: Real data fetching enabled.
-    # placeholder_details = {}
-    # for g in schedule:
-    #     opp_id = g['opponent_id']
-    #     if opp_id not in placeholder_details:
-    #         placeholder_details[opp_id] = {
-    #             "record": "N/A",
-    #             "scorers": []
-    #         }
-    # with open(f'{DATA_DIR}/team_details.json', 'w') as f:
-    #     json.dump(placeholder_details, f, indent=2)
-    # print("Saved placeholder team details.")
+
+    season_year = parse_utc(schedule[-1]['tipUtc']).year
+    write_json('team_details.json', get_team_details(schedule, season_year))
+    print("Saved team_details.json")
+
+    injuries, articles = get_news()
+    old_news = load_json('news.json', {})
+    write_json('news.json', {
+        "updated": to_utc_str(datetime.now(timezone.utc)),
+        "curryId": CURRY_ESPN_ID,
+        "injuries": injuries if injuries is not None else old_news.get('injuries', []),
+        "articles": articles if articles is not None else old_news.get('articles', []),
+    })
+    print("Saved news.json")
+
 
 if __name__ == "__main__":
     main()

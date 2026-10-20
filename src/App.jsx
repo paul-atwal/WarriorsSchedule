@@ -1,23 +1,37 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
+import { BrowserRouter as Router, Navigate, Route, Routes, useLocation } from 'react-router-dom';
+import AppData from './lib/AppData';
+import BottomNav from './components/BottomNav';
 import Home from './pages/Home';
-import GameDetails from './pages/GameDetails';
+import Schedule from './pages/Schedule';
+import GamePreview from './pages/GamePreview';
+import News from './pages/News';
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
 
 function App() {
   return (
     <Router>
-      <div className="app-container">
-        <header className="app-header">
-          <h1>Warriors Schedule</h1>
-        </header>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/game/:id" element={<GameDetails />} />
-        </Routes>
-        <footer>
-          <p>Go Warriors!</p>
-        </footer>
-      </div>
+      <AppData>
+        <ScrollToTop />
+        <div className="app">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/schedule" element={<Schedule />} />
+            <Route path="/schedule/previous" element={<Schedule previous />} />
+            <Route path="/game/:id" element={<GamePreview />} />
+            <Route path="/news" element={<News />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+          <BottomNav />
+        </div>
+      </AppData>
     </Router>
   );
 }

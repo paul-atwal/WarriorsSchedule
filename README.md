@@ -1,41 +1,51 @@
 # Warriors Schedule App
 
-A beautiful, spoiler-free schedule tracker for the Golden State Warriors.
+A mobile-first, spoiler-free schedule for the Golden State Warriors, built for watching in Surrey, BC.
 
-## Features
+## Screens
 
--   **Next Game**: Shows the immediate next game with date, time (PST), and opponent.
--   **Last Game**: Displays the result of the most recent game with a "Watch Highlights" button linking to the official NBA.com game page.
--   **Schedule**: Lists upcoming games with opponent logos.
--   **Game Details**: Click on any game to see:
-    -   Opponent's top scorers (with headshots).
-    -   Head-to-head matchup history for the current season.
-    -   Opponent's season record.
--   **Spoiler-Free**: Scores are only shown for past games.
+- **Home**: tells you when the next game is and where to watch it. The top card changes with the clock: a countdown on the days before, a gold "Tonight" card on game day, a scoreless "In progress" card during the game, then "Highlights ready" once it's final. Below that are the last game's highlights and the next four games.
+- **Schedule**: the upcoming games grouped by month, each with its TELUS channel or "No TV" / "TV TBA". The **Previous** tab lists final scores, with a highlights button on every game.
+- **Game preview**: tip-off time, channel, arena, the season series (preseason included) and the opponent's top scorers.
+- **News**: Curry's status, the Warriors injury report and recent Warriors stories from ESPN.
+
+Scores stay hidden unless you ask for them. The **Scores off/on** toggle on Home shows them everywhere, and you can also reveal a single game's score.
+
+## Data
+
+`backend/generate_data.py` runs daily from GitHub Actions and writes `backend/data/`:
+
+- `schedule.json`: the full season from ESPN, plus the TELUS Optik TV channel for each game from Gracenote's listings for Surrey. NBA TV-only games count as "No TV". Listings run about two weeks ahead, so games further out show "TV TBA".
+- `team_details.json`: standings records and each opponent's top three scorers. These stay empty until the regular season has stats.
+- `news.json`: the ESPN injury report and Warriors-only news. Video clips are left out so highlights don't spoil results.
+
+The Flask API (`backend/app.py`) serves those files. `/api/score/<id>` fetches a live or final score from ESPN, but only when you ask to see it.
 
 ## Tech Stack
 
--   **Frontend**: React, Vite, CSS (Glassmorphism UI).
--   **Backend**: Python, Flask, `nba_api`.
+- **Frontend**: React, Vite, React Router.
+- **Backend**: Python, Flask, `requests`.
 
 ## Running Locally
 
-1.  **Backend**:
-    ```bash
-    cd backend
-    python3 -m venv venv
-    source venv/bin/activate
-    pip install -r requirements.txt
-    python app.py
-    ```
+1. **Backend**:
+   ```bash
+   cd backend
+   python3 -m venv venv
+   source venv/bin/activate
+   pip install -r requirements.txt
+   python generate_data.py   # optional: refresh the data
+   python app.py
+   ```
 
-2.  **Frontend**:
-    ```bash
-    npm install
-    npm run dev
-    ```
+2. **Frontend**:
+   ```bash
+   npm install
+   npm run dev
+   ```
+
+During development you can add `?now=2026-10-21T18:00:00-07:00` to the URL to pretend it's a different time and check the game-day states on Home.
 
 ## Deployment
 
-This project is configured for easy deployment on **Vercel**.
-See [deployment.md](deployment.md) for details.
+This project is configured for deployment on **Vercel** (see `vercel.json`).
