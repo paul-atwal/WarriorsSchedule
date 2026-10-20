@@ -1,6 +1,6 @@
-import { tvText } from '../lib/games';
+import { TvIcon, TvOffIcon } from './Icons';
 
-// Telus channel for a game: logo + channel number, "No TV", or "TV TBA".
+// Telus channel for a game: logo + channel number.
 // `variant` "dark" draws the logo black for the gold game-day card.
 
 export function Channel({ tv, size = 'md', variant = 'light' }) {
@@ -13,15 +13,28 @@ export function Channel({ tv, size = 'md', variant = 'light' }) {
   );
 }
 
-// Inline form used in game rows: "7:00 PM · No TV" or "7:00 PM · [SN1] 912"
-export function TimeAndTv({ time, tv }) {
-  const text = tvText(tv);
+// Compact TV marker for rows: the channel, a crossed-out TV when it isn't on
+// Telus (NBA TV-only counts as not on), or a TV with "TBA" before listings are out.
+export function TvMark({ tv }) {
+  if (tv?.status === 'on') return <Channel tv={tv} size="sm" />;
+  if (tv?.status === 'none') return <TvOffIcon />;
+  return (
+    <span className="tv-tba">
+      <TvIcon size={17} />
+      TBA
+    </span>
+  );
+}
+
+// Inline form used in game rows: "7:00 PM · [SN1] 912"
+export function TimeAndTv({ time, tv, prefix = '' }) {
   return (
     <span className="row-sub">
       <span>
-        {time === 'TBD' ? 'Time TBD' : time} ·{text ? ` ${text}` : ''}
+        {prefix}
+        {time === 'TBD' ? 'Time TBD' : time} ·
       </span>
-      {!text && <Channel tv={tv} size="sm" />}
+      <TvMark tv={tv} />
     </span>
   );
 }

@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useAppData } from '../lib/context';
+import { useAppData, useScore } from '../lib/context';
 import { highlightsUrl, homeGames, matchup, scoreText, seasonLabel, WARRIORS_LOGO } from '../lib/games';
 import { shortDate, tipDate } from '../lib/time';
 import HeroCard from '../components/HeroCard';
@@ -7,25 +8,15 @@ import GameRow from '../components/GameRow';
 import { EyeIcon, EyeOffIcon, PlayIcon } from '../components/Icons';
 import { LoadState } from '../components/LoadState';
 
-function ScoresToggle() {
-  const { scoresOn, toggleScores } = useAppData();
-  return (
-    <button
-      type="button"
-      className={`scores-toggle ${scoresOn ? 'on' : ''}`}
-      aria-label={scoresOn ? 'Scores shown. Hide all scores' : 'Scores hidden. Show all scores'}
-      aria-pressed={scoresOn}
-      onClick={toggleScores}
-    >
-      {scoresOn ? <EyeIcon /> : <EyeOffIcon />}
-      <span>{scoresOn ? 'Scores on' : 'Scores off'}</span>
-    </button>
-  );
-}
-
 function LastGame({ game }) {
-  const { scoresOn } = useAppData();
-  const hasScore = game.pts != null && game.oppPts != null;
+  // Hidden until the viewer taps the eye.
+  const [shown, setShown] = useState(false);
+  const fromData = game.pts != null && game.oppPts != null;
+  // Finished since the last data update: ask ESPN, but only once revealed.
+  const live = useScore(game.id, shown && !fromData, false);
+  const pts = fromData ? game.pts : live?.state === 'post' ? live.pts : null;
+  const oppPts = fromData ? game.oppPts : live?.state === 'post' ? live.oppPts : null;
+  const hasScore = pts != null && oppPts != null;
   return (
     <section aria-labelledby="last-h" className="card">
       <div className="card-head">
@@ -42,17 +33,22 @@ function LastGame({ game }) {
             {shortDate(tipDate(game))} · {game.arena}
           </span>
         </div>
-        {scoresOn && hasScore ? (
+        {shown && hasScore && (
           <span className="result">
-            <span className={`wl ${game.wl === 'W' ? 'win' : 'loss'}`}>{game.wl}</span>
-            <span className="score-small">{scoreText(game.pts, game.oppPts)}</span>
-          </span>
-        ) : (
-          <span className="hidden-chip">
-            <EyeOffIcon size={14} />
-            Score hidden
+            <span className={`wl ${pts > oppPts ? 'win' : 'loss'}`}>{pts > oppPts ? 'W' : 'L'}</span>
+            <span className="score-last">{scoreText(pts, oppPts)}</span>
           </span>
         )}
+        {shown && !hasScore && <span className="small muted">{live ? 'Not available' : 'Loading…'}</span>}
+        <button
+          type="button"
+          className="icon-button"
+          aria-pressed={shown}
+          aria-label={shown ? 'Hide score' : 'Show score'}
+          onClick={() => setShown((s) => !s)}
+        >
+          {shown ? <EyeIcon size={20} /> : <EyeOffIcon size={20} />}
+        </button>
       </div>
       <a href={highlightsUrl(game)} target="_blank" rel="noopener noreferrer" className="button raised big">
         <span className="play-disc">
@@ -78,13 +74,12 @@ export default function Home() {
             <span className="small muted">{seasonLabel(schedule)}</span>
           </div>
         </div>
-        <ScoresToggle />
       </header>
 
       <LoadState loading={loading} error={error} empty={!schedule.length} />
 
       {hero && <HeroCard game={hero} state={heroState} />}
-      {last && <LastGame game={last} />}
+      {last && <LastGame key={last.id} game={last} />}
 
       {comingUp.length > 0 && (
         <section aria-labelledby="up-h" className="list-section">

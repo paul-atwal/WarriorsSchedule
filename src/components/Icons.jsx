@@ -37,6 +37,14 @@ export const TvIcon = ({ size = 20 }) => (
   </svg>
 );
 
+export const TvOffIcon = ({ size = 17, label = 'Not on TV' }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" {...stroke} aria-hidden={undefined} role="img" aria-label={label}>
+    <rect x="2" y="7" width="20" height="15" rx="2" />
+    <polyline points="17 2 12 7 7 2" />
+    <line x1="3" y1="5" x2="21" y2="23" />
+  </svg>
+);
+
 export const ChevronRight = ({ size = 18 }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" {...stroke} className="chevron">
     <polyline points="9 18 15 12 9 6" />
@@ -67,6 +75,14 @@ export const CalendarIcon = () => (
     <line x1="16" y1="2" x2="16" y2="6" />
     <line x1="8" y1="2" x2="8" y2="6" />
     <line x1="3" y1="10" x2="21" y2="10" />
+  </svg>
+);
+
+export const StandingsIcon = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" {...stroke}>
+    <line x1="6" y1="20" x2="6" y2="13" />
+    <line x1="12" y1="20" x2="12" y2="4" />
+    <line x1="18" y1="20" x2="18" y2="9" />
   </svg>
 );
 

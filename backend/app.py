@@ -55,6 +55,20 @@ def get_game(game_id):
     })
 
 
+@app.route('/api/records')
+def get_records():
+    """Current-season record ("W-L") for every team, keyed by ESPN team id."""
+    details = load('team_details.json', {})
+    records = {k: v.get('record', '0-0') for k, v in details.items() if not k.startswith('_')}
+    records[WARRIORS_ESPN_ID] = details.get('_warriors', {}).get('record', '0-0')
+    return jsonify(records)
+
+
+@app.route('/api/standings')
+def get_standings():
+    return jsonify(load('standings.json', {"season": "", "final": False, "conferences": {"west": [], "east": []}}))
+
+
 @app.route('/api/news')
 def get_news():
     return jsonify(load('news.json', {"injuries": [], "articles": []}))

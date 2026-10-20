@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 
 export const AppDataContext = createContext(null);
 
-// { schedule, loading, error, now, scoresOn, toggleScores }
+// { schedule, records, loading, error, now }
 export const useAppData = () => useContext(AppDataContext);
 
 export function useFetch(url) {

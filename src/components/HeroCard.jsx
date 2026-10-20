@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAppData, useScore } from '../lib/context';
 import { countdownLabel, shortDate, tipDate, tipOffIn } from '../lib/time';
-import { highlightsUrl, isOpeningNight, matchup, tvText, WARRIORS_LOGO } from '../lib/games';
-import { Channel } from './Tv';
+import { highlightsUrl, isOpeningNight, matchup, recordText, tvText, WARRIORS_ID, WARRIORS_LOGO } from '../lib/games';
+import { Channel, TimeAndTv } from './Tv';
 import { EyeOffIcon, PinIcon, PlayIcon, TvIcon } from './Icons';
 
 const title = (game) => `Warriors ${game.isHome ? 'vs' : '@'} ${game.opponentShort}`;
@@ -58,7 +58,7 @@ function ScoreReveal({ game, live, onHide }) {
   );
 }
 
-function NextCard({ game, schedule, now }) {
+function NextCard({ game, schedule, records, now }) {
   const tip = tipDate(game);
   const label = isOpeningNight(game, schedule) ? 'Next game · Opening night' : 'Next game';
   return (
@@ -70,12 +70,18 @@ function NextCard({ game, schedule, now }) {
       <div className="versus">
         <div className="versus-team">
           <img src={WARRIORS_LOGO} alt="" />
-          <span>Warriors</span>
+          <span className="versus-name">
+            <span>Warriors</span>
+            <span className="versus-record">{recordText(records[WARRIORS_ID])}</span>
+          </span>
         </div>
         <div className="versus-at">{game.isHome ? 'vs' : '@'}</div>
         <div className="versus-team">
           <img src={game.opponentLogo} alt="" />
-          <span>{game.opponentShort}</span>
+          <span className="versus-name">
+            <span>{game.opponentShort}</span>
+            <span className="versus-record">{recordText(records[game.opponentId])}</span>
+          </span>
         </div>
       </div>
       <div className="hero-when">
@@ -133,9 +139,8 @@ function TonightCard({ game, now }) {
   );
 }
 
-function LiveCard({ game, scoresOn }) {
+function LiveCard({ game }) {
   const [shown, setShown] = useState(false);
-  const reveal = scoresOn || shown;
   return (
     <section aria-label="Game in progress" className="card hero">
       <div className="live-head">
@@ -146,14 +151,11 @@ function LiveCard({ game, scoresOn }) {
         <img src={game.opponentLogo} alt="" className="hero-row-logo" />
         <div className="hero-row-main">
           <span className="hero-row-title">{title(game)}</span>
-          <span className="row-sub">
-            <span>Tipped off {game.time} ·{tvText(game.tv) ? ` ${tvText(game.tv)}` : ''}</span>
-            {!tvText(game.tv) && <Channel tv={game.tv} size="sm" />}
-          </span>
+          <TimeAndTv time={game.time} tv={game.tv} prefix="Tipped off " />
         </div>
       </div>
-      {reveal ? (
-        <ScoreReveal game={game} live onHide={scoresOn ? null : () => setShown(false)} />
+      {shown ? (
+        <ScoreReveal game={game} live onHide={() => setShown(false)} />
       ) : (
         <button type="button" className="button dashed" onClick={() => setShown(true)}>
           <EyeOffIcon />
@@ -164,9 +166,8 @@ function LiveCard({ game, scoresOn }) {
   );
 }
 
-function FinalCard({ game, scoresOn }) {
+function FinalCard({ game }) {
   const [shown, setShown] = useState(false);
-  const reveal = scoresOn || shown;
   return (
     <section aria-label="Final, highlights ready" className="card hero">
       <div className="card-head">
@@ -184,8 +185,8 @@ function FinalCard({ game, scoresOn }) {
         <PlayIcon size={16} />
         Watch highlights
       </a>
-      {reveal ? (
-        <ScoreReveal game={game} onHide={scoresOn ? null : () => setShown(false)} />
+      {shown ? (
+        <ScoreReveal game={game} onHide={() => setShown(false)} />
       ) : (
         <button type="button" className="link-button centered" onClick={() => setShown(true)}>
           Show final score
@@ -196,9 +197,9 @@ function FinalCard({ game, scoresOn }) {
 }
 
 export default function HeroCard({ game, state }) {
-  const { schedule, now, scoresOn } = useAppData();
+  const { schedule, records, now } = useAppData();
   if (state === 'tonight') return <TonightCard game={game} now={now} />;
-  if (state === 'live') return <LiveCard key={game.id} game={game} scoresOn={scoresOn} />;
-  if (state === 'final') return <FinalCard key={game.id} game={game} scoresOn={scoresOn} />;
-  return <NextCard game={game} schedule={schedule} now={now} />;
+  if (state === 'live') return <LiveCard key={game.id} game={game} />;
+  if (state === 'final') return <FinalCard key={game.id} game={game} />;
+  return <NextCard game={game} schedule={schedule} records={records} now={now} />;
 }

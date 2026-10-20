@@ -6,7 +6,7 @@ Sources:
 - Gracenote TV listings: the TELUS Optik TV lineup for Surrey, BC, to find which
   channel carries each game. Listings run about two weeks ahead.
 
-Runs daily from GitHub Actions; writes backend/data/{schedule,team_details,news}.json.
+Runs daily from GitHub Actions; writes backend/data/{schedule,standings,team_details,news}.json.
 """
 import json
 import os
@@ -146,7 +146,7 @@ def parse_event(event, season_type):
         "opponentShort": team.get('shortDisplayName'),
         "opponentAbbr": team.get('abbreviation'),
         "opponentId": team.get('id'),
-        "opponentLogo": f"https://a.espncdn.com/i/teamlogos/nba/500/{team.get('abbreviation', '').lower()}.png",
+        "opponentLogo": f"https://a.espncdn.com/i/teamlogos/nba/500-dark/{team.get('abbreviation', '').lower()}.png",
         "isHome": us.get('homeAway') == 'home',
         "neutral": bool(comp.get('neutralSite')),
         "arena": tidy_venue(venue.get('fullName')),
@@ -270,18 +270,68 @@ def add_tv(schedule, previous):
 
 # ---------------------------------------------------------------- opponents
 
-def get_records(season_year):
-    records = {}
+def fetch_standings(season_year):
+    """{'west': [...], 'east': [...]} for one regular season, best seed first."""
+    data = get_json(ESPN_STANDINGS, params={'season': season_year, 'seasontype': 2})
+    conferences = {}
+    for conf in data.get('children', []):
+        key = (conf.get('abbreviation') or conf.get('name', '')).lower()
+        key = 'east' if key.startswith('east') else 'west'
+        rows = []
+        for entry in conf.get('standings', {}).get('entries', []):
+            stats = {s.get('name'): s for s in entry.get('stats', [])}
+            team = entry['team']
+
+            def num(name):
+                try:
+                    return float(stats[name].get('value'))
+                except (KeyError, TypeError, ValueError):
+                    return 0
+
+            abbr = team.get('abbreviation', '')
+            rows.append({
+                "id": team.get('id'),
+                "abbr": abbr,
+                "name": team.get('shortDisplayName'),
+                "logo": f"https://a.espncdn.com/i/teamlogos/nba/500-dark/{abbr.lower()}.png",
+                "seed": int(num('playoffSeed')),
+                "w": int(num('wins')),
+                "l": int(num('losses')),
+                "pct": (stats.get('winPercent') or {}).get('displayValue', '.000'),
+                "gb": (stats.get('gamesBehind') or {}).get('displayValue', '-'),
+                "record": (stats.get('overall') or {}).get('displayValue', '0-0'),
+            })
+        # Seeds are 0 before anyone has played; fall back to win % then name.
+        rows.sort(key=lambda r: (r['seed'] or 99, -(r['w'] / max(r['w'] + r['l'], 1)), r['name'] or ''))
+        conferences[key] = rows
+    return conferences
+
+
+def season_label(season_year):
+    return f"{season_year - 1}\u2013{str(season_year)[2:]}"
+
+
+def get_standings(season_year):
+    """Current records for every team, plus the standings table to show.
+
+    Until opening night the current season has no games, so the table shows
+    last season's final standings instead.
+    """
+    records, standings = {}, None
     try:
-        data = get_json(ESPN_STANDINGS, params={'season': season_year, 'seasontype': 2})
-        for conf in data.get('children', []):
-            for entry in conf.get('standings', {}).get('entries', []):
-                overall = next((s for s in entry.get('stats', []) if s.get('name') == 'overall'), None)
-                if overall:
-                    records[entry['team']['id']] = overall.get('displayValue')
+        current = fetch_standings(season_year)
+        for rows in current.values():
+            for r in rows:
+                records[r['id']] = r['record']
+        started = any(r['w'] + r['l'] for rows in current.values() for r in rows)
+        if started:
+            standings = {"season": season_label(season_year), "final": False, "conferences": current}
+        else:
+            standings = {"season": season_label(season_year - 1), "final": True,
+                         "conferences": fetch_standings(season_year - 1)}
     except Exception as e:
         print(f"  standings failed: {e}")
-    return records
+    return records, standings
 
 
 def get_top_scorers(team_id, season_year):
@@ -308,9 +358,8 @@ def get_top_scorers(team_id, season_year):
     return scorers
 
 
-def get_team_details(schedule, season_year):
-    print("Fetching opponent records and top scorers...")
-    records = get_records(season_year)
+def get_team_details(schedule, records, season_year):
+    print("Fetching opponent top scorers...")
     details = {"_warriors": {"record": records.get(WARRIORS_ESPN_ID, '0-0')}}
     for team_id in sorted({g['opponentId'] for g in schedule if g.get('opponentId')}):
         details[team_id] = {
@@ -397,7 +446,12 @@ def main():
     print(f"Saved {len(schedule)} games to schedule.json")
 
     season_year = parse_utc(schedule[-1]['tipUtc']).year
-    write_json('team_details.json', get_team_details(schedule, season_year))
+    print("Fetching standings...")
+    records, standings = get_standings(season_year)
+    if standings:
+        write_json('standings.json', standings)
+        print("Saved standings.json")
+    write_json('team_details.json', get_team_details(schedule, records, season_year))
     print("Saved team_details.json")
 
     injuries, articles = get_news()

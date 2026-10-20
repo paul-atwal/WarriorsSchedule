@@ -60,10 +60,15 @@ export function tvText(tv) {
 
 export const scoreText = (pts, oppPts) => `${pts}–${oppPts}`;
 
+// "12-4" from the data, shown as "12–4"
+export const recordText = (record) => (record || '0-0').replace('-', '–');
+
+export const WARRIORS_ID = '9';
+
 export function seasonLabel(schedule) {
   if (!schedule.length) return '';
   const y = Number(dateKey(tipDate(schedule[0])).slice(0, 4));
   return `${y}–${String((y + 1) % 100).padStart(2, '0')} season`;
 }
 
-export const WARRIORS_LOGO = 'https://a.espncdn.com/i/teamlogos/nba/500/gs.png';
+export const WARRIORS_LOGO = 'https://a.espncdn.com/i/teamlogos/nba/500-dark/gs.png';

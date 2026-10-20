@@ -1,12 +1,10 @@
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useAppData, useFetch } from '../lib/context';
-import { gameLabel, highlightsUrl, isFinal, matchup, scoreText, tvText, WARRIORS_LOGO } from '../lib/games';
+import { gameLabel, highlightsUrl, isFinal, matchup, recordText, scoreText, tvText, WARRIORS_LOGO } from '../lib/games';
 import { shortDate, tipDate } from '../lib/time';
 import { Channel } from '../components/Tv';
 import { ChevronLeft, PinIcon, PlayIcon, TvIcon } from '../components/Icons';
 import { LoadState } from '../components/LoadState';
-
-const dash = (record) => (record || '0-0').replace('-', '–');
 
 function BackLink() {
   const navigate = useNavigate();
@@ -81,13 +79,13 @@ export default function GamePreview() {
           <div className="versus-team">
             <img src={WARRIORS_LOGO} alt="" />
             <span>Warriors</span>
-            <span className="small muted">{dash(warriorsRecord)}</span>
+            <span className="small muted">{recordText(warriorsRecord)}</span>
           </div>
           <span className="versus-at">{game.isHome ? 'vs' : '@'}</span>
           <div className="versus-team">
             <img src={game.opponentLogo} alt="" />
             <span>{game.opponentShort}</span>
-            <span className="small muted">{dash(opponentRecord)}</span>
+            <span className="small muted">{recordText(opponentRecord)}</span>
           </div>
         </div>
         <div className="hero-when">

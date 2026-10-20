@@ -1,9 +1,10 @@
 import { NavLink, useLocation } from 'react-router-dom';
-import { CalendarIcon, HomeIcon, NewsIcon } from './Icons';
+import { CalendarIcon, HomeIcon, NewsIcon, StandingsIcon } from './Icons';
 
 const tabs = [
   { to: '/', label: 'Home', Icon: HomeIcon, end: true },
   { to: '/schedule', label: 'Schedule', Icon: CalendarIcon },
+  { to: '/standings', label: 'Standings', Icon: StandingsIcon },
   { to: '/news', label: 'News', Icon: NewsIcon },
 ];
 

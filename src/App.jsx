@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Schedule from './pages/Schedule';
 import GamePreview from './pages/GamePreview';
 import News from './pages/News';
+import Standings from './pages/Standings';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -26,6 +27,7 @@ function App() {
             <Route path="/schedule" element={<Schedule />} />
             <Route path="/schedule/previous" element={<Schedule previous />} />
             <Route path="/game/:id" element={<GamePreview />} />
+            <Route path="/standings" element={<Standings />} />
             <Route path="/news" element={<News />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>

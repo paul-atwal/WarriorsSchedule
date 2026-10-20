@@ -351,26 +351,6 @@ img {
   text-transform: uppercase;
 }
 
-.scores-toggle {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  height: 44px;
-  padding: 0 14px;
-  border-radius: 22px;
-  border: 1px solid var(--border);
-  background: var(--surface);
-  color: var(--text-2);
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.scores-toggle.on {
-  border-color: var(--gold);
-  color: var(--gold);
-}
-
 .versus {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -392,6 +372,19 @@ img {
   width: 72px;
   height: 72px;
   object-fit: contain;
+}
+
+.versus-name {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.versus-record {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--muted);
 }
 
 .versus-at {
@@ -639,19 +632,6 @@ img {
   font-weight: 600;
 }
 
-.hidden-chip {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--text-2);
-  border: 1px dashed var(--dashed);
-  border-radius: 10px;
-  padding: 6px 10px;
-  flex-shrink: 0;
-}
-
 .score-reveal {
   display: flex;
   flex-direction: column;
@@ -691,6 +671,37 @@ img {
   align-items: center;
   gap: 12px;
   color: var(--text-2);
+}
+
+/* Round 44px button holding just an icon (the Last game score eye) */
+.icon-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 22px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-2);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.icon-button:hover {
+  color: var(--text);
+  border-color: var(--dashed);
+}
+
+.icon-button[aria-pressed='true'] {
+  color: var(--gold);
+}
+
+.score-last {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 20px;
 }
 
 /* W/L badge + score */
@@ -806,6 +817,31 @@ a.game-row:hover {
   font-weight: 600;
 }
 
+.row-title-line {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  min-width: 0;
+}
+
+.row-record {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+.row-sub > svg {
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+.tv-tba {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
 .row-sub {
   display: flex;
   align-items: center;
@@ -862,6 +898,13 @@ a.game-row:hover {
   color: var(--text-2);
   font-size: 14px;
   font-weight: 600;
+}
+
+button.segment {
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  cursor: pointer;
 }
 
 .segment:hover {
@@ -927,7 +970,20 @@ a.game-row:hover {
   font-weight: 400;
 }
 
-.preview-header .versus-at {
+.preview-header .versus-name {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.versus-record {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.versus-at {
   font-size: 30px;
 }
 
@@ -1176,6 +1232,130 @@ a.game-row:hover {
   font-weight: 600;
 }
 
+/* ---------------------------------------------------------- standings */
+
+.standings-page {
+  gap: 14px;
+}
+
+.page-head {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.standings {
+  display: flex;
+  flex-direction: column;
+  font-variant-numeric: tabular-nums;
+}
+
+.standings-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 44px;
+  padding: 0 8px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.standings-head {
+  height: 28px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: var(--muted);
+}
+
+.standings-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 8px 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.standings-group::after {
+  content: '';
+  flex-grow: 1;
+  height: 1px;
+  background: var(--divider);
+}
+
+.st-seed {
+  width: 20px;
+  text-align: right;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+.st-logo {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.st-team {
+  flex-grow: 1;
+  min-width: 0;
+  font-size: 15px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.standings-head .st-team {
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.st-num {
+  width: 26px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.st-pct,
+.st-gb {
+  text-align: right;
+  color: var(--text-2);
+  flex-shrink: 0;
+}
+
+.st-pct {
+  width: 40px;
+}
+
+.st-gb {
+  width: 30px;
+}
+
+.standings-head .st-pct,
+.standings-head .st-gb {
+  color: var(--muted);
+}
+
+.standings-row.us {
+  background: var(--raised);
+}
+
+.standings-row.us .st-seed {
+  color: var(--gold);
+}
+
+.standings-row.us .st-team {
+  font-weight: 700;
+}
+
 /* ---------------------------------------------------------- bottom nav */
 
 .bottom-nav {
@@ -1191,7 +1371,7 @@ a.game-row:hover {
   background: var(--nav);
   border-top: 1px solid var(--divider);
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .nav-tab {

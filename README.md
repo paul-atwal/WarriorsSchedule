@@ -4,19 +4,21 @@ A mobile-first, spoiler-free schedule for the Golden State Warriors, built for w
 
 ## Screens
 
-- **Home**: tells you when the next game is and where to watch it. The top card changes with the clock: a countdown on the days before, a gold "Tonight" card on game day, a scoreless "In progress" card during the game, then "Highlights ready" once it's final. Below that are the last game's highlights and the next four games.
-- **Schedule**: the upcoming games grouped by month, each with its TELUS channel or "No TV" / "TV TBA". The **Previous** tab lists final scores, with a highlights button on every game.
+- **Home**: tells you when the next game is and where to watch it. The top card changes with the clock: a countdown on the days before, a gold "Tonight" card on game day, a scoreless "In progress" card during the game, then "Highlights ready" once it's final. Below that are the last game's highlights and the next four games, with each team's record.
+- **Schedule**: the upcoming games grouped by month, each with the opponent's record and its TELUS channel, a crossed-out TV when it isn't on, or "TBA" before listings are out. The **Previous** tab lists final scores, with a highlights button on every game.
 - **Game preview**: tip-off time, channel, arena, the season series (preseason included) and the opponent's top scorers.
+- **Standings**: West and East, split into Playoffs (1–6), Play-in (7–10) and Lottery, with the Warriors highlighted. Until opening night it shows last season's final standings.
 - **News**: Curry's status, the Warriors injury report and recent Warriors stories from ESPN.
 
-Scores stay hidden unless you ask for them. The **Scores off/on** toggle on Home shows them everywhere, and you can also reveal a single game's score.
+Scores stay hidden unless you ask for them: tap the eye on Home's Last game card, or "Show live score" / "Show final score" on game day. The **Previous** tab shows scores, since opening it is the choice to see results.
 
 ## Data
 
 `backend/generate_data.py` runs daily from GitHub Actions and writes `backend/data/`:
 
 - `schedule.json`: the full season from ESPN, plus the TELUS Optik TV channel for each game from Gracenote's listings for Surrey. NBA TV-only games count as "No TV". Listings run about two weeks ahead, so games further out show "TV TBA".
-- `team_details.json`: standings records and each opponent's top three scorers. These stay empty until the regular season has stats.
+- `standings.json`: conference standings from ESPN. ESPN's current-season numbers include preseason games, so until the regular season starts this holds last season's final standings.
+- `team_details.json`: every team's current record and each opponent's top three scorers. Scorers stay empty until the regular season has stats.
 - `news.json`: the ESPN injury report and Warriors-only news. Video clips are left out so highlights don't spoil results.
 
 The Flask API (`backend/app.py`) serves those files. `/api/score/<id>` fetches a live or final score from ESPN, but only when you ask to see it.
