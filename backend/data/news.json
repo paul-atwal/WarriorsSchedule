@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-20T15:55:36Z",
+  "updated": "2026-10-21T16:12:33Z",
   "curryId": "3975",
   "injuries": [
     {
@@ -10,8 +10,30 @@
       "status": "Day-To-Day",
       "injury": "Right ankle (sprain)",
       "returnDate": "2026-10-21",
-      "comment": "Curry (ankle) is expected to play in Wednesday's season opener against the Lakers, per Kenzo Fukuda of ClutchPoints.com.",
-      "updated": "2026-10-19T19:10Z"
+      "comment": "Curry (ankle) is listed as probable for Wednesday's game against the Lakers.",
+      "updated": "2026-10-20T23:50Z"
+    },
+    {
+      "athleteId": "4709138",
+      "name": "Brandin Podziemski",
+      "position": "G",
+      "img": "https://a.espncdn.com/i/headshots/nba/players/full/4709138.png",
+      "status": "Out",
+      "injury": "Back (soreness)",
+      "returnDate": "2026-10-23",
+      "comment": "Podziemski (back) has been ruled out for Wednesday's game against the Lakers.",
+      "updated": "2026-10-20T23:50Z"
+    },
+    {
+      "athleteId": "4397886",
+      "name": "Charles Bassey",
+      "position": "C",
+      "img": "https://a.espncdn.com/i/headshots/nba/players/full/4397886.png",
+      "status": "Day-To-Day",
+      "injury": "Knee",
+      "returnDate": "2026-10-21",
+      "comment": "Bassey (knee) is questionable for Wednesday's season opener versus the Lakers, per Nick Friedell of The Athletic.",
+      "updated": "2026-10-20T18:58Z"
     },
     {
       "athleteId": "3102531",
@@ -23,28 +45,6 @@
       "returnDate": "2026-12-01",
       "comment": "Porzingis (undisclosed) won't travel with the Warriors and remains out indefinitely, Luca Evans of the San Francisco Chronicle reports.",
       "updated": "2026-10-19T19:09Z"
-    },
-    {
-      "athleteId": "4397886",
-      "name": "Charles Bassey",
-      "position": "C",
-      "img": "https://a.espncdn.com/i/headshots/nba/players/full/4397886.png",
-      "status": "Day-To-Day",
-      "injury": "Knee",
-      "returnDate": "2026-10-21",
-      "comment": "Bassey (knee) didn't practice Monday, per Nick Friedell of The Athletic.",
-      "updated": "2026-10-19T19:08Z"
-    },
-    {
-      "athleteId": "4709138",
-      "name": "Brandin Podziemski",
-      "position": "G",
-      "img": "https://a.espncdn.com/i/headshots/nba/players/full/4709138.png",
-      "status": "Day-To-Day",
-      "injury": "Back",
-      "returnDate": "2026-10-21",
-      "comment": "Podziemski (back) is questionable for Wednesday's season opener against the Lakers, per Dalton Johnson of NBC Sports Bay Area.",
-      "updated": "2026-10-19T19:05Z"
     },
     {
       "athleteId": "4432171",
