@@ -279,25 +279,25 @@
     ]
   },
   "20": {
-    "record": "1-0",
+    "record": "2-0",
     "scorers": [
       {
         "name": "Tyrese Maxey",
         "position": "Guard",
-        "ppg": 28.0,
+        "ppg": 30.0,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/4431678.png"
       },
       {
         "name": "Jaylen Brown",
         "position": "Guard",
-        "ppg": 19.0,
+        "ppg": 20.0,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/3917376.png"
       },
       {
-        "name": "LeBron James",
-        "position": "Forward",
-        "ppg": 14.0,
-        "img": "https://a.espncdn.com/i/headshots/nba/players/full/1966.png"
+        "name": "Joel Embiid",
+        "position": "Center",
+        "ppg": 18.5,
+        "img": "https://a.espncdn.com/i/headshots/nba/players/full/3059318.png"
       }
     ]
   },
@@ -394,24 +394,24 @@
     ]
   },
   "25": {
-    "record": "1-0",
+    "record": "2-0",
     "scorers": [
       {
         "name": "Shai Gilgeous-Alexander",
         "position": "Guard",
-        "ppg": 32.0,
+        "ppg": 24.5,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/4278073.png"
       },
       {
-        "name": "Jared McCain",
+        "name": "Jalen Williams",
         "position": "Guard",
-        "ppg": 20.0,
-        "img": "https://a.espncdn.com/i/headshots/nba/players/full/4683778.png"
+        "ppg": 16.5,
+        "img": "https://a.espncdn.com/i/headshots/nba/players/full/4593803.png"
       },
       {
         "name": "Chet Holmgren",
         "position": "Center",
-        "ppg": 14.0,
+        "ppg": 13.0,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/4433255.png"
       }
     ]
@@ -558,28 +558,47 @@
     "record": "0-1",
     "scorers": [
       {
-        "name": "Matas Buzelis",
-        "position": "Forward",
-        "ppg": 17.0,
-        "img": "https://a.espncdn.com/i/headshots/nba/players/full/4711294.png"
-      },
-      {
-        "name": "Caleb Wilson",
-        "position": "Forward",
-        "ppg": 16.0,
-        "img": "https://a.espncdn.com/i/headshots/nba/players/full/5095151.png"
-      },
-      {
         "name": "Norman Powell",
         "position": "Guard",
         "ppg": 15.0,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/2595516.png"
+      },
+      {
+        "name": "Jalen Smith",
+        "position": "Forward",
+        "ppg": 15.0,
+        "img": "https://a.espncdn.com/i/headshots/nba/players/full/4397189.png"
+      },
+      {
+        "name": "Caleb Wilson",
+        "position": "Forward",
+        "ppg": 14.0,
+        "img": "https://a.espncdn.com/i/headshots/nba/players/full/5095151.png"
       }
     ]
   },
   "5": {
-    "record": "0-0",
-    "scorers": []
+    "record": "0-1",
+    "scorers": [
+      {
+        "name": "Donovan Mitchell",
+        "position": "Guard",
+        "ppg": 32.0,
+        "img": "https://a.espncdn.com/i/headshots/nba/players/full/3908809.png"
+      },
+      {
+        "name": "Evan Mobley",
+        "position": "Center",
+        "ppg": 18.0,
+        "img": "https://a.espncdn.com/i/headshots/nba/players/full/4432158.png"
+      },
+      {
+        "name": "James Harden",
+        "position": "Guard",
+        "ppg": 16.0,
+        "img": "https://a.espncdn.com/i/headshots/nba/players/full/3992.png"
+      }
+    ]
   },
   "6": {
     "record": "0-1",
@@ -605,8 +624,27 @@
     ]
   },
   "7": {
-    "record": "0-0",
-    "scorers": []
+    "record": "0-1",
+    "scorers": [
+      {
+        "name": "Aaron Gordon",
+        "position": "Forward",
+        "ppg": 20.0,
+        "img": "https://a.espncdn.com/i/headshots/nba/players/full/3064290.png"
+      },
+      {
+        "name": "DeMar DeRozan",
+        "position": "Guard",
+        "ppg": 13.0,
+        "img": "https://a.espncdn.com/i/headshots/nba/players/full/3978.png"
+      },
+      {
+        "name": "Nikola Jokic",
+        "position": "Center",
+        "ppg": 13.0,
+        "img": "https://a.espncdn.com/i/headshots/nba/players/full/3112335.png"
+      }
+    ]
   },
   "8": {
     "record": "1-0",
