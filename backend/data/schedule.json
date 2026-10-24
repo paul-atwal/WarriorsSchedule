@@ -166,10 +166,10 @@
     "neutral": false,
     "arena": "Chase Center",
     "city": "San Francisco",
-    "status": "pre",
-    "wl": null,
-    "pts": null,
-    "oppPts": null,
+    "status": "post",
+    "wl": "L",
+    "pts": 108,
+    "oppPts": 111,
     "tv": {
       "status": "none"
     }
