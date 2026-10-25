@@ -189,10 +189,10 @@
     "neutral": false,
     "arena": "Mortgage Matchup Center",
     "city": "Phoenix",
-    "status": "pre",
-    "wl": null,
-    "pts": null,
-    "oppPts": null,
+    "status": "post",
+    "wl": "L",
+    "pts": 122,
+    "oppPts": 131,
     "tv": {
       "status": "none"
     }
@@ -312,7 +312,10 @@
     "pts": null,
     "oppPts": null,
     "tv": {
-      "status": "tba"
+      "status": "on",
+      "name": "Sportsnet One",
+      "number": "912",
+      "logo": "https://zpmc.tmsimg.com/h3/NowShowing/68859/s68859_ll_h15_ac.png"
     }
   },
   {
@@ -335,7 +338,10 @@
     "pts": null,
     "oppPts": null,
     "tv": {
-      "status": "tba"
+      "status": "on",
+      "name": "TSN5",
+      "number": "904",
+      "logo": "https://zpmc.tmsimg.com/h3/NowShowing/90136/s90136_ll_h15_aa.png"
     }
   },
   {
