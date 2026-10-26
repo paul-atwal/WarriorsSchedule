@@ -49,70 +49,70 @@
     ]
   },
   "11": {
-    "record": "1-1",
+    "record": "2-1",
     "scorers": [
       {
         "name": "Pascal Siakam",
         "position": "Forward",
-        "ppg": 26.5,
+        "ppg": 24.7,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/3149673.png"
       },
       {
         "name": "Tyrese Haliburton",
         "position": "Guard",
-        "ppg": 20.5,
+        "ppg": 21.7,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/4396993.png"
       },
       {
-        "name": "Andrew Nembhard",
-        "position": "Guard",
-        "ppg": 17.0,
-        "img": "https://a.espncdn.com/i/headshots/nba/players/full/4395712.png"
+        "name": "Obi Toppin",
+        "position": "Forward",
+        "ppg": 16.3,
+        "img": "https://a.espncdn.com/i/headshots/nba/players/full/4278355.png"
       }
     ]
   },
   "12": {
-    "record": "1-1",
+    "record": "1-2",
     "scorers": [
       {
         "name": "Darius Garland",
         "position": "Guard",
-        "ppg": 28.0,
+        "ppg": 24.0,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/4396907.png"
       },
       {
         "name": "Brook Lopez",
         "position": "Center",
-        "ppg": 19.5,
+        "ppg": 18.0,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/3448.png"
       },
       {
         "name": "Keaton Wagler",
         "position": "Guard",
-        "ppg": 14.0,
+        "ppg": 13.0,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/5254165.png"
       }
     ]
   },
   "13": {
-    "record": "2-0",
+    "record": "3-0",
     "scorers": [
       {
         "name": "Luka Doncic",
         "position": "Guard",
-        "ppg": 25.5,
+        "ppg": 34.3,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/3945274.png"
       },
       {
         "name": "Austin Reaves",
         "position": "Guard",
-        "ppg": 25.5,
+        "ppg": 26.7,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/4066457.png"
       },
       {
         "name": "Walker Kessler",
         "position": "Center",
-        "ppg": 24.0,
+        "ppg": 16.7,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/4433136.png"
       }
     ]
@@ -164,76 +164,76 @@
     ]
   },
   "16": {
-    "record": "2-0",
+    "record": "3-0",
     "scorers": [
       {
         "name": "Anthony Edwards",
         "position": "Guard",
-        "ppg": 30.0,
+        "ppg": 28.7,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/4594268.png"
       },
       {
         "name": "LaMelo Ball",
         "position": "Guard",
-        "ppg": 16.5,
+        "ppg": 16.0,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/4432816.png"
       },
       {
         "name": "Jaden McDaniels",
         "position": "Forward",
-        "ppg": 16.0,
+        "ppg": 15.3,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/4431671.png"
       }
     ]
   },
   "17": {
-    "record": "0-2",
+    "record": "0-3",
     "scorers": [
       {
         "name": "Julius Randle",
         "position": "Forward",
-        "ppg": 28.0,
+        "ppg": 22.0,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/3064514.png"
       },
       {
         "name": "Michael Porter Jr.",
         "position": "Forward",
-        "ppg": 27.0,
+        "ppg": 21.3,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/4278104.png"
       },
       {
         "name": "Egor Demin",
         "position": "Guard",
-        "ppg": 13.0,
+        "ppg": 9.7,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/5175643.png"
       }
     ]
   },
   "18": {
-    "record": "0-2",
+    "record": "0-3",
     "scorers": [
-      {
-        "name": "Karl-Anthony Towns",
-        "position": "Center",
-        "ppg": 20.5,
-        "img": "https://a.espncdn.com/i/headshots/nba/players/full/3136195.png"
-      },
       {
         "name": "Jalen Brunson",
         "position": "Guard",
-        "ppg": 20.0,
+        "ppg": 22.7,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/3934672.png"
+      },
+      {
+        "name": "Karl-Anthony Towns",
+        "position": "Center",
+        "ppg": 21.0,
+        "img": "https://a.espncdn.com/i/headshots/nba/players/full/3136195.png"
       },
       {
         "name": "OG Anunoby",
         "position": "Forward",
-        "ppg": 15.0,
+        "ppg": 17.3,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/3934719.png"
       }
     ]
   },
   "19": {
-    "record": "0-2",
+    "record": "1-2",
     "scorers": [
       {
         "name": "Paolo Banchero",
@@ -242,16 +242,16 @@
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/4432573.png"
       },
       {
-        "name": "Wendell Carter Jr.",
-        "position": "Center",
-        "ppg": 21.0,
-        "img": "https://a.espncdn.com/i/headshots/nba/players/full/4277847.png"
-      },
-      {
         "name": "Franz Wagner",
         "position": "Forward",
-        "ppg": 20.0,
+        "ppg": 21.0,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/4566434.png"
+      },
+      {
+        "name": "Anthony Black",
+        "position": "Guard",
+        "ppg": 18.0,
+        "img": "https://a.espncdn.com/i/headshots/nba/players/full/4712849.png"
       }
     ]
   },
@@ -279,25 +279,25 @@
     ]
   },
   "20": {
-    "record": "3-0",
+    "record": "3-1",
     "scorers": [
       {
         "name": "Tyrese Maxey",
         "position": "Guard",
-        "ppg": 28.7,
+        "ppg": 28.8,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/4431678.png"
-      },
-      {
-        "name": "Jaylen Brown",
-        "position": "Guard",
-        "ppg": 22.3,
-        "img": "https://a.espncdn.com/i/headshots/nba/players/full/3917376.png"
       },
       {
         "name": "Joel Embiid",
         "position": "Center",
         "ppg": 21.7,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/3059318.png"
+      },
+      {
+        "name": "Jaylen Brown",
+        "position": "Guard",
+        "ppg": 20.8,
+        "img": "https://a.espncdn.com/i/headshots/nba/players/full/3917376.png"
       }
     ]
   },
@@ -348,24 +348,24 @@
     ]
   },
   "23": {
-    "record": "0-2",
+    "record": "0-3",
     "scorers": [
       {
         "name": "Zach LaVine",
         "position": "Guard",
-        "ppg": 25.0,
+        "ppg": 29.0,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/3064440.png"
       },
       {
         "name": "Darius Acuff Jr.",
         "position": "Guard",
-        "ppg": 22.5,
+        "ppg": 22.3,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/5142620.png"
       },
       {
         "name": "Domantas Sabonis",
         "position": "Forward",
-        "ppg": 20.5,
+        "ppg": 18.7,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/3155942.png"
       }
     ]
@@ -394,48 +394,48 @@
     ]
   },
   "25": {
-    "record": "2-0",
+    "record": "3-0",
     "scorers": [
       {
         "name": "Shai Gilgeous-Alexander",
         "position": "Guard",
-        "ppg": 24.5,
+        "ppg": 27.7,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/4278073.png"
       },
       {
         "name": "Jalen Williams",
         "position": "Guard",
-        "ppg": 16.5,
+        "ppg": 13.7,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/4593803.png"
       },
       {
         "name": "Chet Holmgren",
         "position": "Center",
-        "ppg": 13.0,
+        "ppg": 12.0,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/4433255.png"
       }
     ]
   },
   "26": {
-    "record": "1-1",
+    "record": "1-2",
     "scorers": [
       {
         "name": "Keyonte George",
         "position": "Guard",
-        "ppg": 20.5,
+        "ppg": 21.7,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/4433627.png"
-      },
-      {
-        "name": "Jaren Jackson Jr.",
-        "position": "Forward",
-        "ppg": 19.5,
-        "img": "https://a.espncdn.com/i/headshots/nba/players/full/4277961.png"
       },
       {
         "name": "Lauri Markkanen",
         "position": "Forward",
-        "ppg": 17.0,
+        "ppg": 20.7,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/4066336.png"
+      },
+      {
+        "name": "Jaren Jackson Jr.",
+        "position": "Forward",
+        "ppg": 19.7,
+        "img": "https://a.espncdn.com/i/headshots/nba/players/full/4277961.png"
       }
     ]
   },
@@ -463,18 +463,12 @@
     ]
   },
   "28": {
-    "record": "2-0",
+    "record": "2-1",
     "scorers": [
-      {
-        "name": "Scottie Barnes",
-        "position": "Forward",
-        "ppg": 25.5,
-        "img": "https://a.espncdn.com/i/headshots/nba/players/full/4433134.png"
-      },
       {
         "name": "RJ Barrett",
         "position": "Forward",
-        "ppg": 21.5,
+        "ppg": 21.0,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/4395625.png"
       },
       {
@@ -482,16 +476,22 @@
         "position": "Forward",
         "ppg": 19.5,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/6450.png"
+      },
+      {
+        "name": "Immanuel Quickley",
+        "position": "Guard",
+        "ppg": 18.0,
+        "img": "https://a.espncdn.com/i/headshots/nba/players/full/4395724.png"
       }
     ]
   },
   "29": {
-    "record": "2-0",
+    "record": "3-0",
     "scorers": [
       {
         "name": "Ty Jerome",
         "position": "Guard",
-        "ppg": 36.5,
+        "ppg": 34.7,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/4065733.png"
       },
       {
@@ -503,7 +503,7 @@
       {
         "name": "Jaylen Wells",
         "position": "Forward",
-        "ppg": 14.5,
+        "ppg": 15.0,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/5112087.png"
       }
     ]
@@ -647,24 +647,24 @@
     ]
   },
   "8": {
-    "record": "2-0",
+    "record": "3-0",
     "scorers": [
-      {
-        "name": "Duncan Robinson",
-        "position": "Forward",
-        "ppg": 19.0,
-        "img": "https://a.espncdn.com/i/headshots/nba/players/full/3157465.png"
-      },
       {
         "name": "Cade Cunningham",
         "position": "Guard",
-        "ppg": 19.0,
+        "ppg": 21.3,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/4432166.png"
+      },
+      {
+        "name": "Duncan Robinson",
+        "position": "Forward",
+        "ppg": 19.7,
+        "img": "https://a.espncdn.com/i/headshots/nba/players/full/3157465.png"
       },
       {
         "name": "John Collins",
         "position": "Forward",
-        "ppg": 14.5,
+        "ppg": 15.0,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/3908845.png"
       }
     ]
