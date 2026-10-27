@@ -1,40 +1,7 @@
 {
-  "updated": "2026-10-26T17:46:18Z",
+  "updated": "2026-10-27T16:58:52Z",
   "curryId": "3975",
   "injuries": [
-    {
-      "athleteId": "4997536",
-      "name": "Gui Santos",
-      "position": "F",
-      "img": "https://a.espncdn.com/i/headshots/nba/players/full/4997536.png",
-      "status": "Day-To-Day",
-      "injury": "Left knee (tendinitis)",
-      "returnDate": "2026-10-26",
-      "comment": "Santos is questionable for Monday's game against the Nuggets due to left knee tendinitis.",
-      "updated": "2026-10-25T21:22Z"
-    },
-    {
-      "athleteId": "4397040",
-      "name": "Brandon Williams",
-      "position": "G",
-      "img": "https://a.espncdn.com/i/headshots/nba/players/full/4397040.png",
-      "status": "Day-To-Day",
-      "injury": "Back (soreness)",
-      "returnDate": "2026-10-26",
-      "comment": "Williams is probable for Monday's game against the Nuggets due to left lower back soreness.",
-      "updated": "2026-10-25T21:20Z"
-    },
-    {
-      "athleteId": "4397886",
-      "name": "Charles Bassey",
-      "position": "C",
-      "img": "https://a.espncdn.com/i/headshots/nba/players/full/4397886.png",
-      "status": "Day-To-Day",
-      "injury": "Right knee",
-      "returnDate": "2026-10-26",
-      "comment": "Bassey is probable for Monday's game against the Nuggets due to right patellar tendinopathy.",
-      "updated": "2026-10-25T21:13Z"
-    },
     {
       "athleteId": "3102531",
       "name": "Kristaps Porzingis",
