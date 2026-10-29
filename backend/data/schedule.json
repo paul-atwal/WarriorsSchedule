@@ -238,10 +238,10 @@
     "neutral": false,
     "arena": "Target Center",
     "city": "Minneapolis",
-    "status": "pre",
-    "wl": null,
-    "pts": null,
-    "oppPts": null,
+    "status": "post",
+    "wl": "W",
+    "pts": 119,
+    "oppPts": 114,
     "tv": {
       "status": "none"
     }

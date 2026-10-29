@@ -9,11 +9,11 @@
         "name": "Pistons",
         "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/det.png",
         "seed": 1,
-        "w": 3,
+        "w": 4,
         "l": 1,
-        "pct": ".750",
+        "pct": ".800",
         "gb": "-",
-        "record": "3-1"
+        "record": "4-1"
       },
       {
         "id": "20",
@@ -21,22 +21,22 @@
         "name": "76ers",
         "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/phi.png",
         "seed": 2,
-        "w": 3,
+        "w": 4,
         "l": 1,
-        "pct": ".750",
+        "pct": ".800",
         "gb": "-",
-        "record": "3-1"
+        "record": "4-1"
       },
       {
-        "id": "30",
-        "abbr": "CHA",
-        "name": "Hornets",
-        "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/cha.png",
+        "id": "28",
+        "abbr": "TOR",
+        "name": "Raptors",
+        "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/tor.png",
         "seed": 3,
         "w": 3,
         "l": 1,
         "pct": ".750",
-        "gb": "-",
+        "gb": "0.5",
         "record": "3-1"
       },
       {
@@ -48,32 +48,32 @@
         "w": 3,
         "l": 1,
         "pct": ".750",
-        "gb": "-",
-        "record": "3-1"
-      },
-      {
-        "id": "28",
-        "abbr": "TOR",
-        "name": "Raptors",
-        "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/tor.png",
-        "seed": 5,
-        "w": 2,
-        "l": 1,
-        "pct": ".667",
         "gb": "0.5",
-        "record": "2-1"
+        "record": "3-1"
       },
       {
         "id": "5",
         "abbr": "CLE",
         "name": "Cavaliers",
         "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/cle.png",
-        "seed": 6,
-        "w": 2,
+        "seed": 5,
+        "w": 3,
         "l": 1,
-        "pct": ".667",
+        "pct": ".750",
         "gb": "0.5",
-        "record": "2-1"
+        "record": "3-1"
+      },
+      {
+        "id": "30",
+        "abbr": "CHA",
+        "name": "Hornets",
+        "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/cha.png",
+        "seed": 6,
+        "w": 3,
+        "l": 2,
+        "pct": ".600",
+        "gb": "1",
+        "record": "3-2"
       },
       {
         "id": "1",
@@ -82,22 +82,22 @@
         "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/atl.png",
         "seed": 7,
         "w": 2,
-        "l": 2,
-        "pct": ".500",
-        "gb": "1",
-        "record": "2-2"
+        "l": 3,
+        "pct": ".400",
+        "gb": "2",
+        "record": "2-3"
       },
       {
-        "id": "11",
-        "abbr": "IND",
-        "name": "Pacers",
-        "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/ind.png",
+        "id": "18",
+        "abbr": "NY",
+        "name": "Knicks",
+        "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/ny.png",
         "seed": 8,
         "w": 2,
-        "l": 2,
-        "pct": ".500",
-        "gb": "1",
-        "record": "2-2"
+        "l": 3,
+        "pct": ".400",
+        "gb": "2",
+        "record": "2-3"
       },
       {
         "id": "27",
@@ -106,81 +106,81 @@
         "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/wsh.png",
         "seed": 9,
         "w": 2,
-        "l": 2,
-        "pct": ".500",
-        "gb": "1",
-        "record": "2-2"
+        "l": 3,
+        "pct": ".400",
+        "gb": "2",
+        "record": "2-3"
+      },
+      {
+        "id": "11",
+        "abbr": "IND",
+        "name": "Pacers",
+        "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/ind.png",
+        "seed": 10,
+        "w": 2,
+        "l": 3,
+        "pct": ".400",
+        "gb": "2",
+        "record": "2-3"
       },
       {
         "id": "19",
         "abbr": "ORL",
         "name": "Magic",
         "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/orl.png",
-        "seed": 10,
+        "seed": 11,
         "w": 1,
-        "l": 2,
-        "pct": ".333",
-        "gb": "1.5",
-        "record": "1-2"
+        "l": 3,
+        "pct": ".250",
+        "gb": "2.5",
+        "record": "1-3"
       },
       {
         "id": "4",
         "abbr": "CHI",
         "name": "Bulls",
         "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/chi.png",
-        "seed": 11,
-        "w": 1,
-        "l": 3,
-        "pct": ".250",
-        "gb": "2",
-        "record": "1-3"
-      },
-      {
-        "id": "15",
-        "abbr": "MIL",
-        "name": "Bucks",
-        "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/mil.png",
         "seed": 12,
         "w": 1,
-        "l": 3,
-        "pct": ".250",
-        "gb": "2",
-        "record": "1-3"
-      },
-      {
-        "id": "18",
-        "abbr": "NY",
-        "name": "Knicks",
-        "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/ny.png",
-        "seed": 13,
-        "w": 1,
-        "l": 3,
-        "pct": ".250",
-        "gb": "2",
-        "record": "1-3"
-      },
-      {
-        "id": "17",
-        "abbr": "BKN",
-        "name": "Nets",
-        "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/bkn.png",
-        "seed": 14,
-        "w": 0,
         "l": 4,
-        "pct": ".000",
+        "pct": ".200",
         "gb": "3",
-        "record": "0-4"
+        "record": "1-4"
       },
       {
         "id": "14",
         "abbr": "MIA",
         "name": "Heat",
         "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/mia.png",
+        "seed": 13,
+        "w": 1,
+        "l": 4,
+        "pct": ".200",
+        "gb": "3",
+        "record": "1-4"
+      },
+      {
+        "id": "15",
+        "abbr": "MIL",
+        "name": "Bucks",
+        "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/mil.png",
+        "seed": 14,
+        "w": 1,
+        "l": 4,
+        "pct": ".200",
+        "gb": "3",
+        "record": "1-4"
+      },
+      {
+        "id": "17",
+        "abbr": "BKN",
+        "name": "Nets",
+        "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/bkn.png",
         "seed": 15,
         "w": 0,
         "l": 4,
         "pct": ".000",
-        "gb": "3",
+        "gb": "3.5",
         "record": "0-4"
       }
     ],
@@ -191,34 +191,22 @@
         "name": "Rockets",
         "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/hou.png",
         "seed": 1,
-        "w": 4,
+        "w": 5,
         "l": 0,
         "pct": "1.000",
         "gb": "-",
-        "record": "4-0"
-      },
-      {
-        "id": "25",
-        "abbr": "OKC",
-        "name": "Thunder",
-        "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/okc.png",
-        "seed": 2,
-        "w": 4,
-        "l": 0,
-        "pct": "1.000",
-        "gb": "-",
-        "record": "4-0"
+        "record": "5-0"
       },
       {
         "id": "29",
         "abbr": "MEM",
         "name": "Grizzlies",
         "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/mem.png",
-        "seed": 3,
+        "seed": 2,
         "w": 4,
         "l": 0,
         "pct": "1.000",
-        "gb": "-",
+        "gb": "0.5",
         "record": "4-0"
       },
       {
@@ -226,11 +214,11 @@
         "abbr": "POR",
         "name": "Trail Blazers",
         "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/por.png",
-        "seed": 4,
+        "seed": 3,
         "w": 3,
         "l": 0,
         "pct": "1.000",
-        "gb": "0.5",
+        "gb": "1",
         "record": "3-0"
       },
       {
@@ -238,72 +226,84 @@
         "abbr": "LAL",
         "name": "Lakers",
         "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/lal.png",
-        "seed": 5,
-        "w": 3,
+        "seed": 4,
+        "w": 4,
         "l": 1,
-        "pct": ".750",
+        "pct": ".800",
         "gb": "1",
-        "record": "3-1"
+        "record": "4-1"
       },
       {
-        "id": "16",
-        "abbr": "MIN",
-        "name": "Timberwolves",
-        "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/min.png",
-        "seed": 6,
-        "w": 3,
+        "id": "25",
+        "abbr": "OKC",
+        "name": "Thunder",
+        "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/okc.png",
+        "seed": 5,
+        "w": 4,
         "l": 1,
-        "pct": ".750",
+        "pct": ".800",
         "gb": "1",
-        "record": "3-1"
+        "record": "4-1"
       },
       {
         "id": "24",
         "abbr": "SA",
         "name": "Spurs",
         "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/sa.png",
-        "seed": 7,
-        "w": 2,
+        "seed": 6,
+        "w": 3,
         "l": 2,
-        "pct": ".500",
+        "pct": ".600",
         "gb": "2",
-        "record": "2-2"
+        "record": "3-2"
       },
       {
         "id": "6",
         "abbr": "DAL",
         "name": "Mavericks",
         "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/dal.png",
-        "seed": 8,
-        "w": 2,
+        "seed": 7,
+        "w": 3,
         "l": 2,
-        "pct": ".500",
+        "pct": ".600",
         "gb": "2",
-        "record": "2-2"
+        "record": "3-2"
       },
       {
-        "id": "12",
-        "abbr": "LAC",
-        "name": "Clippers",
-        "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/lac.png",
-        "seed": 9,
-        "w": 1,
+        "id": "16",
+        "abbr": "MIN",
+        "name": "Timberwolves",
+        "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/min.png",
+        "seed": 8,
+        "w": 3,
         "l": 2,
-        "pct": ".333",
-        "gb": "2.5",
-        "record": "1-2"
+        "pct": ".600",
+        "gb": "2",
+        "record": "3-2"
       },
       {
         "id": "7",
         "abbr": "DEN",
         "name": "Nuggets",
         "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/den.png",
-        "seed": 10,
-        "w": 1,
+        "seed": 9,
+        "w": 2,
         "l": 2,
-        "pct": ".333",
+        "pct": ".500",
         "gb": "2.5",
-        "record": "1-2"
+        "record": "2-2"
+      },
+      {
+        "id": "9",
+        "abbr": "GS",
+        "name": "Warriors",
+        "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/gs.png",
+        "seed": 10,
+        "w": 2,
+        "l": 3,
+        "pct": ".400",
+        "gb": "3",
+        "record": "2-3"
       },
       {
         "id": "21",
@@ -314,19 +314,19 @@
         "w": 1,
         "l": 2,
         "pct": ".333",
-        "gb": "2.5",
+        "gb": "3",
         "record": "1-2"
       },
       {
-        "id": "9",
-        "abbr": "GS",
-        "name": "Warriors",
-        "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/gs.png",
+        "id": "12",
+        "abbr": "LAC",
+        "name": "Clippers",
+        "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/lac.png",
         "seed": 12,
         "w": 1,
         "l": 3,
         "pct": ".250",
-        "gb": "3",
+        "gb": "3.5",
         "record": "1-3"
       },
       {
@@ -336,10 +336,10 @@
         "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/utah.png",
         "seed": 13,
         "w": 1,
-        "l": 3,
-        "pct": ".250",
-        "gb": "3",
-        "record": "1-3"
+        "l": 4,
+        "pct": ".200",
+        "gb": "4",
+        "record": "1-4"
       },
       {
         "id": "3",
@@ -348,10 +348,10 @@
         "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/no.png",
         "seed": 14,
         "w": 0,
-        "l": 3,
+        "l": 4,
         "pct": ".000",
-        "gb": "3.5",
-        "record": "0-3"
+        "gb": "4.5",
+        "record": "0-4"
       },
       {
         "id": "23",
@@ -362,7 +362,7 @@
         "w": 0,
         "l": 4,
         "pct": ".000",
-        "gb": "4",
+        "gb": "4.5",
         "record": "0-4"
       }
     ]
