@@ -28,10 +28,10 @@
         "record": "4-1"
       },
       {
-        "id": "28",
-        "abbr": "TOR",
-        "name": "Raptors",
-        "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/tor.png",
+        "id": "2",
+        "abbr": "BOS",
+        "name": "Celtics",
+        "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/bos.png",
         "seed": 3,
         "w": 3,
         "l": 1,
@@ -40,23 +40,11 @@
         "record": "3-1"
       },
       {
-        "id": "2",
-        "abbr": "BOS",
-        "name": "Celtics",
-        "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/bos.png",
+        "id": "28",
+        "abbr": "TOR",
+        "name": "Raptors",
+        "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/tor.png",
         "seed": 4,
-        "w": 3,
-        "l": 1,
-        "pct": ".750",
-        "gb": "0.5",
-        "record": "3-1"
-      },
-      {
-        "id": "5",
-        "abbr": "CLE",
-        "name": "Cavaliers",
-        "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/cle.png",
-        "seed": 5,
         "w": 3,
         "l": 1,
         "pct": ".750",
@@ -68,6 +56,18 @@
         "abbr": "CHA",
         "name": "Hornets",
         "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/cha.png",
+        "seed": 5,
+        "w": 3,
+        "l": 2,
+        "pct": ".600",
+        "gb": "1",
+        "record": "3-2"
+      },
+      {
+        "id": "5",
+        "abbr": "CLE",
+        "name": "Cavaliers",
+        "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/cle.png",
         "seed": 6,
         "w": 3,
         "l": 2,
@@ -81,11 +81,11 @@
         "name": "Hawks",
         "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/atl.png",
         "seed": 7,
-        "w": 2,
+        "w": 3,
         "l": 3,
-        "pct": ".400",
-        "gb": "2",
-        "record": "2-3"
+        "pct": ".500",
+        "gb": "1.5",
+        "record": "3-3"
       },
       {
         "id": "18",
@@ -203,23 +203,23 @@
         "name": "Grizzlies",
         "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/mem.png",
         "seed": 2,
-        "w": 4,
+        "w": 5,
         "l": 0,
         "pct": "1.000",
-        "gb": "0.5",
-        "record": "4-0"
+        "gb": "-",
+        "record": "5-0"
       },
       {
-        "id": "22",
-        "abbr": "POR",
-        "name": "Trail Blazers",
-        "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/por.png",
+        "id": "25",
+        "abbr": "OKC",
+        "name": "Thunder",
+        "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/okc.png",
         "seed": 3,
-        "w": 3,
-        "l": 0,
-        "pct": "1.000",
+        "w": 4,
+        "l": 1,
+        "pct": ".800",
         "gb": "1",
-        "record": "3-0"
+        "record": "4-1"
       },
       {
         "id": "13",
@@ -234,16 +234,16 @@
         "record": "4-1"
       },
       {
-        "id": "25",
-        "abbr": "OKC",
-        "name": "Thunder",
-        "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/okc.png",
+        "id": "22",
+        "abbr": "POR",
+        "name": "Trail Blazers",
+        "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/por.png",
         "seed": 5,
-        "w": 4,
+        "w": 3,
         "l": 1,
-        "pct": ".800",
-        "gb": "1",
-        "record": "4-1"
+        "pct": ".750",
+        "gb": "1.5",
+        "record": "3-1"
       },
       {
         "id": "24",
@@ -347,11 +347,11 @@
         "name": "Pelicans",
         "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/no.png",
         "seed": 14,
-        "w": 0,
+        "w": 1,
         "l": 4,
-        "pct": ".000",
-        "gb": "4.5",
-        "record": "0-4"
+        "pct": ".200",
+        "gb": "4",
+        "record": "1-4"
       },
       {
         "id": "23",
@@ -360,10 +360,10 @@
         "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/sac.png",
         "seed": 15,
         "w": 0,
-        "l": 4,
+        "l": 5,
         "pct": ".000",
-        "gb": "4.5",
-        "record": "0-4"
+        "gb": "5",
+        "record": "0-5"
       }
     ]
   }

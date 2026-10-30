@@ -3,25 +3,25 @@
     "record": "2-3"
   },
   "1": {
-    "record": "2-3",
+    "record": "3-3",
     "scorers": [
       {
         "name": "Nickeil Alexander-Walker",
         "position": "Guard",
-        "ppg": 19.6,
+        "ppg": 20.5,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/4278039.png"
       },
       {
         "name": "Jalen Johnson",
         "position": "Forward",
-        "ppg": 19.6,
+        "ppg": 19.0,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/4701230.png"
       },
       {
-        "name": "CJ McCollum",
+        "name": "Aaron Wiggins",
         "position": "Guard",
-        "ppg": 16.4,
-        "img": "https://a.espncdn.com/i/headshots/nba/players/full/2490149.png"
+        "ppg": 15.5,
+        "img": "https://a.espncdn.com/i/headshots/nba/players/full/4397183.png"
       }
     ]
   },
@@ -307,7 +307,7 @@
       {
         "name": "Devin Booker",
         "position": "Guard",
-        "ppg": 22.7,
+        "ppg": 23.0,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/3136193.png"
       },
       {
@@ -325,47 +325,47 @@
     ]
   },
   "22": {
-    "record": "3-0",
+    "record": "3-1",
     "scorers": [
       {
         "name": "Deni Avdija",
         "position": "Forward",
-        "ppg": 22.3,
+        "ppg": 22.8,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/4683021.png"
       },
       {
         "name": "Damian Lillard",
         "position": "Guard",
-        "ppg": 21.7,
+        "ppg": 18.5,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/6606.png"
       },
       {
         "name": "Ja Morant",
         "position": "Guard",
-        "ppg": 16.3,
+        "ppg": 15.8,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/4279888.png"
       }
     ]
   },
   "23": {
-    "record": "0-4",
+    "record": "0-5",
     "scorers": [
       {
         "name": "Zach LaVine",
         "position": "Guard",
-        "ppg": 27.2,
+        "ppg": 26.0,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/3064440.png"
       },
       {
         "name": "Darius Acuff Jr.",
         "position": "Guard",
-        "ppg": 21.5,
+        "ppg": 24.0,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/5142620.png"
       },
       {
         "name": "Domantas Sabonis",
         "position": "Forward",
-        "ppg": 19.0,
+        "ppg": 17.0,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/3155942.png"
       }
     ]
@@ -486,30 +486,30 @@
     ]
   },
   "29": {
-    "record": "4-0",
+    "record": "5-0",
     "scorers": [
       {
         "name": "Ty Jerome",
         "position": "Guard",
-        "ppg": 29.8,
+        "ppg": 25.8,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/4065733.png"
       },
       {
         "name": "Cameron Boozer",
         "position": "Forward",
-        "ppg": 14.8,
+        "ppg": 15.4,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/5041935.png"
       },
       {
-        "name": "Jaylen Wells",
+        "name": "Cedric Coward",
         "position": "Forward",
-        "ppg": 14.8,
-        "img": "https://a.espncdn.com/i/headshots/nba/players/full/5112087.png"
+        "ppg": 14.2,
+        "img": "https://a.espncdn.com/i/headshots/nba/players/full/4903027.png"
       }
     ]
   },
   "3": {
-    "record": "0-4",
+    "record": "1-4",
     "scorers": [
       {
         "name": "Zion Williamson",
@@ -524,10 +524,10 @@
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/3907497.png"
       },
       {
-        "name": "Saddiq Bey",
-        "position": "Guard",
-        "ppg": 14.0,
-        "img": "https://a.espncdn.com/i/headshots/nba/players/full/4397136.png"
+        "name": "Trey Murphy III",
+        "position": "Forward",
+        "ppg": 14.2,
+        "img": "https://a.espncdn.com/i/headshots/nba/players/full/4397688.png"
       }
     ]
   },
@@ -578,24 +578,24 @@
     ]
   },
   "5": {
-    "record": "3-1",
+    "record": "3-2",
     "scorers": [
       {
         "name": "Donovan Mitchell",
         "position": "Guard",
-        "ppg": 24.8,
+        "ppg": 24.2,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/3908809.png"
       },
       {
         "name": "Evan Mobley",
         "position": "Center",
-        "ppg": 20.0,
+        "ppg": 18.2,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/4432158.png"
       },
       {
         "name": "James Harden",
         "position": "Guard",
-        "ppg": 15.8,
+        "ppg": 17.4,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/3992.png"
       }
     ]
