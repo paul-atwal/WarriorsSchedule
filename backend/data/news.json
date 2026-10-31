@@ -1,18 +1,7 @@
 {
-  "updated": "2026-10-30T17:20:49Z",
+  "updated": "2026-10-31T16:25:20Z",
   "curryId": "3975",
   "injuries": [
-    {
-      "athleteId": "4997536",
-      "name": "Gui Santos",
-      "position": "F",
-      "img": "https://a.espncdn.com/i/headshots/nba/players/full/4997536.png",
-      "status": "Day-To-Day",
-      "injury": "Left knee (tendinitis)",
-      "returnDate": "2026-10-30",
-      "comment": "Santos (knee) is listed as doubtful for Friday's game against the Warriors.",
-      "updated": "2026-10-30T00:06Z"
-    },
     {
       "athleteId": "3102531",
       "name": "Kristaps Porzingis",
@@ -82,16 +71,6 @@
       "headline": "Warriors' Stephen Curry 'fine' after tweaking right ankle in practice",
       "published": "2026-10-19T00:01:10Z",
       "url": "https://www.espn.com/nba/story/_/id/50214211/stephen-curry-fine-tweaking-right-ankle-practice"
-    },
-    {
-      "headline": "Can Jimmy Butler return in time to resurrect Steph Curry's final chapter?",
-      "published": "2026-10-16T11:07:19Z",
-      "url": "https://www.espn.com/nba/story/_/id/50182801/jimmy-butler-acl-injury-return-warriors-title"
-    },
-    {
-      "headline": "Warriors' Kristaps Porzingis remains out indefinitely but will be around team",
-      "published": "2026-10-14T23:08:30Z",
-      "url": "https://www.espn.com/nba/story/_/id/50184641/warriors-kristaps-porzingis-indefinitely-team"
     }
   ]
 }
