@@ -33,11 +33,11 @@
         "name": "Celtics",
         "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/bos.png",
         "seed": 3,
-        "w": 4,
+        "w": 5,
         "l": 1,
-        "pct": ".800",
-        "gb": "1",
-        "record": "4-1"
+        "pct": ".833",
+        "gb": "0.5",
+        "record": "5-1"
       },
       {
         "id": "5",
@@ -58,10 +58,10 @@
         "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/tor.png",
         "seed": 5,
         "w": 3,
-        "l": 2,
-        "pct": ".600",
-        "gb": "2",
-        "record": "3-2"
+        "l": 3,
+        "pct": ".500",
+        "gb": "2.5",
+        "record": "3-3"
       },
       {
         "id": "27",
@@ -106,10 +106,10 @@
         "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/orl.png",
         "seed": 9,
         "w": 2,
-        "l": 3,
-        "pct": ".400",
-        "gb": "3",
-        "record": "2-3"
+        "l": 4,
+        "pct": ".333",
+        "gb": "3.5",
+        "record": "2-4"
       },
       {
         "id": "14",
@@ -142,10 +142,10 @@
         "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/ind.png",
         "seed": 12,
         "w": 2,
-        "l": 4,
-        "pct": ".333",
-        "gb": "3.5",
-        "record": "2-4"
+        "l": 5,
+        "pct": ".286",
+        "gb": "4",
+        "record": "2-5"
       },
       {
         "id": "4",
@@ -177,11 +177,11 @@
         "name": "Nets",
         "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/bkn.png",
         "seed": 15,
-        "w": 0,
+        "w": 1,
         "l": 5,
-        "pct": ".000",
-        "gb": "5",
-        "record": "0-5"
+        "pct": ".167",
+        "gb": "4.5",
+        "record": "1-5"
       }
     ],
     "west": [
@@ -227,11 +227,11 @@
         "name": "Lakers",
         "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/lal.png",
         "seed": 4,
-        "w": 4,
+        "w": 5,
         "l": 2,
-        "pct": ".667",
-        "gb": "2",
-        "record": "4-2"
+        "pct": ".714",
+        "gb": "1.5",
+        "record": "5-2"
       },
       {
         "id": "25",
@@ -282,10 +282,10 @@
         "record": "3-2"
       },
       {
-        "id": "16",
-        "abbr": "MIN",
-        "name": "Timberwolves",
-        "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/min.png",
+        "id": "9",
+        "abbr": "GS",
+        "name": "Warriors",
+        "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/gs.png",
         "seed": 9,
         "w": 4,
         "l": 3,
@@ -294,16 +294,16 @@
         "record": "4-3"
       },
       {
-        "id": "9",
-        "abbr": "GS",
-        "name": "Warriors",
-        "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/gs.png",
+        "id": "16",
+        "abbr": "MIN",
+        "name": "Timberwolves",
+        "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/min.png",
         "seed": 10,
-        "w": 3,
+        "w": 4,
         "l": 3,
-        "pct": ".500",
-        "gb": "3",
-        "record": "3-3"
+        "pct": ".571",
+        "gb": "2.5",
+        "record": "4-3"
       },
       {
         "id": "3",
@@ -336,10 +336,10 @@
         "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/lac.png",
         "seed": 13,
         "w": 1,
-        "l": 4,
-        "pct": ".200",
-        "gb": "4.5",
-        "record": "1-4"
+        "l": 5,
+        "pct": ".167",
+        "gb": "5",
+        "record": "1-5"
       },
       {
         "id": "26",
