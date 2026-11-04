@@ -1,7 +1,18 @@
 {
-  "updated": "2026-11-03T18:44:32Z",
+  "updated": "2026-11-04T18:57:37Z",
   "curryId": "3975",
   "injuries": [
+    {
+      "athleteId": "3102531",
+      "name": "Kristaps Porzingis",
+      "position": "C",
+      "img": "https://a.espncdn.com/i/headshots/nba/players/full/3102531.png",
+      "status": "Out",
+      "injury": "Illness",
+      "returnDate": "2026-12-01",
+      "comment": "The Warriors have stopped issuing salary payments to Porzingis, who remains away from the team and is considering retirement, Anthony Slater and Shams Charania of ESPN reported Wednesday.",
+      "updated": "2026-11-04T17:00Z"
+    },
     {
       "athleteId": "4397040",
       "name": "Brandon Williams",
@@ -36,17 +47,6 @@
       "updated": "2026-11-03T06:11Z"
     },
     {
-      "athleteId": "3102531",
-      "name": "Kristaps Porzingis",
-      "position": "C",
-      "img": "https://a.espncdn.com/i/headshots/nba/players/full/3102531.png",
-      "status": "Out",
-      "injury": "Illness",
-      "returnDate": "2026-12-01",
-      "comment": "The Warriors are exploring potential trades involving Porzingis (personal), who remains away from the team indefinitely while dealing with ongoing health concerns, Anthony Slater of ESPN.com reports.",
-      "updated": "2026-10-28T14:25Z"
-    },
-    {
       "athleteId": "4432171",
       "name": "Moses Moody",
       "position": "G",
@@ -71,6 +71,21 @@
   ],
   "articles": [
     {
+      "headline": "Warriors owner Joe Lacob ecstatic with early Yaxel Lendeborg returns",
+      "published": "2026-11-04T18:18:00Z",
+      "url": "https://www.espn.com/nba/story/_/id/50380187/joe-lacob-thinks-warriors-nailed-drafting-yaxel-lendeborg"
+    },
+    {
+      "headline": "What are the Warriors' options as Kristaps Porzingis remains away from the team?",
+      "published": "2026-11-04T17:16:12Z",
+      "url": "https://www.espn.com/nba/story/_/id/50299136/golden-state-warriors-kristaps-porzingis-options-trade"
+    },
+    {
+      "headline": "Warriors withholding payments to Porzingis, sources say",
+      "published": "2026-11-04T17:19:06Z",
+      "url": "https://www.espn.com/nba/story/_/id/50379460/warriors-not-making-payments-porzingis-sources-say"
+    },
+    {
       "headline": "Yaxel Lendeborg scores 37 points, most by a Warriors rookie since Stephen Curry",
       "published": "2026-11-02T13:10:21Z",
       "url": "https://www.espn.com/nba/story/_/id/50356142/yaxel-lendeborg-scores-37-points-most-warriors-rookie-stephen-curry"
@@ -84,11 +99,6 @@
       "headline": "Stephen Curry torches Wolves for 44 as Warriors win 2nd straight after 0-3 start",
       "published": "2026-10-29T07:48:37Z",
       "url": "https://www.espn.com/nba/story/_/id/50315043/stephen-curry-torches-wolves-44-warriors-win-2nd-straight"
-    },
-    {
-      "headline": "What are the Warriors' options as Kristaps Porzingis remains away from the team?",
-      "published": "2026-10-28T12:25:42Z",
-      "url": "https://www.espn.com/nba/story/_/id/50299136/golden-state-warriors-kristaps-porzingis-options-trade"
     },
     {
       "headline": "Ayesha Curry to star in holiday rom-com 'Second Chance Holiday,' premiering on Roku",
