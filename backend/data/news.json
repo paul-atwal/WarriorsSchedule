@@ -1,7 +1,18 @@
 {
-  "updated": "2026-11-04T18:57:37Z",
+  "updated": "2026-11-05T19:09:20Z",
   "curryId": "3975",
   "injuries": [
+    {
+      "athleteId": "4997536",
+      "name": "Gui Santos",
+      "position": "F",
+      "img": "https://a.espncdn.com/i/headshots/nba/players/full/4997536.png",
+      "status": "Out",
+      "injury": "Knee",
+      "returnDate": "2026-11-07",
+      "comment": "Santos (knee) has been ruled out for Thursday's game against the Heat.",
+      "updated": "2026-11-05T00:52Z"
+    },
     {
       "athleteId": "3102531",
       "name": "Kristaps Porzingis",
@@ -12,39 +23,6 @@
       "returnDate": "2026-12-01",
       "comment": "The Warriors have stopped issuing salary payments to Porzingis, who remains away from the team and is considering retirement, Anthony Slater and Shams Charania of ESPN reported Wednesday.",
       "updated": "2026-11-04T17:00Z"
-    },
-    {
-      "athleteId": "4397040",
-      "name": "Brandon Williams",
-      "position": "G",
-      "img": "https://a.espncdn.com/i/headshots/nba/players/full/4397040.png",
-      "status": "Day-To-Day",
-      "injury": "Left quadriceps (bruise)",
-      "returnDate": "2026-11-05",
-      "comment": "Williams (quadriceps) has been ruled out for Monday's game against the Suns.",
-      "updated": "2026-11-03T06:12Z"
-    },
-    {
-      "athleteId": "4997536",
-      "name": "Gui Santos",
-      "position": "F",
-      "img": "https://a.espncdn.com/i/headshots/nba/players/full/4997536.png",
-      "status": "Day-To-Day",
-      "injury": "Knee",
-      "returnDate": "2026-11-05",
-      "comment": "Santos did not play in the second half of Sunday's 124-112 win over the Clippers due to a knee injury and will not play against the Suns on Monday, Danny Emerman of SFStandard.com reports.",
-      "updated": "2026-11-03T06:12Z"
-    },
-    {
-      "athleteId": "3213",
-      "name": "Al Horford",
-      "position": "C",
-      "img": "https://a.espncdn.com/i/headshots/nba/players/full/3213.png",
-      "status": "Day-To-Day",
-      "injury": "Rest",
-      "returnDate": "2026-11-05",
-      "comment": "Horford will be rested Monday against the Suns.",
-      "updated": "2026-11-03T06:11Z"
     },
     {
       "athleteId": "4432171",
@@ -82,7 +60,7 @@
     },
     {
       "headline": "Warriors withholding payments to Porzingis, sources say",
-      "published": "2026-11-04T17:19:06Z",
+      "published": "2026-11-04T20:34:58Z",
       "url": "https://www.espn.com/nba/story/_/id/50379460/warriors-not-making-payments-porzingis-sources-say"
     },
     {
@@ -104,11 +82,6 @@
       "headline": "Ayesha Curry to star in holiday rom-com 'Second Chance Holiday,' premiering on Roku",
       "published": "2026-10-28T01:24:38Z",
       "url": "https://www.espn.com/nba/story/_/id/50301789/ayesha-stephen-curry-roku-holiday-rom-com"
-    },
-    {
-      "headline": "Sources: Warriors exploring options to trade center Kristaps Porzingis",
-      "published": "2026-10-21T21:33:20Z",
-      "url": "https://www.espn.com/nba/story/_/id/50239169/sources-warriors-exploring-trade-options-kristaps-porzingis"
     }
   ]
 }
