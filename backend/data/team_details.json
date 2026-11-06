@@ -1,6 +1,6 @@
 {
   "_warriors": {
-    "record": "5-3"
+    "record": "6-3"
   },
   "1": {
     "record": "5-4",
@@ -118,12 +118,12 @@
     ]
   },
   "14": {
-    "record": "3-5",
+    "record": "3-6",
     "scorers": [
       {
         "name": "Giannis Antetokounmpo",
         "position": "Forward",
-        "ppg": 28.2,
+        "ppg": 27.3,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/3032977.png"
       },
       {
@@ -135,7 +135,7 @@
       {
         "name": "Davion Mitchell",
         "position": "Guard",
-        "ppg": 15.4,
+        "ppg": 16.1,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/4278053.png"
       }
     ]
@@ -233,7 +233,7 @@
     ]
   },
   "19": {
-    "record": "2-5",
+    "record": "2-6",
     "scorers": [
       {
         "name": "Paolo Banchero",
@@ -244,13 +244,13 @@
       {
         "name": "Franz Wagner",
         "position": "Forward",
-        "ppg": 20.3,
+        "ppg": 19.6,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/4566434.png"
       },
       {
         "name": "Desmond Bane",
         "position": "Guard",
-        "ppg": 17.9,
+        "ppg": 17.5,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/4066320.png"
       }
     ]
@@ -302,25 +302,25 @@
     ]
   },
   "21": {
-    "record": "1-5",
+    "record": "2-5",
     "scorers": [
       {
         "name": "Devin Booker",
         "position": "Guard",
-        "ppg": 24.7,
+        "ppg": 25.4,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/3136193.png"
-      },
-      {
-        "name": "Miles Bridges",
-        "position": "Forward",
-        "ppg": 17.3,
-        "img": "https://a.espncdn.com/i/headshots/nba/players/full/4066383.png"
       },
       {
         "name": "Dillon Brooks",
         "position": "Forward",
-        "ppg": 16.5,
+        "ppg": 17.6,
         "img": "https://a.espncdn.com/i/headshots/nba/players/full/3155526.png"
+      },
+      {
+        "name": "Miles Bridges",
+        "position": "Forward",
+        "ppg": 17.4,
+        "img": "https://a.espncdn.com/i/headshots/nba/players/full/4066383.png"
       }
     ]
   },

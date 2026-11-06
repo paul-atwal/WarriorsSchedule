@@ -100,22 +100,22 @@
         "record": "4-4"
       },
       {
-        "id": "14",
-        "abbr": "MIA",
-        "name": "Heat",
-        "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/mia.png",
-        "seed": 9,
-        "w": 3,
-        "l": 5,
-        "pct": ".375",
-        "gb": "4.5",
-        "record": "3-5"
-      },
-      {
         "id": "30",
         "abbr": "CHA",
         "name": "Hornets",
         "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/cha.png",
+        "seed": 9,
+        "w": 3,
+        "l": 6,
+        "pct": ".333",
+        "gb": "5",
+        "record": "3-6"
+      },
+      {
+        "id": "14",
+        "abbr": "MIA",
+        "name": "Heat",
+        "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/mia.png",
         "seed": 10,
         "w": 3,
         "l": 6,
@@ -142,10 +142,10 @@
         "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/orl.png",
         "seed": 12,
         "w": 2,
-        "l": 5,
-        "pct": ".286",
-        "gb": "5",
-        "record": "2-5"
+        "l": 6,
+        "pct": ".250",
+        "gb": "5.5",
+        "record": "2-6"
       },
       {
         "id": "17",
@@ -258,10 +258,10 @@
         "record": "6-2"
       },
       {
-        "id": "16",
-        "abbr": "MIN",
-        "name": "Timberwolves",
-        "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/min.png",
+        "id": "9",
+        "abbr": "GS",
+        "name": "Warriors",
+        "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/gs.png",
         "seed": 7,
         "w": 6,
         "l": 3,
@@ -270,16 +270,16 @@
         "record": "6-3"
       },
       {
-        "id": "9",
-        "abbr": "GS",
-        "name": "Warriors",
-        "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/gs.png",
+        "id": "16",
+        "abbr": "MIN",
+        "name": "Timberwolves",
+        "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/min.png",
         "seed": 8,
-        "w": 5,
+        "w": 6,
         "l": 3,
-        "pct": ".625",
-        "gb": "1.5",
-        "record": "5-3"
+        "pct": ".667",
+        "gb": "1",
+        "record": "6-3"
       },
       {
         "id": "7",
@@ -323,11 +323,11 @@
         "name": "Suns",
         "logo": "https://a.espncdn.com/i/teamlogos/nba/500-dark/phx.png",
         "seed": 12,
-        "w": 1,
+        "w": 2,
         "l": 5,
-        "pct": ".167",
-        "gb": "4.5",
-        "record": "1-5"
+        "pct": ".286",
+        "gb": "4",
+        "record": "2-5"
       },
       {
         "id": "12",
