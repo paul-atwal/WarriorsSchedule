@@ -1,17 +1,28 @@
 {
-  "updated": "2026-11-06T18:36:55Z",
+  "updated": "2026-11-07T17:04:18Z",
   "curryId": "3975",
   "injuries": [
     {
-      "athleteId": "4997536",
-      "name": "Gui Santos",
+      "athleteId": "6589",
+      "name": "Draymond Green",
       "position": "F",
-      "img": "https://a.espncdn.com/i/headshots/nba/players/full/4997536.png",
+      "img": "https://a.espncdn.com/i/headshots/nba/players/full/6589.png",
       "status": "Day-To-Day",
-      "injury": "Knee",
+      "injury": "Right elbow (inflammation)",
       "returnDate": "2026-11-07",
-      "comment": "Santos (knee) has been ruled out for Thursday's game against the Heat.",
-      "updated": "2026-11-06T05:46Z"
+      "comment": "Green (elbow) is listed as questionable ahead of Saturday's game against Orlando.",
+      "updated": "2026-11-06T22:21Z"
+    },
+    {
+      "athleteId": "3134903",
+      "name": "Gary Payton II",
+      "position": "G",
+      "img": "https://a.espncdn.com/i/headshots/nba/players/full/3134903.png",
+      "status": "Day-To-Day",
+      "injury": "Right calf",
+      "returnDate": "2026-11-07",
+      "comment": "Payton is questionable to play Saturday against the Magic due to right calf tightness.",
+      "updated": "2026-11-06T22:21Z"
     },
     {
       "athleteId": "3102531",
@@ -20,9 +31,20 @@
       "img": "https://a.espncdn.com/i/headshots/nba/players/full/3102531.png",
       "status": "Out",
       "injury": "Illness",
-      "returnDate": "2026-12-01",
-      "comment": "The Warriors have stopped issuing salary payments to Porzingis, who remains away from the team and is considering retirement, Anthony Slater and Shams Charania of ESPN reported Wednesday.",
-      "updated": "2026-11-04T17:00Z"
+      "returnDate": "2027-01-02",
+      "comment": "Porzingis announced on his social media that he's stepping away from basketball.",
+      "updated": "2026-11-06T21:26Z"
+    },
+    {
+      "athleteId": "4997536",
+      "name": "Gui Santos",
+      "position": "F",
+      "img": "https://a.espncdn.com/i/headshots/nba/players/full/4997536.png",
+      "status": "Day-To-Day",
+      "injury": "Knee",
+      "returnDate": "2026-11-07",
+      "comment": "Santos (knee) is questionable for Saturday's game versus Orlando, per Nick Friedell of The Athletic.",
+      "updated": "2026-11-06T20:49Z"
     },
     {
       "athleteId": "4432171",
@@ -48,6 +70,11 @@
     }
   ],
   "articles": [
+    {
+      "headline": "Warriors' Kristaps Porzingis to 'step away,' prioritize health",
+      "published": "2026-11-06T23:57:17Z",
+      "url": "https://www.espn.com/nba/story/_/id/50402041/warriors-kristaps-porzingis-step-away-prioritize-health"
+    },
     {
       "headline": "Warriors owner Joe Lacob ecstatic with early Yaxel Lendeborg returns",
       "published": "2026-11-04T18:18:00Z",
