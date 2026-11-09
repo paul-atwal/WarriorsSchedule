@@ -1,7 +1,40 @@
 {
-  "updated": "2026-11-08T17:18:50Z",
+  "updated": "2026-11-09T21:41:24Z",
   "curryId": "3975",
   "injuries": [
+    {
+      "athleteId": "3134903",
+      "name": "Gary Payton II",
+      "position": "G",
+      "img": "https://a.espncdn.com/i/headshots/nba/players/full/3134903.png",
+      "status": "Day-To-Day",
+      "injury": "Left knee",
+      "returnDate": "2026-11-09",
+      "comment": "Payton (left knee soreness) is listed as questionable for Monday's game against New Orleans.",
+      "updated": "2026-11-09T19:24Z"
+    },
+    {
+      "athleteId": "4897262",
+      "name": "Will Richard",
+      "position": "G",
+      "img": "https://a.espncdn.com/i/headshots/nba/players/full/4897262.png",
+      "status": "Out",
+      "injury": "Left thumb",
+      "returnDate": "2026-11-11",
+      "comment": "Richard is out for Monday's game against the Pelicans due to a left thumb UCL tear.",
+      "updated": "2026-11-09T01:52Z"
+    },
+    {
+      "athleteId": "4997536",
+      "name": "Gui Santos",
+      "position": "F",
+      "img": "https://a.espncdn.com/i/headshots/nba/players/full/4997536.png",
+      "status": "Day-To-Day",
+      "injury": "Left knee (tendinitis)",
+      "returnDate": "2026-11-09",
+      "comment": "Santos (knee) is listed as probable for Monday's game against New Orleans.",
+      "updated": "2026-11-09T01:13Z"
+    },
     {
       "athleteId": "3102531",
       "name": "Kristaps Porzingis",
@@ -38,8 +71,13 @@
   ],
   "articles": [
     {
+      "headline": "Golden State Warriors guard Will Richard sidelined with torn ligament in thumb",
+      "published": "2026-11-09T05:31:13Z",
+      "url": "https://www.espn.com/nba/story/_/id/50429468/warriors-guard-richard-torn-ligament-thumb"
+    },
+    {
       "headline": "Stephen Curry's latest history-making night keeps Warriors rolling",
-      "published": "2026-11-08T16:50:37Z",
+      "published": "2026-11-08T17:55:40Z",
       "url": "https://www.espn.com/nba/story/_/id/50417316/remarkable-curry-latest-history-making-night-keeps-warriors-rolling"
     },
     {
