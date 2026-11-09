@@ -15,11 +15,9 @@ from datetime import datetime, timedelta, timezone
 
 import requests
 
-try:
-    from zoneinfo import ZoneInfo
-    PACIFIC_TZ = ZoneInfo("America/Los_Angeles")
-except Exception:
-    PACIFIC_TZ = timezone(timedelta(hours=-8))
+# British Columbia stopped changing clocks after March 8, 2026 and stays on UTC-7
+# year-round. A fixed offset avoids stale tz databases that still apply DST.
+BC_TZ = timezone(timedelta(hours=-7))
 
 DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data')
 
@@ -117,7 +115,7 @@ def parse_event(event, season_type):
         return None
 
     tip = parse_utc(event['date'])
-    local = tip.astimezone(PACIFIC_TZ)
+    local = tip.astimezone(BC_TZ)
     status = comp.get('status', {}).get('type', {})
     team = them['team']
     venue = comp.get('venue', {})

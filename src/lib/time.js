@@ -1,5 +1,7 @@
-// All dates in the app are shown in Pacific time, where the Warriors play.
-export const TZ = 'America/Los_Angeles';
+// All dates are shown in British Columbia time. BC stopped changing clocks after
+// March 8, 2026 and stays on UTC-7 year-round. A fixed zone is used because older
+// tz databases still apply daylight saving to America/Vancouver.
+export const TZ = 'Etc/GMT+7'; // Etc/GMT+7 means UTC-7 (the sign is inverted)
 
 const fmt = (opts) => new Intl.DateTimeFormat('en-US', { timeZone: TZ, ...opts });
 const dowFmt = fmt({ weekday: 'short' });

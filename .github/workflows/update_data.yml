@@ -2,7 +2,7 @@ name: Daily Data Update
 
 on:
   schedule:
-    - cron: '0 12 * * *' # Runs at 12:00 UTC (4:00 AM PST)
+    - cron: '0 12 * * *' # Runs at 12:00 UTC (5:00 AM BC time)
   workflow_dispatch: # Allows manual triggering
 
 jobs:
