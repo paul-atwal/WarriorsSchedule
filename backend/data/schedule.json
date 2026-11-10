@@ -382,10 +382,10 @@
     "neutral": false,
     "arena": "Chase Center",
     "city": "San Francisco",
-    "status": "pre",
-    "wl": null,
-    "pts": null,
-    "oppPts": null,
+    "status": "post",
+    "wl": "W",
+    "pts": 138,
+    "oppPts": 87,
     "tv": {
       "status": "on",
       "name": "Sportsnet One",
@@ -414,9 +414,9 @@
     "oppPts": null,
     "tv": {
       "status": "on",
-      "name": "Sportsnet Ontario",
-      "number": "916",
-      "logo": "https://zpmc.tmsimg.com/h3/NowShowing/62111/s62111_ll_h15_ac.png"
+      "name": "Sportsnet Pacific",
+      "number": "911",
+      "logo": "https://zpmc.tmsimg.com/h3/NowShowing/61714/s61714_ll_h15_aa.png"
     }
   },
   {
