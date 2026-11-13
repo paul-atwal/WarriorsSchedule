@@ -1,7 +1,18 @@
 {
-  "updated": "2026-11-12T19:15:30Z",
+  "updated": "2026-11-13T18:51:50Z",
   "curryId": "3975",
   "injuries": [
+    {
+      "athleteId": "4397886",
+      "name": "Charles Bassey",
+      "position": "C",
+      "img": "https://a.espncdn.com/i/headshots/nba/players/full/4397886.png",
+      "status": "Day-To-Day",
+      "injury": "Left toe (soreness)",
+      "returnDate": "2026-11-13",
+      "comment": "Bassey is probable for Friday's game against the Spurs due to left toe soreness.",
+      "updated": "2026-11-12T22:18Z"
+    },
     {
       "athleteId": "3975",
       "name": "Stephen Curry",
@@ -9,20 +20,9 @@
       "img": "https://a.espncdn.com/i/headshots/nba/players/full/3975.png",
       "status": "Out",
       "injury": "Right abdomen",
-      "returnDate": "2026-12-01",
+      "returnDate": "2026-12-12",
       "comment": "Curry has been diagnosed with an oblique abdominal tear and will be re-evaluated in two weeks, Shams Charania of ESPN reports.",
       "updated": "2026-11-12T17:03Z"
-    },
-    {
-      "athleteId": "3134903",
-      "name": "Gary Payton II",
-      "position": "G",
-      "img": "https://a.espncdn.com/i/headshots/nba/players/full/3134903.png",
-      "status": "Day-To-Day",
-      "injury": "Left knee (inflammation)",
-      "returnDate": "2026-11-13",
-      "comment": "Payton (knee) is out for Wednesday's game against Houston.",
-      "updated": "2026-11-12T15:03Z"
     },
     {
       "athleteId": "4397040",
@@ -72,7 +72,7 @@
   "articles": [
     {
       "headline": "Warriors' Stephen Curry out at least 2 weeks with oblique tear",
-      "published": "2026-11-12T17:36:47Z",
+      "published": "2026-11-12T20:24:51Z",
       "url": "https://www.espn.com/nba/story/_/id/50462899/warriors-stephen-curry-least-2-weeks-oblique-tear"
     },
     {
