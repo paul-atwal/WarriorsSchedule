@@ -434,10 +434,10 @@
     "neutral": false,
     "arena": "Frost Bank Center",
     "city": "San Antonio",
-    "status": "pre",
-    "wl": null,
-    "pts": null,
-    "oppPts": null,
+    "status": "post",
+    "wl": "L",
+    "pts": 85,
+    "oppPts": 123,
     "tv": {
       "status": "none"
     }
@@ -560,7 +560,7 @@
     "pts": null,
     "oppPts": null,
     "tv": {
-      "status": "tba"
+      "status": "none"
     }
   },
   {
@@ -583,7 +583,7 @@
     "pts": null,
     "oppPts": null,
     "tv": {
-      "status": "tba"
+      "status": "none"
     }
   },
   {

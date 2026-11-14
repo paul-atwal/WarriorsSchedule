@@ -1,18 +1,7 @@
 {
-  "updated": "2026-11-13T18:51:50Z",
+  "updated": "2026-11-14T17:24:57Z",
   "curryId": "3975",
   "injuries": [
-    {
-      "athleteId": "4397886",
-      "name": "Charles Bassey",
-      "position": "C",
-      "img": "https://a.espncdn.com/i/headshots/nba/players/full/4397886.png",
-      "status": "Day-To-Day",
-      "injury": "Left toe (soreness)",
-      "returnDate": "2026-11-13",
-      "comment": "Bassey is probable for Friday's game against the Spurs due to left toe soreness.",
-      "updated": "2026-11-12T22:18Z"
-    },
     {
       "athleteId": "3975",
       "name": "Stephen Curry",
