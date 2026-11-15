@@ -470,9 +470,9 @@
   },
   {
     "id": "401910016",
-    "tipUtc": "2026-11-19T02:30:00Z",
+    "tipUtc": "2026-11-19T01:00:00Z",
     "date": "2026-11-18",
-    "time": "7:30 PM",
+    "time": "6:00 PM",
     "seasonType": "reg",
     "opponent": "Dallas Mavericks",
     "opponentShort": "Mavericks",
@@ -606,7 +606,10 @@
     "pts": null,
     "oppPts": null,
     "tv": {
-      "status": "tba"
+      "status": "on",
+      "name": "Sportsnet Pacific",
+      "number": "911",
+      "logo": "https://zpmc.tmsimg.com/h3/NowShowing/61714/s61714_ll_h15_aa.png"
     }
   },
   {
