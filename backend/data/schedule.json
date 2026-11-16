@@ -488,10 +488,7 @@
     "pts": null,
     "oppPts": null,
     "tv": {
-      "status": "on",
-      "name": "Sportsnet One",
-      "number": "912",
-      "logo": "https://zpmc.tmsimg.com/h3/NowShowing/68859/s68859_ll_h15_ac.png"
+      "status": "none"
     }
   },
   {

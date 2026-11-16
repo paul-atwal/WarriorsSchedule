@@ -1,7 +1,18 @@
 {
-  "updated": "2026-11-15T18:05:10Z",
+  "updated": "2026-11-16T21:20:47Z",
   "curryId": "3975",
   "injuries": [
+    {
+      "athleteId": "4997536",
+      "name": "Gui Santos",
+      "position": "F",
+      "img": "https://a.espncdn.com/i/headshots/nba/players/full/4997536.png",
+      "status": "Day-To-Day",
+      "injury": "Right ankle (inflammation)",
+      "returnDate": "2026-11-16",
+      "comment": "Santos is questionable for Monday's game against New Orleans due to right ankle inflammation.",
+      "updated": "2026-11-15T23:03Z"
+    },
     {
       "athleteId": "3975",
       "name": "Stephen Curry",
