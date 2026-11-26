@@ -457,10 +457,10 @@
     "neutral": false,
     "arena": "Smoothie King Center",
     "city": "New Orleans",
-    "status": "pre",
-    "wl": null,
-    "pts": null,
-    "oppPts": null,
+    "status": "post",
+    "wl": "L",
+    "pts": 94,
+    "oppPts": 115,
     "tv": {
       "status": "on",
       "name": "Sportsnet One",
@@ -483,10 +483,10 @@
     "neutral": false,
     "arena": "American Airlines Center",
     "city": "Dallas",
-    "status": "pre",
-    "wl": null,
-    "pts": null,
-    "oppPts": null,
+    "status": "post",
+    "wl": "L",
+    "pts": 94,
+    "oppPts": 116,
     "tv": {
       "status": "none"
     }
@@ -506,10 +506,10 @@
     "neutral": false,
     "arena": "FedExForum",
     "city": "Memphis",
-    "status": "pre",
-    "wl": null,
-    "pts": null,
-    "oppPts": null,
+    "status": "post",
+    "wl": "L",
+    "pts": 98,
+    "oppPts": 126,
     "tv": {
       "status": "none"
     }
@@ -529,10 +529,10 @@
     "neutral": false,
     "arena": "Chase Center",
     "city": "San Francisco",
-    "status": "pre",
-    "wl": null,
-    "pts": null,
-    "oppPts": null,
+    "status": "post",
+    "wl": "W",
+    "pts": 88,
+    "oppPts": 87,
     "tv": {
       "status": "none"
     }
@@ -552,10 +552,10 @@
     "neutral": false,
     "arena": "Chase Center",
     "city": "San Francisco",
-    "status": "pre",
-    "wl": null,
-    "pts": null,
-    "oppPts": null,
+    "status": "post",
+    "wl": "W",
+    "pts": 129,
+    "oppPts": 110,
     "tv": {
       "status": "none"
     }
@@ -580,7 +580,10 @@
     "pts": null,
     "oppPts": null,
     "tv": {
-      "status": "none"
+      "status": "on",
+      "name": "INDEPENDENT",
+      "number": "143",
+      "logo": "https://zpmc.tmsimg.com/h3/NowShowing/21253/s10705_ll_h15_aa.png"
     }
   },
   {
@@ -611,9 +614,9 @@
   },
   {
     "id": "401910075",
-    "tipUtc": "2026-12-02T04:00:00Z",
+    "tipUtc": "2026-12-02T03:00:00Z",
     "date": "2026-12-01",
-    "time": "9:00 PM",
+    "time": "8:00 PM",
     "seasonType": "reg",
     "opponent": "Utah Jazz",
     "opponentShort": "Jazz",
@@ -629,7 +632,7 @@
     "pts": null,
     "oppPts": null,
     "tv": {
-      "status": "tba"
+      "status": "none"
     }
   },
   {

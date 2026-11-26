@@ -12,12 +12,14 @@ jobs:
       contents: write
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v6
         with:
-          python-version: '3.9'
+          # Use a current Python: runner images drop old versions (3.9 vanished
+          # with Ubuntu 26.04 and broke this job for 10 days).
+          python-version: '3.13'
 
       - name: Install dependencies
         run: |
@@ -61,5 +63,6 @@ jobs:
             echo "No changes to commit"
           else
             git commit -m "Daily data update"
+            git pull --rebase
             git push
           fi

@@ -1,10 +1,15 @@
 import json
 import os
+import sys
+import time
 from datetime import datetime, timezone
 
 import requests
 from flask import Flask, jsonify
 from flask_cors import CORS
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from generate_data import get_standings as fetch_live_standings, parse_utc  # noqa: E402
 
 app = Flask(__name__)
 CORS(app)
@@ -23,6 +28,41 @@ def load(name, default):
         return default
 
 
+# Standings and records change after every game, so they come from ESPN live
+# rather than the once-a-day data files. Cached briefly per instance (and by
+# the CDN via Cache-Control); the data files are only a fallback.
+LIVE_TTL = 300
+_live = {"at": 0, "records": None, "standings": None}
+
+
+def saved_records():
+    details = load('team_details.json', {})
+    records = {k: v.get('record', '0-0') for k, v in details.items() if not k.startswith('_')}
+    records[WARRIORS_ESPN_ID] = details.get('_warriors', {}).get('record', '0-0')
+    return records
+
+
+def live_data():
+    """(records, standings), live from ESPN when possible."""
+    if time.time() - _live["at"] > LIVE_TTL:
+        schedule = load('schedule.json', [])
+        if schedule:
+            season_year = parse_utc(schedule[-1]['tipUtc']).year
+            records, standings = fetch_live_standings(season_year)
+            if records and standings:
+                _live.update(at=time.time(), records=records, standings=standings)
+            else:  # ESPN failed: serve what we have, try again in a minute
+                _live["at"] = time.time() - LIVE_TTL + 60
+    if _live["standings"]:
+        return _live["records"], _live["standings"]
+    return saved_records(), load('standings.json', None)
+
+
+def cached(response, seconds=LIVE_TTL):
+    response.headers['Cache-Control'] = f'public, max-age=60, s-maxage={seconds}, stale-while-revalidate=600'
+    return response
+
+
 @app.route('/api/schedule')
 def get_schedule():
     """The whole season, oldest first. The client decides what's next/last
@@ -39,6 +79,7 @@ def get_game(game_id):
 
     details = load('team_details.json', {})
     opponent = details.get(str(game['opponentId']), {})
+    records, _ = live_data()
 
     # Every meeting with this opponent this season, preseason included
     series = [
@@ -48,8 +89,8 @@ def get_game(game_id):
 
     return jsonify({
         "game": game,
-        "warriorsRecord": details.get('_warriors', {}).get('record', '0-0'),
-        "opponentRecord": opponent.get('record', '0-0'),
+        "warriorsRecord": records.get(WARRIORS_ESPN_ID, '0-0'),
+        "opponentRecord": records.get(str(game['opponentId']), opponent.get('record', '0-0')),
         "scorers": opponent.get('scorers', []),
         "series": series,
     })
@@ -58,15 +99,14 @@ def get_game(game_id):
 @app.route('/api/records')
 def get_records():
     """Current-season record ("W-L") for every team, keyed by ESPN team id."""
-    details = load('team_details.json', {})
-    records = {k: v.get('record', '0-0') for k, v in details.items() if not k.startswith('_')}
-    records[WARRIORS_ESPN_ID] = details.get('_warriors', {}).get('record', '0-0')
-    return jsonify(records)
+    records, _ = live_data()
+    return cached(jsonify(records))
 
 
 @app.route('/api/standings')
 def get_standings():
-    return jsonify(load('standings.json', {"season": "", "final": False, "conferences": {"west": [], "east": []}}))
+    _, standings = live_data()
+    return cached(jsonify(standings or {"season": "", "final": False, "conferences": {"west": [], "east": []}}))
 
 
 @app.route('/api/news')

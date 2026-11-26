@@ -1,18 +1,7 @@
 {
-  "updated": "2026-11-16T21:20:47Z",
+  "updated": "2026-11-26T18:05:10Z",
   "curryId": "3975",
   "injuries": [
-    {
-      "athleteId": "4997536",
-      "name": "Gui Santos",
-      "position": "F",
-      "img": "https://a.espncdn.com/i/headshots/nba/players/full/4997536.png",
-      "status": "Day-To-Day",
-      "injury": "Right ankle (inflammation)",
-      "returnDate": "2026-11-16",
-      "comment": "Santos is questionable for Monday's game against New Orleans due to right ankle inflammation.",
-      "updated": "2026-11-15T23:03Z"
-    },
     {
       "athleteId": "3975",
       "name": "Stephen Curry",
@@ -21,19 +10,8 @@
       "status": "Out",
       "injury": "Right abdomen",
       "returnDate": "2026-12-12",
-      "comment": "Curry has been diagnosed with an oblique abdominal tear and will be re-evaluated in two weeks, Shams Charania of ESPN reports.",
-      "updated": "2026-11-12T17:03Z"
-    },
-    {
-      "athleteId": "4397040",
-      "name": "Brandon Williams",
-      "position": "G",
-      "img": "https://a.espncdn.com/i/headshots/nba/players/full/4397040.png",
-      "status": "Out",
-      "injury": "Left hamstring (not specified)",
-      "returnDate": "2026-11-22",
-      "comment": "Williams (hamstring) will miss at least one week, per Anthony Slater of ESPN.com.",
-      "updated": "2026-11-10T21:24Z"
+      "comment": "Curry (abdomen) will be re-evaluated Friday after Thanksgiving, Anthony Slater of ESPN.com reports.",
+      "updated": "2026-11-26T01:36Z"
     },
     {
       "athleteId": "3102531",
@@ -71,6 +49,16 @@
   ],
   "articles": [
     {
+      "headline": "Draymond Green swats back at online critics, fuels Warriors' win over Celtics",
+      "published": "2026-11-25T12:42:41Z",
+      "url": "https://www.espn.com/nba/story/_/id/50570668/vocal-green-defensive-stop-buzzer-fuels-warriors-win"
+    },
+    {
+      "headline": "The clock is ticking on Steph Curry's final act with the Warriors",
+      "published": "2026-11-17T16:58:52Z",
+      "url": "https://www.espn.com/nba/story/_/id/50503111/steph-curry-warriors-race-injuries"
+    },
+    {
       "headline": "Warriors' Stephen Curry out at least 2 weeks with oblique tear",
       "published": "2026-11-12T20:24:51Z",
       "url": "https://www.espn.com/nba/story/_/id/50462899/warriors-stephen-curry-least-2-weeks-oblique-tear"
@@ -99,36 +87,6 @@
       "headline": "Stephen Curry's latest history-making night keeps Warriors rolling",
       "published": "2026-11-08T17:55:40Z",
       "url": "https://www.espn.com/nba/story/_/id/50417316/remarkable-curry-latest-history-making-night-keeps-warriors-rolling"
-    },
-    {
-      "headline": "Warriors' Yaxel Lendeborg surprises mom with new home to fulfill 'lifelong goal'",
-      "published": "2026-11-07T22:16:52Z",
-      "url": "https://www.espn.com/nba/story/_/id/50412162/yaxel-lendeborg-warriors-gifts-mom-home"
-    },
-    {
-      "headline": "Warriors' Kristaps Porzingis to 'step away,' prioritize health",
-      "published": "2026-11-06T23:57:17Z",
-      "url": "https://www.espn.com/nba/story/_/id/50402041/warriors-kristaps-porzingis-step-away-prioritize-health"
-    },
-    {
-      "headline": "Warriors owner Joe Lacob ecstatic with early Yaxel Lendeborg returns",
-      "published": "2026-11-04T18:18:00Z",
-      "url": "https://www.espn.com/nba/story/_/id/50380187/joe-lacob-thinks-warriors-nailed-drafting-yaxel-lendeborg"
-    },
-    {
-      "headline": "What are the Warriors' options as Kristaps Porzingis remains away from the team?",
-      "published": "2026-11-04T17:16:12Z",
-      "url": "https://www.espn.com/nba/story/_/id/50299136/golden-state-warriors-kristaps-porzingis-options-trade"
-    },
-    {
-      "headline": "Warriors withholding payments to Porzingis, sources say",
-      "published": "2026-11-04T20:34:58Z",
-      "url": "https://www.espn.com/nba/story/_/id/50379460/warriors-not-making-payments-porzingis-sources-say"
-    },
-    {
-      "headline": "Yaxel Lendeborg scores 37 points, most by a Warriors rookie since Stephen Curry",
-      "published": "2026-11-02T13:10:21Z",
-      "url": "https://www.espn.com/nba/story/_/id/50356142/yaxel-lendeborg-scores-37-points-most-warriors-rookie-stephen-curry"
     }
   ]
 }
